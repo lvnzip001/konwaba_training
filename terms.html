@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Terms of Use | Konwaba High School</title>
+  <meta name="description" content="Konwaba High School website terms of use, including content, links, and acceptable use." />
+  <meta name="theme-color" content="#7B1E3A" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <style>
+    :root{
+      --transition-prestige: all .75s cubic-bezier(.16,1,.3,1);
+      --maroon-600:#7B1E3A;
+      --beige-50:#FBF8F4;
+      --beige-100:#F2E9E2;
+      --beige-200:#E8D8CB;
+      --ink-900:#101828;
+      --ink-700:#344054;
+      --ink-600:#475467;
+      --ink-500:#667085;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+    }
+    body{ font-family:"Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    .font-heading{ font-family:"Playfair Display", serif; }
+
+    .nav-shell{ transition: var(--transition-prestige); padding-top: 1rem; padding-bottom: 1rem; background: rgba(251,248,244,.72); }
+    .nav-shell.scrolled{
+      padding-top: .45rem; padding-bottom: .45rem;
+      background: rgba(251,248,244,.92);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 12px 34px rgba(0,0,0,.06);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+
+    .reveal{ opacity:0; transform: translateY(22px); transition: var(--transition-prestige); }
+    .reveal.is-visible{ opacity:1; transform: translateY(0); }
+    .delay-100{ transition-delay:120ms; } .delay-200{ transition-delay:240ms; }
+
+    .drawer-backdrop{ opacity:0; pointer-events:none; transition: opacity .35s ease; }
+    .drawer-backdrop.open{ opacity:1; pointer-events:auto; }
+    .drawer-panel{ transform: translateX(104%); transition: transform .55s cubic-bezier(.16,1,.3,1); }
+    .drawer-panel.open{ transform: translateX(0); }
+    body.lock-scroll{ overflow:hidden; }
+
+    .cardx{
+      border-radius: 22px;
+      border: 1px solid rgba(16,24,40,0.08);
+      background:#fff;
+      box-shadow: 0 14px 30px rgba(16,24,40,0.06);
+    }
+    .kicker{
+      font-size: 11px; text-transform: uppercase; letter-spacing: .28em;
+      font-weight: 800; color: var(--maroon-600);
+    }
+    .prose-khs p{ margin-top: 12px; color: var(--ink-600); line-height: 1.75; }
+    .prose-khs h2{ margin-top: 26px; font-size: 22px; color: var(--ink-900); font-weight: 700; font-family: "Playfair Display", serif; }
+    .prose-khs ul{ margin-top: 10px; padding-left: 18px; color: var(--ink-600); }
+    .prose-khs li{ margin: 8px 0; list-style: disc; }
+  </style>
+</head>
+
+<body class="bg-[var(--beige-50)] text-[var(--ink-700)] antialiased">
+
+  <!-- NAV -->
+  <header id="main-nav" class="nav-shell fixed w-full top-0 left-0 z-[100]">
+    <div class="container-max px-5">
+      <div class="flex items-center justify-between">
+        <a class="nav-logo flex items-center gap-3 transition-transform duration-500 hover:scale-[1.03]" href="index.html">
+          <img src="assets/img/khs_logo.png" alt="Konwaba High School" class="h-14 sm:h-16 transition-all duration-700" />
+          <div class="hidden sm:block leading-tight">
+            <div class="font-heading text-[var(--ink-900)] text-lg">Konwaba Schools</div>
+            <div class="text-[10px] uppercase tracking-[0.32em] text-[var(--ink-500)]">Terms of Use</div>
+          </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-10" aria-label="Main Navigation">
+          <a class="text-[11px] uppercase tracking-[0.25em] font-semibold text-[var(--ink-700)] hover:text-[var(--maroon-600)] transition-colors" href="index.html">Home</a>
+          <a class="text-[11px] uppercase tracking-[0.25em] font-semibold text-[var(--ink-700)] hover:text-[var(--maroon-600)] transition-colors" href="academics.html">Academics</a>
+          <a class="text-[11px] uppercase tracking-[0.25em] font-semibold text-[var(--ink-700)] hover:text-[var(--maroon-600)] transition-colors" href="admissions.html">Admissions</a>
+          <a class="text-[11px] uppercase tracking-[0.25em] font-semibold text-[var(--ink-700)] hover:text-[var(--maroon-600)] transition-colors" href="notices.html">Notices</a>
+          <a class="text-[11px] uppercase tracking-[0.25em] font-semibold text-[var(--ink-700)] hover:text-[var(--maroon-600)] transition-colors" href="contact.html">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <a class="btn btn-maroon px-7 py-3 text-[10px] uppercase tracking-widest font-bold shadow-xl hidden sm:inline-flex" href="admissions.html">Apply</a>
+          <button id="menuBtn" class="lg:hidden p-2 rounded-xl border border-black/10 bg-white/70 backdrop-blur-md text-[var(--maroon-600)]" aria-label="Open menu">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="pt-28 md:pt-32 pb-10">
+    <div class="container-max px-5">
+      <div class="cardx p-8 md:p-12 reveal">
+        <div class="kicker">Terms of Use</div>
+        <h1 class="font-heading text-3xl md:text-4xl text-[var(--ink-900)] mt-3">Website terms and acceptable use.</h1>
+        <p class="mt-4 text-[var(--ink-600)] leading-relaxed max-w-3xl">
+          These terms govern your use of the Konwaba High School website. If you do not agree, please discontinue use.
+        </p>
+
+        <div class="mt-6 grid md:grid-cols-3 gap-3">
+          <div class="rounded-2xl border border-black/5 bg-[var(--beige-50)] p-4">
+            <div class="text-[10px] uppercase tracking-[0.28em] font-extrabold text-[var(--ink-500)]">Effective</div>
+            <div class="font-semibold text-[var(--ink-900)] mt-1">21 Feb 2026</div>
+          </div>
+          <div class="rounded-2xl border border-black/5 bg-[var(--beige-50)] p-4">
+            <div class="text-[10px] uppercase tracking-[0.28em] font-extrabold text-[var(--ink-500)]">Applies to</div>
+            <div class="font-semibold text-[var(--ink-900)] mt-1">Website Visitors</div>
+          </div>
+          <div class="rounded-2xl border border-black/5 bg-[var(--beige-50)] p-4">
+            <div class="text-[10px] uppercase tracking-[0.28em] font-extrabold text-[var(--ink-500)]">Support</div>
+            <div class="font-semibold text-[var(--ink-900)] mt-1">048 109 9068</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="pb-16 md:pb-24">
+    <div class="container-max px-5">
+      <div class="cardx p-8 md:p-12 reveal delay-100">
+        <div class="prose-khs max-w-4xl">
+          <h2>1. Website content</h2>
+          <p>The website content is provided for general information about the school and may be updated without notice.</p>
+
+          <h2>2. Acceptable use</h2>
+          <p>You agree not to use this website in a way that could damage, disable, overburden, or impair the site, or interfere with others’ use. You also agree not to attempt unauthorised access to systems or data.</p>
+
+          <h2>3. Intellectual property</h2>
+          <p>Unless otherwise indicated, the website content (text, images, logos, design) is owned by Konwaba High School or its licensors. You may view and print pages for personal, non-commercial use. Any other use requires permission.</p>
+
+          <h2>4. External links</h2>
+          <p>This site may include links to third-party websites. We are not responsible for the content, privacy practices, or security of third-party sites.</p>
+
+          <h2>5. Admissions and fees information</h2>
+          <p>Admissions criteria, fees, and dates displayed on the website are indicative and may change. The official admissions pack and communications from the school remain the source of truth.</p>
+
+          <h2>6. Limitation of liability</h2>
+          <p>We take reasonable steps to keep the website accurate and available, but we do not guarantee uninterrupted access or that content will always be error-free. To the extent permitted by law, Konwaba High School is not liable for losses arising from the use of this website.</p>
+
+          <h2>7. Changes to terms</h2>
+          <p>We may update these terms occasionally. Continued use of the website indicates acceptance of the updated terms.</p>
+
+          <h2>8. Contact</h2>
+          <p>
+            For questions about these terms, contact:<br>
+            <span class="font-semibold text-[var(--ink-900)]">Konwaba High School</span><br>
+            Email: <a class="text-[var(--maroon-600)] font-semibold hover:underline" href="mailto:konwabass@gmail.com">konwabass@gmail.com</a><br>
+            Tel: 048 109 9068
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[var(--maroon-600)] text-white/70 pt-14 pb-10">
+    <div class="container-max px-5">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+        <div>
+          <div class="font-heading text-2xl text-white">Konwaba High School</div>
+          <div class="text-[11px] uppercase tracking-[0.30em] mt-2 text-white/55">Nxuba (Cradock) • Eastern Cape</div>
+          <div class="mt-4 text-sm text-white/70">
+            16 Cawood Street, Cradock (Nxuba), 5880<br>
+            048 109 9068 • konwabass@gmail.com
+          </div>
+        </div>
+
+        <div class="flex gap-8 text-[10px] uppercase tracking-[0.30em] font-extrabold">
+          <a href="privacy.html" class="hover:text-[var(--beige-200)] transition-colors">Privacy</a>
+          <a href="terms.html" class="text-white hover:text-[var(--beige-200)] transition-colors">Terms</a>
+        </div>
+      </div>
+
+      <div class="mt-10 pt-8 border-t border-white/15 flex flex-col md:flex-row items-center justify-between gap-6 text-[10px] uppercase tracking-[0.32em] text-white/40">
+        <div>© 2026 Konwaba High School</div>
+        <div class="flex gap-8">
+          <a href="index.html" class="hover:text-white transition-colors">Home</a>
+          <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE DRAWER -->
+  <div id="drawerBackdrop" class="drawer-backdrop fixed inset-0 bg-black/45 backdrop-blur-sm z-[150]"></div>
+  <aside id="mobileDrawer" class="drawer-panel fixed top-0 right-0 w-[320px] max-w-[86vw] h-full bg-white z-[160] shadow-2xl p-7 flex flex-col">
+    <div class="flex items-center justify-between mb-10">
+      <div>
+        <div class="font-heading font-bold text-2xl text-[var(--maroon-600)]">Menu</div>
+        <div class="text-[10px] uppercase tracking-[0.32em] text-[var(--ink-500)] mt-1">Konwaba</div>
+      </div>
+      <button id="closeMenu" class="p-2 rounded-xl border border-black/10 text-[var(--ink-600)]" aria-label="Close menu">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <nav class="flex flex-col gap-6">
+      <a href="index.html" class="text-xs uppercase tracking-[0.28em] font-extrabold text-[var(--ink-700)]">Home</a>
+      <a href="academics.html" class="text-xs uppercase tracking-[0.28em] font-extrabold text-[var(--ink-700)]">Academics</a>
+      <a href="admissions.html" class="text-xs uppercase tracking-[0.28em] font-extrabold text-[var(--ink-700)]">Admissions</a>
+      <a href="notices.html" class="text-xs uppercase tracking-[0.28em] font-extrabold text-[var(--ink-700)]">Notices</a>
+      <a href="contact.html" class="text-xs uppercase tracking-[0.28em] font-extrabold text-[var(--ink-700)]">Contact</a>
+      <a href="privacy.html" class="text-xs uppercase tracking-[0.28em] font-extrabold text-[var(--ink-700)]">Privacy</a>
+      <a href="terms.html" class="text-xs uppercase tracking-[0.28em] font-extrabold text-[var(--maroon-600)]">Terms</a>
+    </nav>
+
+    <div class="mt-auto pt-8 border-t border-black/5">
+      <a href="admissions.html" class="btn btn-maroon w-full justify-center py-4 text-[10px] uppercase tracking-widest font-extrabold">Apply</a>
+      <a href="contact.html" class="btn btn-ghost w-full justify-center py-4 mt-3 text-[10px] uppercase tracking-widest font-extrabold">Enquire</a>
+    </div>
+  </aside>
+
+  <script>
+    (function(){
+      const mainNav = document.getElementById('main-nav');
+      const setNav = () => {
+        if (!mainNav) return;
+        if (window.scrollY > 80) mainNav.classList.add('scrolled');
+        else mainNav.classList.remove('scrolled');
+      };
+
+      const revealCheck = () => {
+        const trigger = window.innerHeight * 0.92;
+        document.querySelectorAll('.reveal').forEach(el => {
+          const r = el.getBoundingClientRect();
+          if (r.top < trigger) el.classList.add('is-visible');
+        });
+      };
+
+      const menuBtn = document.getElementById('menuBtn');
+      const closeMenu = document.getElementById('closeMenu');
+      const drawer = document.getElementById('mobileDrawer');
+      const backdrop = document.getElementById('drawerBackdrop');
+
+      const openDrawer = () => {
+        drawer.classList.add('open');
+        backdrop.classList.add('open');
+        document.body.classList.add('lock-scroll');
+      };
+      const closeDrawerFn = () => {
+        drawer.classList.remove('open');
+        backdrop.classList.remove('open');
+        document.body.classList.remove('lock-scroll');
+      };
+
+      menuBtn && menuBtn.addEventListener('click', openDrawer);
+      closeMenu && closeMenu.addEventListener('click', closeDrawerFn);
+      backdrop && backdrop.addEventListener('click', closeDrawerFn);
+      window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawerFn(); });
+
+      window.addEventListener('scroll', () => { setNav(); revealCheck(); }, { passive: true });
+      window.addEventListener('load', () => { setNav(); revealCheck(); }, { passive: true });
+      setNav(); revealCheck();
+    })();
+  </script>
+</body>
+</html>

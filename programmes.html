@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Programme Catalogue | Konwaba Training Institute</title>
+  <meta name="description" content="Browse Konwaba Training Institute programmes. Filter by sector, type and NQF level. Corporate, outcome-driven training and skills development." />
+  <meta name="theme-color" content="#7B1E3A" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root{
+      --kti-maroon:#7B1E3A;
+      --kti-maroon-dark:#5E142C;
+      --kti-ink:#101827;
+      --kti-silver:#D2D8E0;
+      --kti-bg:#F7F8FA;
+      --kti-ease:cubic-bezier(.2,.85,.2,1);
+      --ring: 0 0 0 4px rgba(123,30,58,.14);
+    }
+    html{ scroll-behavior:smooth; }
+    body{
+      background: var(--kti-bg);
+      color: rgba(16,24,40,.88);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap{ width:100%; padding-left:28px; padding-right:28px; }
+    @media (min-width:1024px){ .wrap{ padding-left:44px; padding-right:44px; } }
+    @media (min-width:1536px){ .wrap{ padding-left:64px; padding-right:64px; } }
+    .rail{ max-width:1720px; margin-left:auto; margin-right:auto; }
+
+    /* NAV */
+    header.nav{
+      position: sticky; top:0; z-index:100;
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(16,24,40,.06);
+      transition: all .3s var(--kti-ease);
+    }
+    header.nav.scrolled{
+      background: rgba(255,255,255,1);
+      box-shadow: 0 12px 48px rgba(16,24,40,.10);
+    }
+    .navitem{ position: relative; }
+    .navlink{
+      display:inline-flex; align-items:center;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 800;
+      color: rgba(16,24,40,.82);
+      transition: all .2s var(--kti-ease);
+    }
+    .navlink:hover{ color: var(--kti-maroon); background: rgba(123,30,58,.05); }
+    .dd{
+      position:absolute;
+      top: calc(100% + 8px);
+      left:0;
+      min-width: 320px;
+      background: #fff;
+      border: 1px solid rgba(16,24,40,.10);
+      box-shadow: 0 32px 80px rgba(16,24,40,.15);
+      border-radius: 12px;
+      padding: 12px;
+      opacity:0; visibility:hidden;
+      transform: translateY(12px);
+      transition: all .25s var(--kti-ease);
+      pointer-events:none;
+    }
+    .navitem.open > .dd{ opacity:1; visibility:visible; transform: translateY(0); pointer-events:auto; }
+    .dd::before{ content:""; position:absolute; left:0; right:0; top:-16px; height:16px; background: transparent; }
+
+    /* UI */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
+      padding:.9rem 1.3rem;
+      border-radius: 12px;
+      font-weight: 900;
+      transition: all .2s var(--kti-ease);
+      user-select:none; white-space:nowrap;
+    }
+    .btn:active{ transform: scale(0.98); }
+    .btn-primary{
+      color:#fff;
+      background: linear-gradient(135deg, var(--kti-maroon), var(--kti-maroon-dark));
+      box-shadow: 0 12px 32px rgba(123,30,58,.25);
+    }
+    .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 18px 48px rgba(123,30,58,.34); }
+    .btn-silver{
+      color: var(--kti-ink);
+      background: #fff;
+      border: 1px solid rgba(16,24,40,.12);
+      box-shadow: 0 8px 24px rgba(16,24,40,.06);
+    }
+    .btn-silver:hover{ background:#fdfdfd; border-color: rgba(16,24,40,.20); transform: translateY(-1px); }
+
+    .surface{
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(16,24,40,.08);
+      box-shadow: 0 16px 52px rgba(16,24,40,.08);
+      border-radius: 16px;
+    }
+    .card{
+      background:#fff;
+      border: 1px solid rgba(16,24,40,.08);
+      border-radius: 16px;
+      box-shadow: 0 10px 28px rgba(16,24,40,.06);
+      transition: transform .22s var(--kti-ease), box-shadow .22s var(--kti-ease), border-color .22s var(--kti-ease);
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 22px 64px rgba(16,24,40,.12);
+      border-color: rgba(123,30,58,.18);
+    }
+
+    .section-kicker{
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .32em;
+      color: rgba(16,24,40,.45);
+    }
+    .h-title{ color: var(--kti-ink); letter-spacing: -0.02em; }
+    .p-lead{ color: rgba(16,24,40,.60); line-height: 1.75; font-weight: 500; }
+
+    .reveal{ opacity:0; transform: translateY(18px); transition: all .75s var(--kti-ease); }
+    .reveal.in{ opacity:1; transform: translateY(0); }
+
+    .field{
+      border-radius: 14px;
+      border: 2px solid rgba(16,24,40,.06);
+      padding: .88rem 1.0rem;
+      transition: all .2s var(--kti-ease);
+      background: #fff;
+    }
+    .field:focus{ outline:none; border-color: var(--kti-maroon); box-shadow: var(--ring); }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:.4rem;
+      padding:.35rem .65rem;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 11px;
+      border: 1px solid rgba(16,24,40,.10);
+      color: rgba(16,24,40,.66);
+      background:#fff;
+      white-space: nowrap;
+    }
+    .muted{ color: rgba(16,24,40,.55); }
+    .divider{ border-top: 1px solid rgba(16,24,40,.06); }
+
+    /* Hero accents (corporate, minimal) */
+    .hero-shell{
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid rgba(16,24,40,.07);
+      background: radial-gradient(800px 260px at 18% 10%, rgba(123,30,58,.11), transparent 55%),
+                  radial-gradient(720px 260px at 85% 0%, rgba(210,216,224,.55), transparent 55%),
+                  linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.78));
+      box-shadow: 0 24px 90px rgba(16,24,40,.10);
+    }
+    .hero-shell:after{
+      content:"";
+      position:absolute; inset:-1px;
+      background: linear-gradient(135deg, rgba(123,30,58,.14), rgba(255,255,255,0) 55%, rgba(16,24,40,.06));
+      pointer-events:none;
+      mix-blend-mode: multiply;
+    }
+
+    /* Sticky filter bar */
+    .filter-sticky{
+      position: sticky;
+      top: 92px; /* nav height approx */
+      z-index: 60;
+    }
+    @media (max-width:1023px){
+      .filter-sticky{ top: 86px; }
+    }
+
+    /* Modal */
+    .modal-panel{ transform: scale(0.98); opacity:0; transition: all .28s var(--kti-ease); }
+    .modal-panel.open{ transform: scale(1); opacity:1; }
+
+    /* Mobile Drawer */
+    #drawerOverlay.open{ opacity:1 !important; pointer-events:auto !important; }
+    #mobileDrawer.open{ transform: translateX(0) !important; }
+
+    /* Card details */
+    .detail-row{
+      display:flex; align-items:flex-start; gap:.65rem;
+      font-size: 12px;
+      font-weight: 650;
+      color: rgba(16,24,40,.58);
+      line-height: 1.5;
+    }
+    .dot{
+      width:7px; height:7px; border-radius:999px;
+      background: rgba(123,30,58,.85);
+      margin-top: 6px;
+      flex: 0 0 auto;
+      box-shadow: 0 0 0 3px rgba(123,30,58,.10);
+    }
+
+    /* Pagination */
+    .pager-btn{
+      border: 1px solid rgba(16,24,40,.10);
+      background:#fff;
+      border-radius: 12px;
+      padding: .7rem .9rem;
+      font-weight: 900;
+      font-size: 12px;
+      transition: all .2s var(--kti-ease);
+      color: rgba(16,24,40,.75);
+    }
+    .pager-btn:hover{ border-color: rgba(123,30,58,.25); color: var(--kti-maroon); transform: translateY(-1px); }
+    .pager-btn[disabled]{ opacity:.45; cursor:not-allowed; transform:none; }
+    .pager-pill{
+      border: 1px solid rgba(16,24,40,.10);
+      background: rgba(255,255,255,.85);
+      border-radius: 999px;
+      padding: .55rem .85rem;
+      font-weight: 900;
+      font-size: 12px;
+      color: rgba(16,24,40,.65);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Utilities -->
+  <div class="bg-white border-b border-black/5 py-2">
+    <div class="wrap">
+      <div class="rail flex flex-col md:flex-row justify-between items-center gap-2 text-[11px] font-bold text-black/50 tracking-wider uppercase">
+        <div class="flex flex-wrap items-center gap-4">
+          <span class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+            Catalogue
+          </span>
+          <span>• Search</span>
+          <span>• Filter</span>
+          <span>• Apply</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-4">
+          <span>Call: 045 838 1000</span>
+          <span>• Eastern Cape</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <header id="nav" class="nav">
+    <div class="wrap">
+      <div class="rail flex items-center justify-between py-4">
+
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="assets/img/khs_neutral.png" alt="Konwaba Training Institute"
+               class="h-11 w-auto rounded-lg border border-black/10 bg-white shadow-sm"
+               onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');" />
+          <div class="hidden bg-[var(--kti-maroon)] text-white w-11 h-11 rounded-lg flex items-center justify-center font-black text-xl shadow-lg shadow-red-900/20 group-hover:scale-105 transition-transform">K</div>
+
+          <div class="leading-none">
+            <div class="text-[15px] font-black text-[var(--kti-ink)] tracking-tight">Konwaba Training Institute</div>
+            <div class="text-[10px] font-black uppercase tracking-[0.28em] text-black/40 mt-1">Programme Catalogue</div>
+          </div>
+        </a>
+
+        <!-- Desktop -->
+        <nav class="hidden lg:flex items-center gap-2" aria-label="Main menu">
+          <div class="navitem" data-dropdown="programmes">
+            <button class="navlink" aria-haspopup="true" aria-expanded="false" data-trigger>
+              Programmes
+              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"/></svg>
+            </button>
+            <div class="dd">
+              <a href="index.html#explorer" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg">
+                <span class="font-black text-sm">Programme Explorer</span>
+                <span class="text-xs text-black/55">Filter by sector, type and NQF</span>
+              </a>
+              <a href="programmes.html" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg mt-1">
+                <span class="font-black text-sm">Catalogue</span>
+                <span class="text-xs text-black/55">Full programme list</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="navitem" data-dropdown="institute">
+            <button class="navlink" aria-haspopup="true" aria-expanded="false" data-trigger>
+              Institute
+              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"/></svg>
+            </button>
+            <div class="dd">
+              <a href="about.html" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg">
+                <span class="font-black text-sm">About KTI</span>
+                <span class="text-xs text-black/55">Who we are</span>
+              </a>
+              <a href="accreditation.html" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg mt-1">
+                <span class="font-black text-sm">Accreditation</span>
+                <span class="text-xs text-black/55">Quality assurance and compliance</span>
+              </a>
+              <a href="contact.html" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg mt-1">
+                <span class="font-black text-sm">Contact</span>
+                <span class="text-xs text-black/55">Admissions support</span>
+              </a>
+            </div>
+          </div>
+
+          <a href="contact.html" class="navlink">Contact</a>
+        </nav>
+
+        <div class="hidden lg:flex items-center gap-3">
+          <a href="index.html#explorer" class="btn btn-silver text-xs">Programme Explorer</a>
+          <button class="btn btn-primary text-xs" onclick="toggleEnquiryModal()">Apply / Enquire</button>
+        </div>
+
+        <!-- Mobile -->
+        <div class="lg:hidden flex items-center gap-2">
+          <button class="btn btn-primary text-xs py-2 px-4" onclick="toggleEnquiryModal()">Enquire</button>
+          <button id="mobileMenuBtn" class="p-2 rounded-lg bg-slate-100 text-slate-800" aria-label="Menu">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="drawerOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[200] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="mobileDrawer" class="fixed top-0 right-0 h-full w-[360px] max-w-[85vw] bg-white z-[210] shadow-2xl translate-x-full transition-transform duration-500 ease-in-out p-6 flex flex-col">
+    <div class="flex items-center justify-between mb-8">
+      <div class="font-black text-xl text-[var(--kti-maroon)]">Menu</div>
+      <button id="drawerClose" class="p-2 bg-slate-100 rounded-full" aria-label="Close menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-2 overflow-y-auto">
+      <a href="index.html" class="p-3 font-black text-base border-b border-black/5">Home</a>
+      <a href="index.html#explorer" class="p-3 font-black text-base border-b border-black/5" onclick="toggleDrawer()">Programme Explorer</a>
+      <a href="programmes.html" class="p-3 font-black text-base border-b border-black/5">Catalogue</a>
+      <a href="about.html" class="p-3 font-black text-base border-b border-black/5">About KTI</a>
+      <a href="accreditation.html" class="p-3 font-black text-base border-b border-black/5">Accreditation</a>
+      <a href="contact.html" class="p-3 font-black text-base border-b border-black/5">Contact</a>
+    </div>
+
+    <div class="mt-auto pt-6 border-t border-black/5 flex flex-col gap-3">
+      <button class="btn btn-primary w-full" onclick="toggleEnquiryModal()">Apply / Enquire</button>
+      <div class="text-center text-[10px] text-black/40 font-black tracking-widest uppercase">Konwaba Training Institute</div>
+    </div>
+  </aside>
+
+  <!-- HERO (richer, still corporate) -->
+  <section class="pt-10 lg:pt-12 pb-8">
+    <div class="wrap">
+      <div class="rail">
+        <div class="hero-shell p-8 lg:p-10 reveal">
+          <div class="grid lg:grid-cols-12 gap-8 items-end relative z-10">
+            <div class="lg:col-span-8">
+              <div class="flex items-center gap-2 mb-5">
+                <span class="w-10 h-0.5 bg-[var(--kti-maroon)]"></span>
+                <span class="section-kicker text-[var(--kti-maroon)]">Programme Catalogue</span>
+              </div>
+
+              <h1 class="h-title text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.08]">
+                Find the right programme — quickly, confidently.
+              </h1>
+
+              <p class="p-lead text-base lg:text-lg mt-6 max-w-[92ch]">
+                Search and filter by sector, programme type and NQF level. Shortlist options for individual enrolment or
+                employer/sponsor intake planning.
+              </p>
+
+              <div class="mt-7 flex flex-col sm:flex-row gap-3">
+                <a href="#catalogue" class="btn btn-primary px-10 py-4 text-sm uppercase tracking-widest">Browse catalogue</a>
+                <button class="btn btn-silver px-10 py-4 text-sm uppercase tracking-widest" onclick="toggleEnquiryModal()">Admissions guidance</button>
+              </div>
+            </div>
+
+            <div class="lg:col-span-4">
+              <div class="surface p-6">
+                <div class="section-kicker mb-2">How it works</div>
+                <div class="text-[var(--kti-ink)] font-black text-xl">Shortlist in minutes</div>
+
+                <div class="mt-4 grid gap-3">
+                  <div class="detail-row"><span class="dot"></span><span>Use sector/type/NQF filters to narrow down programmes.</span></div>
+                  <div class="detail-row"><span class="dot"></span><span>Open a programme to view key details and outcomes.</span></div>
+                  <div class="detail-row"><span class="dot"></span><span>Click <span class="font-black text-black/70">Apply</span> to prefill an enquiry with the programme name.</span></div>
+                </div>
+
+                <div class="mt-5 pt-5 divider flex gap-3">
+                  <a href="accreditation.html" class="btn btn-silver text-xs w-1/2">Accreditation</a>
+                  <a href="contact.html" class="btn btn-silver text-xs w-1/2">Contact</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- KPI strip -->
+          <div class="mt-7 pt-7 divider grid sm:grid-cols-3 gap-4 relative z-10">
+            <div class="surface p-5">
+              <div class="text-[10px] font-black uppercase tracking-widest text-black/40">Total programmes</div>
+              <div class="mt-1 text-3xl font-black text-[var(--kti-ink)]" id="kpiTotal">—</div>
+              <div class="text-xs font-semibold text-black/55 mt-1">Across sectors and delivery types</div>
+            </div>
+            <div class="surface p-5">
+              <div class="text-[10px] font-black uppercase tracking-widest text-black/40">Sectors</div>
+              <div class="mt-1 text-3xl font-black text-[var(--kti-ink)]" id="kpiSectors">—</div>
+              <div class="text-xs font-semibold text-black/55 mt-1">Use sector filter to shortlist</div>
+            </div>
+            <div class="surface p-5">
+              <div class="text-[10px] font-black uppercase tracking-widest text-black/40">Programme types</div>
+              <div class="mt-1 text-3xl font-black text-[var(--kti-ink)]" id="kpiTypes">—</div>
+              <div class="text-xs font-semibold text-black/55 mt-1">Learnerships, skills programmes, short courses</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section id="catalogue" class="pb-14">
+    <div class="wrap">
+      <div class="rail">
+
+        <!-- Quick sector chips (premium, minimal, useful) -->
+        <div class="mt-6 reveal">
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <div>
+              <div class="section-kicker mb-2">Quick filters</div>
+              <div class="font-black text-[var(--kti-ink)] text-xl">Browse by sector</div>
+            </div>
+            <button id="chipsClear" class="btn btn-silver text-xs px-5 py-3">Clear</button>
+          </div>
+          <div id="sectorChips" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <!-- Sticky filter bar (heavier + more corporate) -->
+        <div class="filter-sticky mt-6 reveal">
+          <div class="surface p-5">
+            <div class="grid lg:grid-cols-12 gap-4 items-end">
+              <div class="lg:col-span-5">
+                <label class="block text-[10px] font-black uppercase tracking-widest text-black/45 mb-2">Search</label>
+                <input id="q" class="field w-full" placeholder="Search by title, sector, type, tags or code" />
+              </div>
+
+              <div class="lg:col-span-3">
+                <label class="block text-[10px] font-black uppercase tracking-widest text-black/45 mb-2">Sector</label>
+                <select id="sector" class="field w-full">
+                  <option value="all">All sectors</option>
+                </select>
+              </div>
+
+              <div class="lg:col-span-2">
+                <label class="block text-[10px] font-black uppercase tracking-widest text-black/45 mb-2">Type</label>
+                <select id="ptype" class="field w-full">
+                  <option value="all">All types</option>
+                </select>
+              </div>
+
+              <div class="lg:col-span-2">
+                <label class="block text-[10px] font-black uppercase tracking-widest text-black/45 mb-2">Sort</label>
+                <select id="sort" class="field w-full">
+                  <option value="title_asc">Title (A–Z)</option>
+                  <option value="nqf_asc">NQF (Low–High)</option>
+                  <option value="nqf_desc">NQF (High–Low)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mt-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
+              <div class="text-sm font-semibold text-black/60">
+                <span id="resultCount" class="font-black text-black/85">0</span> programmes found
+                <span class="text-black/35 mx-2">•</span>
+                <span class="font-black text-black/70" id="pageMeta">Page —</span>
+              </div>
+
+              <div class="flex flex-wrap gap-2">
+                <button id="clearBtn" class="btn btn-silver text-xs px-6 py-3">Clear filters</button>
+                <button class="btn btn-primary text-xs px-6 py-3" onclick="toggleEnquiryModal()">Apply / Enquire</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Programme Grid -->
+        <div id="grid" class="mt-8 grid sm:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+
+        <!-- Pagination -->
+        <div id="pager" class="mt-8 flex flex-col md:flex-row items-center justify-between gap-4 reveal">
+          <div class="pager-pill" id="pagerInfo">—</div>
+          <div class="flex items-center gap-2">
+            <button class="pager-btn" id="prevBtn">Prev</button>
+            <button class="pager-btn" id="nextBtn">Next</button>
+          </div>
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty" class="hidden mt-10 surface p-10 text-center reveal">
+          <div class="text-2xl font-black text-[var(--kti-ink)]">No matches found</div>
+          <div class="text-sm text-black/55 font-medium mt-2">Try adjusting filters or clearing the search.</div>
+          <div class="mt-6 flex justify-center">
+            <button id="emptyClear" class="btn btn-primary">Clear filters</button>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-12 surface p-8 reveal">
+          <div class="grid lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-8">
+              <div class="section-kicker mb-2">Admissions</div>
+              <h3 class="h-title text-2xl sm:text-3xl font-black">Need help selecting a programme?</h3>
+              <p class="p-lead mt-3">We can advise on requirements, duration and best-fit options for your goals.</p>
+            </div>
+            <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-stretch">
+              <button class="btn btn-primary w-full" onclick="toggleEnquiryModal()">Apply / Enquire</button>
+              <a href="contact.html" class="btn btn-silver w-full text-center">Contact</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white py-16">
+    <div class="wrap">
+      <div class="rail">
+        <div class="grid lg:grid-cols-4 gap-12 mb-14">
+          <div class="lg:col-span-1">
+            <div class="flex items-center gap-3 mb-6">
+              <img src="assets/img/khs_neutral.png" alt="KTI" class="h-9 w-auto rounded border border-black/10 bg-white" onerror="this.style.display='none'">
+              <div class="text-sm font-black text-[var(--kti-ink)]">Konwaba Training Institute</div>
+            </div>
+            <p class="text-sm text-black/55 leading-relaxed font-medium">
+              Professional training and skills development with structured programme pathways.
+            </p>
+          </div>
+
+          <div>
+            <div class="section-kicker mb-5">Links</div>
+            <div class="grid gap-3 text-sm font-semibold text-black/65">
+              <a href="index.html#explorer" class="hover:text-[var(--kti-maroon)]">Programme Explorer</a>
+              <a href="programmes.html" class="hover:text-[var(--kti-maroon)]">Catalogue</a>
+              <a href="about.html" class="hover:text-[var(--kti-maroon)]">About</a>
+              <a href="accreditation.html" class="hover:text-[var(--kti-maroon)]">Accreditation</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="section-kicker mb-5">Compliance</div>
+            <div class="grid gap-3 text-sm font-semibold text-black/65">
+              <a href="privacy.html" class="hover:text-[var(--kti-maroon)]">Privacy (POPIA)</a>
+              <a href="terms.html" class="hover:text-[var(--kti-maroon)]">Terms</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="section-kicker mb-5">Contact</div>
+            <div class="text-sm font-semibold text-black/65">
+              <div>045 838 1000</div>
+              <div class="mt-1">info@konwabatraining.co.za</div>
+              <div class="text-[11px] text-black/45 mt-4 leading-relaxed">
+                We process enquiries in line with POPIA and only use your details to respond.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-8 border-t border-black/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-black uppercase tracking-widest text-black/35">
+          <div>© <span id="year"></span> Konwaba Training Institute.</div>
+          <div class="flex gap-6">
+            <a href="privacy.html" class="hover:text-black">Privacy</a>
+            <a href="terms.html" class="hover:text-black">Terms</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Enquiry Modal -->
+  <div id="enquiryModalOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-md z-[500] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="enquiryModal" class="fixed inset-0 z-[510] flex items-center justify-center p-4 pointer-events-none">
+    <div class="bg-white w-full max-w-[620px] rounded-[26px] shadow-[0_32px_128px_rgba(0,0,0,0.30)] pointer-events-auto modal-panel overflow-hidden">
+      <div class="bg-[var(--kti-maroon)] p-8 text-white relative">
+        <h3 class="text-2xl font-black">Apply / Enquire</h3>
+        <p class="text-[11px] font-semibold uppercase tracking-widest opacity-75 mt-1">Programme admissions</p>
+        <button onclick="toggleEnquiryModal()" class="absolute top-7 right-7 text-white/60 hover:text-white" aria-label="Close enquiry">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <form class="p-8 grid gap-4" onsubmit="return false;">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Name</label>
+            <input type="text" class="field w-full py-3" placeholder="Full name">
+          </div>
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Phone</label>
+            <input type="tel" class="field w-full py-3" placeholder="0xx xxx xxxx">
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Email</label>
+            <input type="email" class="field w-full py-3" placeholder="name@domain.co.za">
+          </div>
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Programme interest</label>
+            <input id="modalProgramme" type="text" class="field w-full py-3" placeholder="Programme title">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Message</label>
+          <textarea class="field w-full py-3 h-24 resize-none" placeholder="Tell us what you want to achieve (optional)"></textarea>
+        </div>
+
+        <button class="btn btn-primary w-full py-4 mt-2" id="submitEnquiry">Submit enquiry</button>
+        <div id="enquiryToast" class="hidden text-center text-xs font-bold text-emerald-600">Thank you. We will contact you shortly.</div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const $ = (s) => document.querySelector(s);
+      const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+      // Sticky nav shadow
+      function setNavState(){
+        $('#nav')?.classList.toggle('scrolled', window.scrollY > 40);
+      }
+      window.addEventListener('scroll', setNavState);
+
+      // Hover + click-lock dropdown (keeps your existing behaviour)
+      const navItems = $$('.navitem[data-dropdown]');
+      let hoverTimeout = null;
+
+      const closeItem = (item) => {
+        if (!item) return;
+        item.classList.remove('open');
+        item.removeAttribute('data-locked');
+        item.querySelector('button')?.setAttribute('aria-expanded', 'false');
+      };
+
+      const openItem = (item, lock=false) => {
+        clearTimeout(hoverTimeout);
+        navItems.forEach(i => { if(i !== item) closeItem(i); });
+        item.classList.add('open');
+        item.querySelector('button')?.setAttribute('aria-expanded', 'true');
+        if(lock) item.setAttribute('data-locked', 'true');
+      };
+
+      navItems.forEach(item => {
+        const btn = item.querySelector('[data-trigger]');
+        const isDesktop = () => window.innerWidth >= 1024;
+
+        item.addEventListener('mouseenter', () => { if(isDesktop()) openItem(item); });
+        item.addEventListener('mouseleave', () => {
+          if(!isDesktop() || item.hasAttribute('data-locked')) return;
+          hoverTimeout = setTimeout(() => closeItem(item), 220);
+        });
+
+        btn?.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isOpen = item.classList.contains('open');
+          const isLocked = item.hasAttribute('data-locked');
+          if(isOpen && isLocked) closeItem(item);
+          else openItem(item, true);
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if(!e.target.closest('.navitem')) navItems.forEach(i => closeItem(i));
+      });
+
+      // Drawer
+      function toggleDrawer(){
+        const d = $('#mobileDrawer');
+        const o = $('#drawerOverlay');
+        if(!d || !o) return;
+        const isOpen = d.classList.contains('open');
+        if(!isOpen){
+          d.classList.add('open');
+          o.classList.add('open');
+          document.body.classList.add('overflow-hidden');
+        } else {
+          d.classList.remove('open');
+          o.classList.remove('open');
+          document.body.classList.remove('overflow-hidden');
+        }
+      }
+      window.toggleDrawer = toggleDrawer;
+      $('#mobileMenuBtn')?.addEventListener('click', toggleDrawer);
+      $('#drawerClose')?.addEventListener('click', toggleDrawer);
+      $('#drawerOverlay')?.addEventListener('click', toggleDrawer);
+
+      // Enquiry modal (prefill programme)
+      function toggleEnquiryModal(programmeTitle){
+        const modal = $('#enquiryModal');
+        const overlay = $('#enquiryModalOverlay');
+        if(!modal || !overlay) return;
+
+        const isOpen = modal.classList.contains('open');
+        const panel = modal.querySelector('.modal-panel');
+
+        if(!isOpen){
+          modal.classList.add('open', 'pointer-events-auto');
+          overlay.style.opacity = "1";
+          overlay.style.pointerEvents = "auto";
+          panel?.classList.add('open');
+          document.body.classList.add('overflow-hidden');
+
+          if(programmeTitle){
+            const inp = $('#modalProgramme');
+            if(inp) inp.value = programmeTitle;
+          }
+        } else {
+          modal.classList.remove('open', 'pointer-events-auto');
+          overlay.style.opacity = "0";
+          overlay.style.pointerEvents = "none";
+          panel?.classList.remove('open');
+          document.body.classList.remove('overflow-hidden');
+        }
+      }
+      window.toggleEnquiryModal = toggleEnquiryModal;
+
+      $('#enquiryModalOverlay')?.addEventListener('click', () => toggleEnquiryModal());
+      $('#submitEnquiry')?.addEventListener('click', function(){
+        const t = $('#enquiryToast');
+        if(t) t.classList.remove('hidden');
+        this.disabled = true;
+        this.textContent = "Submitted";
+        setTimeout(() => {
+          this.disabled = false;
+          this.textContent = "Submit enquiry";
+          if(t) t.classList.add('hidden');
+          toggleEnquiryModal();
+        }, 1600);
+      });
+
+      // ===== Programme Data (placeholder). Replace with your real programme JSON later. =====
+      // Keys intentionally match your earlier structure: title, sector, type, nqf, duration, summary, tags, code
+      const PROGRAMMES = [
+        { id:"kti-oa-001", title:"Office Administration", sector:"Office & Administration", type:"Learnership", nqf:4, duration:"12 months", summary:"Workplace-ready administrative capability and operational support.", tags:["Administration","Workplace readiness"], code:"" },
+        { id:"kti-oa-002", title:"Business Administration Services", sector:"Office & Administration", type:"Skills Programme", nqf:4, duration:"Short course", summary:"Core business administration skills supporting service and operations.", tags:["Business admin","Operations"], code:"" },
+        { id:"kti-psa-001", title:"Public Service Administration", sector:"Public Service Administration", type:"Learnership", nqf:4, duration:"12 months", summary:"Foundational administration for public sector environments and service delivery.", tags:["Public sector","Governance"], code:"" },
+        { id:"kti-ohs-001", title:"Occupational Health & Safety (OHS)", sector:"Safety, Health & Quality (OHS)", type:"Skills Programme", nqf:3, duration:"Short course", summary:"Compliance-aware safety fundamentals and workplace risk basics.", tags:["OHS","Compliance"], code:"" },
+        { id:"kti-mun-001", title:"Municipal Finance & Administration", sector:"Municipal Finance & Administration", type:"Learnership", nqf:5, duration:"12 months", summary:"Municipal finance administration basics and governance awareness.", tags:["Finance","Municipal"], code:"" },
+        { id:"kti-agr-001", title:"Agriculture: Basic Operations", sector:"Agriculture", type:"Skills Programme", nqf:2, duration:"Short course", summary:"Practical foundation skills supporting entry-level agricultural roles.", tags:["Agriculture","Practical skills"], code:"" },
+      ];
+
+      const els = {
+        q: $('#q'),
+        sector: $('#sector'),
+        type: $('#ptype'),
+        sort: $('#sort'),
+        grid: $('#grid'),
+        empty: $('#empty'),
+        resultCount: $('#resultCount'),
+        clearBtn: $('#clearBtn'),
+        emptyClear: $('#emptyClear'),
+        chipsClear: $('#chipsClear'),
+        sectorChips: $('#sectorChips'),
+        kpiTotal: $('#kpiTotal'),
+        kpiSectors: $('#kpiSectors'),
+        kpiTypes: $('#kpiTypes'),
+        pagerInfo: $('#pagerInfo'),
+        pageMeta: $('#pageMeta'),
+        prevBtn: $('#prevBtn'),
+        nextBtn: $('#nextBtn'),
+      };
+
+      // Pagination config
+      const PAGE_SIZE = 9;
+      let page = 1; // 1-indexed
+      let filteredCache = []; // last filtered list
+
+      function uniq(arr){ return Array.from(new Set(arr)).sort((a,b)=>a.localeCompare(b)); }
+      function norm(s){ return (s || "").toString().trim().toLowerCase(); }
+
+      function initKpis(){
+        els.kpiTotal.textContent = String(PROGRAMMES.length);
+        els.kpiSectors.textContent = String(uniq(PROGRAMMES.map(p=>p.sector)).length);
+        els.kpiTypes.textContent = String(uniq(PROGRAMMES.map(p=>p.type)).length);
+      }
+
+      function initSelectOptions(){
+        const sectors = uniq(PROGRAMMES.map(p => p.sector));
+        const types = uniq(PROGRAMMES.map(p => p.type));
+
+        sectors.forEach(s => {
+          const o = document.createElement('option');
+          o.value = s;
+          o.textContent = s;
+          els.sector.appendChild(o);
+        });
+
+        types.forEach(t => {
+          const o = document.createElement('option');
+          o.value = t;
+          o.textContent = t;
+          els.type.appendChild(o);
+        });
+      }
+
+      function renderChips(){
+        const sectors = uniq(PROGRAMMES.map(p => p.sector));
+        els.sectorChips.innerHTML = sectors.map(s => `
+          <button class="badge hover:translate-y-[-1px] transition-transform" data-chip="${encodeURIComponent(s)}">
+            ${s}
+          </button>
+        `).join("");
+
+        $$('#sectorChips [data-chip]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const value = decodeURIComponent(btn.getAttribute('data-chip'));
+            els.sector.value = value;
+            page = 1;
+            applyFilters();
+            // subtle scroll into view of results on mobile
+            document.getElementById('catalogue')?.scrollIntoView({behavior:'smooth', block:'start'});
+          });
+        });
+      }
+
+      function clearFilters(){
+        els.q.value = "";
+        els.sector.value = "all";
+        els.type.value = "all";
+        els.sort.value = "title_asc";
+        page = 1;
+        applyFilters();
+      }
+
+      function badge(text){
+        return `<span class="badge">${text}</span>`;
+      }
+
+      function cardTemplate(p){
+        const nqf = (p.nqf !== undefined && p.nqf !== null) ? `NQF ${p.nqf}` : "NQF —";
+        const duration = p.duration ? p.duration : "Duration —";
+        const code = p.code ? `Code: ${p.code}` : "";
+
+        // professional “key points” (minimal, not cluttered)
+        const points = [
+          p.type ? `Delivery: ${p.type}` : null,
+          p.nqf ? `Level: NQF ${p.nqf}` : null,
+          p.duration ? `Duration: ${p.duration}` : null,
+        ].filter(Boolean);
+
+        return `
+          <article class="card p-6">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="section-kicker text-[var(--kti-maroon)]">Programme</div>
+                <h3 class="mt-2 text-xl font-black text-[var(--kti-ink)] leading-tight">${p.title}</h3>
+                <div class="mt-2 text-sm font-semibold text-black/60">${p.sector}</div>
+              </div>
+              <div class="text-right">
+                <div class="badge">${p.type || "Programme"}</div>
+                <div class="mt-2 text-xs font-extrabold text-black/45">${nqf}</div>
+              </div>
+            </div>
+
+            <p class="mt-4 text-sm text-black/55 font-medium leading-relaxed">
+              ${p.summary || "Professional programme designed to support workplace readiness and capability development."}
+            </p>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              ${badge(duration)}
+              ${code ? badge(code) : ""}
+              ${(p.tags || []).slice(0,2).map(t => badge(t)).join("")}
+            </div>
+
+            <details class="mt-5">
+              <summary class="cursor-pointer select-none text-sm font-black text-black/70 hover:text-[var(--kti-maroon)] transition-colors">
+                View key details
+              </summary>
+              <div class="mt-4 grid gap-2">
+                ${points.map(x => `<div class="detail-row"><span class="dot"></span><span>${x}</span></div>`).join("")}
+                <div class="detail-row"><span class="dot"></span><span>For intake planning or requirements, contact Admissions.</span></div>
+              </div>
+            </details>
+
+            <div class="mt-6 pt-5 divider flex items-center justify-between gap-3">
+              <a href="contact.html" class="btn btn-silver text-xs px-5 py-3">Ask a question</a>
+              <button class="btn btn-primary text-xs px-5 py-3" data-apply="${encodeURIComponent(p.title)}">Apply</button>
+            </div>
+          </article>
+        `;
+      }
+
+      function computeFiltered(){
+        const q = norm(els.q.value);
+        const sector = els.sector.value;
+        const type = els.type.value;
+        const sort = els.sort.value;
+
+        let list = PROGRAMMES.slice();
+
+        if(q){
+          list = list.filter(p => {
+            const hay = [
+              p.title, p.sector, p.type, p.summary,
+              (p.tags || []).join(" "),
+              p.code || ""
+            ].join(" ").toLowerCase();
+            return hay.includes(q);
+          });
+        }
+
+        if(sector !== "all"){
+          list = list.filter(p => p.sector === sector);
+        }
+
+        if(type !== "all"){
+          list = list.filter(p => p.type === type);
+        }
+
+        if(sort === "title_asc"){
+          list.sort((a,b)=>a.title.localeCompare(b.title));
+        } else if(sort === "nqf_asc"){
+          list.sort((a,b)=>(a.nqf ?? 999) - (b.nqf ?? 999));
+        } else if(sort === "nqf_desc"){
+          list.sort((a,b)=>(b.nqf ?? -1) - (a.nqf ?? -1));
+        }
+
+        return list;
+      }
+
+      function render(list){
+        filteredCache = list.slice();
+
+        els.resultCount.textContent = String(list.length);
+
+        const isEmpty = list.length === 0;
+        els.empty.classList.toggle('hidden', !isEmpty);
+
+        // Pagination
+        const totalPages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
+        if(page > totalPages) page = totalPages;
+
+        const start = (page - 1) * PAGE_SIZE;
+        const end = start + PAGE_SIZE;
+        const pageItems = list.slice(start, end);
+
+        els.grid.innerHTML = pageItems.map(cardTemplate).join("");
+
+        // Bind apply buttons
+        $$('#grid [data-apply]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const title = decodeURIComponent(btn.getAttribute('data-apply') || "");
+            toggleEnquiryModal(title);
+          });
+        });
+
+        // Pager UI
+        els.prevBtn.disabled = page <= 1;
+        els.nextBtn.disabled = page >= totalPages;
+
+        const shownFrom = list.length ? (start + 1) : 0;
+        const shownTo = list.length ? Math.min(end, list.length) : 0;
+        els.pagerInfo.textContent = `Showing ${shownFrom}–${shownTo} of ${list.length}`;
+        els.pageMeta.textContent = `Page ${page} of ${totalPages}`;
+      }
+
+      function applyFilters(){
+        const list = computeFiltered();
+        render(list);
+      }
+
+      // Reveal
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+      }, { threshold: 0.1 });
+
+      window.addEventListener('DOMContentLoaded', () => {
+        setNavState();
+        $$('.reveal').forEach(el => io.observe(el));
+        const y = $('#year'); if(y) y.textContent = new Date().getFullYear();
+
+        initKpis();
+        initSelectOptions();
+        renderChips();
+
+        applyFilters();
+
+        // listeners
+        els.q.addEventListener('input', () => { page = 1; applyFilters(); });
+        els.sector.addEventListener('change', () => { page = 1; applyFilters(); });
+        els.type.addEventListener('change', () => { page = 1; applyFilters(); });
+        els.sort.addEventListener('change', () => { page = 1; applyFilters(); });
+
+        els.clearBtn.addEventListener('click', clearFilters);
+        els.emptyClear.addEventListener('click', clearFilters);
+        els.chipsClear.addEventListener('click', clearFilters);
+
+        els.prevBtn.addEventListener('click', () => { if(page > 1){ page--; render(filteredCache); window.scrollTo({top: 260, behavior:'smooth'});} });
+        els.nextBtn.addEventListener('click', () => {
+          const totalPages = Math.max(1, Math.ceil(filteredCache.length / PAGE_SIZE));
+          if(page < totalPages){ page++; render(filteredCache); window.scrollTo({top: 260, behavior:'smooth'}); }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

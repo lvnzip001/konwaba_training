@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Notices | Konwaba High School — Campus Announcements</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Official Konwaba High School notices: events, academic updates, and important reminders for parents and learners." />
+  <meta name="keywords" content="Konwaba High School notices, school announcements, Nxuba, Cradock, private school South Africa" />
+  <meta name="theme-color" content="#7B1E3A" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Companion CSS (shared site theme) -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <style>
+    /* Notices Page: safe, minimal overrides aligned to maroon/beige theme */
+    :root{
+      --transition-prestige: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      --fluid-h1: clamp(2.4rem, 6vw, 4.0rem);
+      --fluid-h2: clamp(1.8rem, 4vw, 2.6rem);
+
+      /* Fallbacks (in case style.css vars not loaded) */
+      --maroon-900: #3A0C1B;
+      --maroon-600: #7B1E3A;
+      --beige-50: #FBF8F4;
+      --beige-100: #F2E9E2;
+      --beige-200: #E8D8CB;
+      --ink-900: #101828;
+      --ink-700: #344054;
+      --ink-600: #475467;
+      --ink-500: #667085;
+
+      --radius-lg: 22px;
+      --radius-md: 16px;
+    }
+
+    body{ font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    .font-heading{ font-family:"Playfair Display", serif; }
+
+    /* NAV (match index behaviour) */
+    .nav-shell{
+      transition: var(--transition-prestige);
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    .nav-shell.scrolled{
+      padding-top: 0.45rem;
+      padding-bottom: 0.45rem;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 12px 34px rgba(0,0,0,0.06);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    /* HERO cinematic */
+    .hero-media img{
+      animation: kenburns 28s ease infinite alternate;
+      filter: brightness(0.75) contrast(1.05);
+      transform: translateZ(0);
+      will-change: transform;
+    }
+    @keyframes kenburns{
+      0%{ transform: scale(1); }
+      100%{ transform: scale(1.13); }
+    }
+
+    /* Reveal (no IntersectionObserver to avoid “JS failing” in older contexts) */
+    .reveal{
+      opacity:0;
+      transform: translateY(28px);
+      transition: var(--transition-prestige);
+      will-change: transform, opacity;
+    }
+    .reveal.is-visible{
+      opacity:1;
+      transform: translateY(0);
+    }
+    .delay-100{ transition-delay: 120ms; }
+    .delay-200{ transition-delay: 240ms; }
+    .delay-300{ transition-delay: 360ms; }
+
+    /* Chips + cards */
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      padding:.45rem .75rem;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+    }
+    .notice-card{
+      border-radius: 22px;
+      border: 1px solid rgba(16,24,40,0.08);
+      background: #fff;
+      box-shadow: 0 14px 30px rgba(16,24,40,0.06);
+      transition: var(--transition-prestige);
+      overflow:hidden;
+      position:relative;
+    }
+    .notice-card:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background: linear-gradient(135deg, rgba(123,30,58,0.10), rgba(242,233,226,0.18));
+      opacity:0;
+      transition: var(--transition-prestige);
+    }
+    .notice-card:hover{
+      transform: translateY(-6px);
+      box-shadow: 0 22px 44px rgba(123,30,58,0.10);
+      border-color: rgba(123,30,58,0.30);
+    }
+    .notice-card:hover:before{ opacity:1; }
+
+    .kicker{
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .28em;
+      font-weight: 800;
+      color: var(--maroon-600);
+    }
+
+    /* Drawer */
+    .drawer-backdrop{ opacity:0; pointer-events:none; transition: opacity .35s ease; }
+    .drawer-backdrop.open{ opacity:1; pointer-events:auto; }
+    .drawer-panel{ transform: translateX(104%); transition: transform .55s cubic-bezier(0.16,1,0.3,1); }
+    .drawer-panel.open{ transform: translateX(0); }
+
+    /* Inputs */
+    .field{
+      background: rgba(255, 243, 235, 0.55);
+      border: 1px solid rgba(16,24,40,0.08);
+      border-radius: 16px;
+      padding: 14px 14px;
+      font-size: 14px;
+      outline: none;
+      transition: var(--transition-prestige);
+    }
+    .field:focus{
+      background: #ffd9d9;
+      border-color: rgba(123,30,58,0.35);
+      box-shadow: 0 0 0 6px rgba(123,30,58,0.10);
+    }
+
+    /* Small helper */
+    .mono{ font-variant-numeric: tabular-nums; }
+
+    /* Scrollbar (optional polish) */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--beige-50); }
+    ::-webkit-scrollbar-thumb { background: var(--maroon-600); border-radius: 20px; }
+  </style>
+</head>
+
+<body class="bg-[var(--beige-50)] text-[var(--ink-700)] antialiased">
+
+  <!-- NAVIGATION (aligned to your site pattern) -->
+  <header id="main-nav" class="nav-shell fixed w-full top-0 left-0 z-[100]">
+    <div class="container-max px-5">
+      <div class="flex items-center justify-between">
+        <a class="nav-logo transition-transform duration-500 hover:scale-[1.03] flex items-center gap-3" href="index.html">
+          <!-- If your index uses an image logo, keep it consistent -->
+          <img src="assets/img/khs_logo.png" alt="Konwaba High School" class="h-14 sm:h-16 transition-all duration-700" />
+          <div class="hidden sm:block leading-tight">
+            <div class="font-heading text-[var(--ink-900)] text-lg">Konwaba School</div>
+            <div class="text-[10px] uppercase tracking-[0.32em] text-[var(--ink-500)]">Nxuba (Cradock)</div>
+          </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-10" aria-label="Main Navigation">
+          <a class="text-[11px] uppercase tracking-[0.25em] font-semibold text-[var(--ink-700)] hover:text-[var(--maroon-600)] transition-colors" href="index.html">Home</a>
+                    <a class="text-[11px] uppercase tracking-[0.25em] font-semibold text-[var(--ink-700)] hover:text-[var(--maroon-600)] transition-colors" href="about.html">About Us</a>
+          <a class="text-[11px] uppercase tracking-[0.25em] font-semibold text-[var(--ink-700)] hover:text-[var(--maroon-600)] transition-colors" href="academics.html">Academics</a>
+                    
+          <a class="text-[11px] uppercase tracking-[0.25em] font-semibold text-[var(--ink-700)] hover:text-[var(--maroon-600)] transition-colors" href="admissions.html">Admissions</a>
+          <a class="text-[11px] uppercase tracking-[0.25em] font-semibold text-[var(--ink-700)] hover:text-[var(--maroon-600)] transition-colors" href="student-life.html">Student Life</a>
+          <a class="text-[11px] uppercase tracking-[0.25em] font-semibold text-[var(--maroon-600)]" href="notices.html">Notices</a>
+
+          <a class="text-[11px] uppercase tracking-[0.25em] font-semibold text-[var(--ink-700)] hover:text-[var(--maroon-600)] transition-colors" href="contact.html">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <a class="btn btn-ghost hidden sm:inline-flex text-[10px] uppercase tracking-widest font-bold" href="primaryschool/home.html">Primary School</a>
+          <a class="btn btn-maroon px-7 py-3 text-[10px] uppercase tracking-widest font-bold shadow-xl hidden sm:inline-flex" href="admissions.html">Apply</a>
+
+          <button id="menuBtn" class="lg:hidden p-2 rounded-xl border border-black/10 bg-white/70 backdrop-blur-md text-[var(--maroon-600)]" aria-label="Open menu">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative min-h-[72vh] flex items-end overflow-hidden">
+    <div class="hero-media absolute inset-0 z-0">
+      <img src="assets/img/calander.jpg" alt="Konwaba campus" class="w-full h-full object-cover">
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent z-10"></div>
+
+    <div class="container-max px-5 relative z-20 w-full pb-16 pt-32">
+      <div class="grid lg:grid-cols-12 gap-10 items-end">
+        <div class="lg:col-span-8 reveal">
+          <div class="flex items-center gap-4 mb-7">
+            <span class="w-14 h-[1px] bg-[var(--beige-200)] opacity-70"></span>
+            <span class="text-[var(--beige-100)] uppercase tracking-[0.40em] text-[10px] font-extrabold">Official School Feed</span>
+          </div>
+
+          <h1 class="font-heading text-white leading-[1.02] tracking-[-0.03em]" style="font-size: var(--fluid-h1);">
+            Notices & <span class="italic text-[var(--beige-200)] font-medium">Events</span>
+          </h1>
+
+          <div class="mt-10 flex flex-wrap gap-3">
+            <span class="chip">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              Live Updates
+            </span>
+            <span class="chip">
+              <span class="w-2 h-2 rounded-full bg-[var(--beige-200)]"></span>
+              Term Fixtures
+            </span>
+            <span class="chip">
+              <span class="w-2 h-2 rounded-full bg-[var(--maroon-600)]"></span>
+              Parent Reminders
+            </span>
+          </div>
+        </div>
+
+
+        <!-- Right: compact “status” card -->
+        <div class="lg:col-span-4 reveal delay-200">
+          <div class="bg-white/40 backdrop-blur-2xl rounded-[22px] border border-white/10 shadow-[0_28px_60px_-18px_rgba(0,0,0,0.15)] p-7">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="kicker mb-1">Quick Actions</div>
+                <div class="font-heading text-xl text-[var(--ink-900)] leading-tight">Stay up to date</div>
+              </div>
+              <span class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.28em] bg-[rgba(123,30,58,0.10)] text-[var(--maroon-600)]">
+                <span class="w-1.5 h-1.5 rounded-full bg-[var(--maroon-600)]"></span>
+                Notices
+              </span>
+            </div>
+
+            <div class="mt-6 grid grid-cols-2 gap-3">
+              <button id="btnToday" class="field !bg-white hover:!bg-[var(--beige-50)] text-left">
+                <div class="text-[10px] uppercase tracking-[0.28em] font-extrabold text-[var(--ink-500)]">View</div>
+                <div class="font-semibold text-[var(--ink-900)]">This Week</div>
+              </button>
+              <button id="btnUrgent" class="field !bg-white hover:!bg-[var(--beige-50)] text-left">
+                <div class="text-[10px] uppercase tracking-[0.28em] font-extrabold text-[var(--ink-500)]">Filter</div>
+                <div class="font-semibold text-[var(--ink-900)]">Urgent</div>
+              </button>
+            </div>
+
+            <div class="mt-4 text-[12px] text-[var(--ink-600)] leading-relaxed">
+              Tip: Use search + filters below, then bookmark what matters.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <main class="py-16 md:py-20">
+    <div class="container-max px-5">
+
+      <!-- Filter bar -->
+      <section class="reveal">
+        <div class="bg-white rounded-[22px] border border-black/5 shadow-[0_14px_34px_rgba(16,24,40,0.06)] p-6 md:p-7">
+          <div class="grid md:grid-cols-12 gap-4 items-end">
+            <div class="md:col-span-6">
+              <div class="kicker mb-2 !text-[var(--ink-500)]">Search</div>
+              <input id="searchInput" class="field w-full" type="text" placeholder="Search notices (e.g., athletics, admissions, exams)..." />
+            </div>
+
+            <div class="md:col-span-3">
+              <div class="kicker mb-2 !text-[var(--ink-500)]">Category</div>
+              <select id="categoryFilter" class="field w-full font-semibold">
+                <option value="all">All</option>
+                <option value="academic">Academics</option>
+                <option value="sport">Sport</option>
+                <option value="vocational">Vocational</option>
+                <option value="community">Community</option>
+              </select>
+            </div>
+
+            <div class="md:col-span-3">
+              <div class="kicker mb-2 !text-[var(--ink-500)]">Audience</div>
+              <select id="audienceFilter" class="field w-full font-semibold">
+                <option value="all">Everyone</option>
+                <option value="parents">Parents</option>
+                <option value="learners">Learners</option>
+              </select>
+            </div>
+
+            <div class="md:col-span-12 pt-2 flex flex-wrap gap-2">
+              <button id="clearBtn" class="btn btn-ghost text-[10px] uppercase tracking-widest font-extrabold">Clear filters</button>
+              <button id="sortBtn" class="btn btn-ghost text-[10px] uppercase tracking-widest font-extrabold">
+                Sort: <span id="sortLabel" class="ml-2 text-[var(--maroon-600)]">Newest</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Grid -->
+      <section class="mt-10">
+        <div id="noticesGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-7"></div>
+
+        <div id="emptyState" class="hidden text-center py-16">
+          <div class="mx-auto max-w-md bg-white rounded-[22px] border border-black/5 shadow-[0_14px_34px_rgba(16,24,40,0.06)] p-10">
+            <div class="font-heading text-2xl text-[var(--ink-900)]">No matching notices</div>
+            <p class="mt-2 text-sm text-[var(--ink-600)]">Try adjusting your search or filters.</p>
+            <button id="emptyReset" class="btn btn-maroon mt-6 px-8 py-3 text-[10px] uppercase tracking-widest font-extrabold">Reset</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Mobile Drawer -->
+  <div id="drawerBackdrop" class="drawer-backdrop fixed inset-0 bg-black/45 backdrop-blur-sm z-[150]"></div>
+  <aside id="mobileDrawer" class="drawer-panel fixed top-0 right-0 w-[320px] max-w-[86vw] h-full bg-white z-[160] shadow-2xl p-7 flex flex-col">
+    <div class="flex items-center justify-between mb-10">
+      <div>
+        <div class="font-heading font-bold text-2xl text-[var(--maroon-600)]">Menu</div>
+        <div class="text-[10px] uppercase tracking-[0.32em] text-[var(--ink-500)] mt-1">Konwaba</div>
+      </div>
+      <button id="closeMenu" class="p-2 rounded-xl border border-black/10 text-[var(--ink-600)]" aria-label="Close menu">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <nav class="flex flex-col gap-6">
+      <a href="index.html" class="text-xs uppercase tracking-[0.28em] font-extrabold text-[var(--ink-700)]">Home</a>
+       <a href="about.html" class="text-xs uppercase tracking-[0.28em] font-extrabold text-[var(--ink-700)]">About</a>
+      <a href="academics.html" class="text-xs uppercase tracking-[0.28em] font-extrabold text-[var(--ink-700)]">Academics</a>
+      <a href="student-life.html" class="text-xs uppercase tracking-[0.28em] font-extrabold text-[var(--ink-700)]">Student Life</a>
+      <a href="admissions.html" class="text-xs uppercase tracking-[0.28em] font-extrabold text-[var(--ink-700)]">Admissions</a>
+      <a href="notices.html" class="text-xs uppercase tracking-[0.28em] font-extrabold text-[var(--maroon-600)]">Notices</a>
+      <a href="contact.html" class="text-xs uppercase tracking-[0.28em] font-extrabold text-[var(--ink-700)]">Contact</a>
+    </nav>
+
+    <div class="mt-auto pt-8 border-t border-black/5">
+      <a href="admissions.html" class="btn btn-maroon w-full justify-center py-4 text-[10px] uppercase tracking-widest font-extrabold">Apply</a>
+      <a href="contact.html" class="btn btn-ghost w-full justify-center py-4 mt-3 text-[10px] uppercase tracking-widest font-extrabold">Enquire</a>
+    </div>
+  </aside>
+
+  <!-- Footer (simple, consistent) -->
+  <footer class="footer pt-28 pb-16">
+    <div class="container-max px-6 lg:px-12">
+      <div
+        class="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] uppercase tracking-[0.3em] text-white/30">
+        <div>© 2026 Konwaba Schools. Built for Excellence.</div>
+          <div class="flex items-center gap-6">
+              <div class="shrink-0">
+                  <img src="assets/img/khs_logo.png" class="h-[80px] w-auto object-contain" alt="KHS Logo">
+              </div>
+              
+              <div class="shrink-0">
+                  <img src="assets/img/KPS.jpg-removebg-preview.png" class="h-[80px] w-auto object-contain" alt="KPS Logo">
+              </div>
+          </div>
+
+        <div class="flex gap-10">
+          <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="terms.html" class="hover:text-white transition-colors">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS (simplified + robust null checks) -->
+  <script>
+    (function () {
+      // ---------- DATA (embedded; can later be replaced by JSON file) ----------
+      // Dates use YYYY-MM-DD for reliable sorting.
+      const DATA = [
+        {
+          id: 1,
+          category: "academic",
+          audience: "parents",
+          title: "Admissions for 2027 Officially Open",
+          date: "2026-02-19",
+          badge: "Urgent",
+          desc: "Applications for the 2027 academic year are now open. Closing date for primary submissions is 11 April 2026.",
+          link: "admissions.html"
+        },
+        {
+          id: 2,
+          category: "sport",
+          audience: "all",
+          title: "Athletics Day — House Fixtures",
+          date: "2026-03-14",
+          badge: "Event",
+          desc: "All learners participate. Parents are invited to campus grounds for the annual championship and awards.",
+          link: "#"
+        },
+        {
+          id: 3,
+          category: "vocational",
+          audience: "learners",
+          title: "Vocational Workshop: Advanced Carpentry",
+          date: "2026-03-05",
+          badge: "Workshop",
+          desc: "Grade 10 learners: compulsory practical assessments in the carpentry wing this Friday.",
+          link: "academics.html"
+        },
+        {
+          id: 4,
+          category: "community",
+          audience: "parents",
+          title: "School Fees — February Statements Issued",
+          date: "2026-02-01",
+          badge: "Finance",
+          desc: "Monthly tuition: R1,500. Statements have been emailed; contact admin if you did not receive yours.",
+          link: "admissions.html#fees"
+        },
+        {
+          id: 5,
+          category: "academic",
+          audience: "learners",
+          title: "Learner’s Licence Theory Sessions (K53)",
+          date: "2026-03-12",
+          badge: "Skills",
+          desc: "Grade 10 sign-ups open. Sessions begin in Term 2; limited seats available.",
+          link: "#"
+        },
+        {
+          id: 6,
+          category: "sport",
+          audience: "all",
+          title: "Prestige Fixture Travel Notice",
+          date: "2026-03-28",
+          badge: "Sport",
+          desc: "Selected teams will travel for a prestige fixture. Final itinerary to be shared via the parent group.",
+          link: "#"
+        }
+      ];
+
+      // ---------- DOM ----------
+      const grid = document.getElementById("noticesGrid");
+      const emptyState = document.getElementById("emptyState");
+
+      const searchInput = document.getElementById("searchInput");
+      const categoryFilter = document.getElementById("categoryFilter");
+      const audienceFilter = document.getElementById("audienceFilter");
+
+      const clearBtn = document.getElementById("clearBtn");
+      const sortBtn = document.getElementById("sortBtn");
+      const sortLabel = document.getElementById("sortLabel");
+      const emptyReset = document.getElementById("emptyReset");
+
+      // Quick actions
+      const btnToday = document.getElementById("btnToday");
+      const btnUrgent = document.getElementById("btnUrgent");
+
+      // Drawer / nav
+      const menuBtn = document.getElementById("menuBtn");
+      const closeMenu = document.getElementById("closeMenu");
+      const drawer = document.getElementById("mobileDrawer");
+      const backdrop = document.getElementById("drawerBackdrop");
+      const mainNav = document.getElementById("main-nav");
+
+      if (!grid) return; // hard stop if markup missing
+
+      // ---------- State ----------
+      let sortMode = "newest"; // newest | oldest
+
+      // ---------- Helpers ----------
+      const fmtDate = (iso) => {
+        // ISO -> "19 Feb 2026"
+        const d = new Date(iso + "T00:00:00");
+        const parts = d.toLocaleDateString("en-ZA", { day:"2-digit", month:"short", year:"numeric" }).split(" ");
+        // Many browsers: "19 Feb 2026"
+        return parts.join(" ");
+      };
+
+      const badgeClass = (badge) => {
+        const b = (badge || "").toLowerCase();
+        if (b === "urgent") return "bg-[rgba(123,30,58,0.10)] text-[var(--maroon-600)] border border-[rgba(123,30,58,0.18)]";
+        if (b === "finance") return "bg-[rgba(242,233,226,0.85)] text-[var(--maroon-600)] border border-[rgba(123,30,58,0.12)]";
+        return "bg-black/5 text-[var(--ink-700)] border border-black/10";
+      };
+
+      const categoryPill = (cat) => {
+        const c = (cat || "").toLowerCase();
+        const map = {
+          academic: "Academics",
+          sport: "Sport",
+          vocational: "Vocational",
+          community: "Community"
+        };
+        return map[c] || "Notice";
+      };
+
+      // ---------- Render ----------
+      const render = (items) => {
+        if (!items.length) {
+          grid.innerHTML = "";
+          emptyState && emptyState.classList.remove("hidden");
+          return;
+        }
+        emptyState && emptyState.classList.add("hidden");
+
+        grid.innerHTML = items.map((n, idx) => {
+          const delay = idx % 3 === 0 ? "" : (idx % 3 === 1 ? " delay-100" : " delay-200");
+          return `
+            <article class="notice-card p-7 md:p-8 reveal${delay}">
+              <div class="relative z-[1]">
+                <div class="flex items-start justify-between gap-4 mb-6">
+                  <span class="inline-flex items-center rounded-full px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.28em] ${badgeClass(n.badge)}">
+                    ${n.badge || "Notice"}
+                  </span>
+                  <span class="text-[10px] font-extrabold uppercase tracking-[0.28em] text-[var(--ink-500)] mono">
+                    ${fmtDate(n.date)}
+                  </span>
+                </div>
+
+                <h3 class="font-heading text-2xl text-[var(--ink-900)] leading-tight mb-4">
+                  ${n.title}
+                </h3>
+
+                <p class="text-sm text-[var(--ink-600)] leading-relaxed mb-8">
+                  ${n.desc}
+                </p>
+
+                <div class="pt-6 border-t border-black/5 flex items-center justify-between gap-4">
+                  <span class="text-[10px] font-extrabold uppercase tracking-[0.28em] text-[var(--ink-500)]">
+                    ${categoryPill(n.category)} • ${n.audience === "all" ? "Everyone" : (n.audience === "parents" ? "Parents" : "Learners")}
+                  </span>
+                  <a href="${n.link || "#"}" class="text-[var(--maroon-600)] font-extrabold text-xs uppercase tracking-[0.22em] hover:underline">
+                    View →
+                  </a>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join("");
+
+        // run reveal check right after rendering
+        revealCheck();
+      };
+
+      // ---------- Filtering ----------
+      const getFiltered = () => {
+        const q = (searchInput?.value || "").trim().toLowerCase();
+        const cat = categoryFilter?.value || "all";
+        const aud = audienceFilter?.value || "all";
+
+        let items = DATA.filter((n) => {
+          const matchesQuery = !q || (n.title.toLowerCase().includes(q) || n.desc.toLowerCase().includes(q));
+          const matchesCat = (cat === "all") || (n.category === cat);
+          const matchesAud = (aud === "all") || (n.audience === aud) || (n.audience === "all");
+          return matchesQuery && matchesCat && matchesAud;
+        });
+
+        items.sort((a, b) => {
+          const da = a.date, db = b.date;
+          return sortMode === "newest" ? (db.localeCompare(da)) : (da.localeCompare(db));
+        });
+
+        return items;
+      };
+
+      const apply = () => render(getFiltered());
+
+      // ---------- Reveal on scroll (simple + reliable) ----------
+      const revealEls = () => Array.from(document.querySelectorAll(".reveal"));
+      const revealCheck = () => {
+        const trigger = window.innerHeight * 0.92;
+        revealEls().forEach(el => {
+          const r = el.getBoundingClientRect();
+          if (r.top < trigger) el.classList.add("is-visible");
+        });
+      };
+
+      // ---------- Nav shrink ----------
+      const setNav = () => {
+        if (!mainNav) return;
+        if (window.scrollY > 80) mainNav.classList.add("scrolled");
+        else mainNav.classList.remove("scrolled");
+      };
+
+      // ---------- Drawer ----------
+      const openDrawer = () => {
+        if (!drawer || !backdrop) return;
+        drawer.classList.add("open");
+        backdrop.classList.add("open");
+        document.documentElement.style.overflow = "hidden";
+      };
+      const closeDrawer = () => {
+        if (!drawer || !backdrop) return;
+        drawer.classList.remove("open");
+        backdrop.classList.remove("open");
+        document.documentElement.style.overflow = "";
+      };
+
+      // ---------- Events ----------
+      searchInput && searchInput.addEventListener("input", apply);
+      categoryFilter && categoryFilter.addEventListener("change", apply);
+      audienceFilter && audienceFilter.addEventListener("change", apply);
+
+      clearBtn && clearBtn.addEventListener("click", () => {
+        if (searchInput) searchInput.value = "";
+        if (categoryFilter) categoryFilter.value = "all";
+        if (audienceFilter) audienceFilter.value = "all";
+        sortMode = "newest";
+        if (sortLabel) sortLabel.textContent = "Newest";
+        apply();
+      });
+
+      sortBtn && sortBtn.addEventListener("click", () => {
+        sortMode = (sortMode === "newest") ? "oldest" : "newest";
+        if (sortLabel) sortLabel.textContent = (sortMode === "newest") ? "Newest" : "Oldest";
+        apply();
+      });
+
+      emptyReset && emptyReset.addEventListener("click", () => clearBtn && clearBtn.click());
+
+      // Quick actions
+      btnUrgent && btnUrgent.addEventListener("click", () => {
+        // lightweight: set search to "urgent" by filtering badge
+        if (searchInput) searchInput.value = "";
+        if (categoryFilter) categoryFilter.value = "all";
+        if (audienceFilter) audienceFilter.value = "all";
+        // render urgent-only without changing base filters
+        const urgent = DATA.filter(n => (n.badge || "").toLowerCase() === "urgent")
+                          .sort((a,b)=> b.date.localeCompare(a.date));
+        render(urgent);
+      });
+
+      btnToday && btnToday.addEventListener("click", () => {
+        // “This Week”: last 7 days back from today (client-side)
+        const now = new Date();
+        const weekAgo = new Date(now);
+        weekAgo.setDate(now.getDate() - 7);
+        const within = DATA.filter(n => {
+          const d = new Date(n.date + "T00:00:00");
+          return d >= weekAgo && d <= now;
+        }).sort((a,b)=> b.date.localeCompare(a.date));
+        render(within.length ? within : getFiltered());
+      });
+
+      // Drawer buttons
+      menuBtn && menuBtn.addEventListener("click", openDrawer);
+      closeMenu && closeMenu.addEventListener("click", closeDrawer);
+      backdrop && backdrop.addEventListener("click", closeDrawer);
+      window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDrawer(); });
+
+      // Scroll listeners
+      window.addEventListener("scroll", () => { setNav(); revealCheck(); }, { passive: true });
+      window.addEventListener("load", () => { setNav(); apply(); revealCheck(); });
+
+      // Initial
+      setNav();
+      apply();
+      revealCheck();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact | Konwaba Training Institute</title>
+  <meta name="description" content="Contact Konwaba Training Institute for admissions, programme guidance, sponsorships and verification requests." />
+  <meta name="theme-color" content="#7B1E3A" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root{
+      --kti-maroon:#7B1E3A;
+      --kti-maroon-dark:#5E142C;
+      --kti-ink:#101827;
+      --kti-silver:#D2D8E0;
+      --kti-bg:#F7F8FA;
+      --kti-ease:cubic-bezier(.2,.85,.2,1);
+      --ring: 0 0 0 4px rgba(123,30,58,.14);
+    }
+    html{ scroll-behavior:smooth; }
+    body{
+      background: var(--kti-bg);
+      color: rgba(16,24,40,.88);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap{ width:100%; padding-left:28px; padding-right:28px; }
+    @media (min-width:1024px){ .wrap{ padding-left:44px; padding-right:44px; } }
+    @media (min-width:1536px){ .wrap{ padding-left:64px; padding-right:64px; } }
+    .rail{ max-width:1720px; margin-left:auto; margin-right:auto; }
+
+    header.nav{
+      position: sticky; top:0; z-index:100;
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(16,24,40,.06);
+      transition: all .3s var(--kti-ease);
+    }
+    header.nav.scrolled{
+      background: rgba(255,255,255,1);
+      box-shadow: 0 12px 48px rgba(16,24,40,.10);
+    }
+
+    .navitem{ position: relative; }
+    .navlink{
+      display:inline-flex; align-items:center;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 800;
+      color: rgba(16,24,40,.82);
+      transition: all .2s var(--kti-ease);
+    }
+    .navlink:hover{ color: var(--kti-maroon); background: rgba(123,30,58,.05); }
+
+    .dd{
+      position:absolute;
+      top: calc(100% + 8px);
+      left:0;
+      min-width: 320px;
+      background: #fff;
+      border: 1px solid rgba(16,24,40,.10);
+      box-shadow: 0 32px 80px rgba(16,24,40,.15);
+      border-radius: 12px;
+      padding: 12px;
+      opacity:0; visibility:hidden;
+      transform: translateY(12px);
+      transition: all .25s var(--kti-ease);
+      pointer-events:none;
+    }
+    .navitem.open > .dd{ opacity:1; visibility:visible; transform: translateY(0); pointer-events:auto; }
+    .dd::before{ content:""; position:absolute; left:0; right:0; top:-16px; height:16px; background: transparent; }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
+      padding:.9rem 1.3rem;
+      border-radius: 12px;
+      font-weight: 900;
+      transition: all .2s var(--kti-ease);
+      user-select:none; white-space:nowrap;
+    }
+    .btn:active{ transform: scale(0.98); }
+    .btn-primary{
+      color:#fff;
+      background: linear-gradient(135deg, var(--kti-maroon), var(--kti-maroon-dark));
+      box-shadow: 0 12px 32px rgba(123,30,58,.25);
+    }
+    .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 18px 48px rgba(123,30,58,.34); }
+    .btn-silver{
+      color: var(--kti-ink);
+      background: #fff;
+      border: 1px solid rgba(16,24,40,.12);
+      box-shadow: 0 8px 24px rgba(16,24,40,.06);
+    }
+    .btn-silver:hover{ background:#fdfdfd; border-color: rgba(16,24,40,.20); transform: translateY(-1px); }
+
+    .surface{
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(16,24,40,.08);
+      box-shadow: 0 16px 52px rgba(16,24,40,.08);
+      border-radius: 16px;
+    }
+    .card{
+      background:#fff;
+      border: 1px solid rgba(16,24,40,.08);
+      border-radius: 16px;
+      box-shadow: 0 10px 28px rgba(16,24,40,.06);
+      transition: transform .22s var(--kti-ease), box-shadow .22s var(--kti-ease), border-color .22s var(--kti-ease);
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 22px 64px rgba(16,24,40,.12);
+      border-color: rgba(123,30,58,.18);
+    }
+
+    .section-kicker{
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .32em;
+      color: rgba(16,24,40,.45);
+    }
+    .h-title{ color: var(--kti-ink); letter-spacing: -0.02em; }
+    .p-lead{ color: rgba(16,24,40,.60); line-height: 1.75; font-weight: 500; }
+
+    .reveal{ opacity:0; transform: translateY(18px); transition: all .75s var(--kti-ease); }
+    .reveal.in{ opacity:1; transform: translateY(0); }
+
+    .field{
+      border-radius: 14px;
+      border: 2px solid rgba(16,24,40,.06);
+      padding: .95rem 1.1rem;
+      transition: all .2s var(--kti-ease);
+      background: #fff;
+    }
+    .field:focus{ outline:none; border-color: var(--kti-maroon); box-shadow: var(--ring); }
+
+    .pill{
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.55rem .9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(16,24,40,.10);
+      background:#fff;
+      font-weight: 800;
+      font-size: 12px;
+      color: rgba(16,24,40,.68);
+    }
+
+    /* Modal */
+    .modal-panel{ transform: scale(0.98); opacity:0; transition: all .28s var(--kti-ease); }
+    .modal-panel.open{ transform: scale(1); opacity:1; }
+
+    /* Mobile Drawer */
+    #drawerOverlay.open{ opacity:1 !important; pointer-events:auto !important; }
+    #mobileDrawer.open{ transform: translateX(0) !important; }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Utilities -->
+  <div class="bg-white border-b border-black/5 py-2">
+    <div class="wrap">
+      <div class="rail flex flex-col md:flex-row justify-between items-center gap-2 text-[11px] font-bold text-black/50 tracking-wider uppercase">
+        <div class="flex flex-wrap items-center gap-4">
+          <span class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+            Admissions support
+          </span>
+          <span>• Sponsors & employers</span>
+          <span>• Verification requests</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-4">
+          <span>Call: 045 838 1000</span>
+          <span>• Eastern Cape</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <header id="nav" class="nav">
+    <div class="wrap">
+      <div class="rail flex items-center justify-between py-4">
+
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="assets/img/khs_neutral.png" alt="Konwaba Training Institute"
+               class="h-11 w-auto rounded-lg border border-black/10 bg-white shadow-sm"
+               onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');" />
+          <div class="hidden bg-[var(--kti-maroon)] text-white w-11 h-11 rounded-lg flex items-center justify-center font-black text-xl shadow-lg shadow-red-900/20 group-hover:scale-105 transition-transform">K</div>
+
+          <div class="leading-none">
+            <div class="text-[15px] font-black text-[var(--kti-ink)] tracking-tight">Konwaba Training Institute</div>
+            <div class="text-[10px] font-black uppercase tracking-[0.28em] text-black/40 mt-1">Contact • Admissions</div>
+          </div>
+        </a>
+
+        <!-- Desktop -->
+        <nav class="hidden lg:flex items-center gap-2" aria-label="Main menu">
+          <div class="navitem" data-dropdown="programmes">
+            <button class="navlink" aria-haspopup="true" aria-expanded="false" data-trigger>
+              Programmes
+              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"/></svg>
+            </button>
+            <div class="dd">
+              <a href="index.html#explorer" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg">
+                <span class="font-black text-sm">Programme Explorer</span>
+                <span class="text-xs text-black/55">Filter by sector, type and NQF</span>
+              </a>
+              <a href="programmes.html" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg mt-1">
+                <span class="font-black text-sm">Catalogue</span>
+                <span class="text-xs text-black/55">Full programme list</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="navitem" data-dropdown="institute">
+            <button class="navlink" aria-haspopup="true" aria-expanded="false" data-trigger>
+              Institute
+              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"/></svg>
+            </button>
+            <div class="dd">
+              <a href="about.html" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg">
+                <span class="font-black text-sm">About KTI</span>
+                <span class="text-xs text-black/55">Who we are</span>
+              </a>
+              <a href="accreditation.html" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg mt-1">
+                <span class="font-black text-sm">Accreditation</span>
+                <span class="text-xs text-black/55">Quality assurance and compliance</span>
+              </a>
+              <a href="contact.html" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg mt-1">
+                <span class="font-black text-sm">Contact</span>
+                <span class="text-xs text-black/55">Admissions support</span>
+              </a>
+            </div>
+          </div>
+
+          <a href="contact.html" class="navlink">Contact</a>
+        </nav>
+
+        <div class="hidden lg:flex items-center gap-3">
+          <a href="index.html#explorer" class="btn btn-silver text-xs">Programme Explorer</a>
+          <button class="btn btn-primary text-xs" onclick="toggleEnquiryModal()">Apply / Enquire</button>
+        </div>
+
+        <!-- Mobile -->
+        <div class="lg:hidden flex items-center gap-2">
+          <button class="btn btn-primary text-xs py-2 px-4" onclick="toggleEnquiryModal()">Enquire</button>
+          <button id="mobileMenuBtn" class="p-2 rounded-lg bg-slate-100 text-slate-800" aria-label="Menu">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="drawerOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[200] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="mobileDrawer" class="fixed top-0 right-0 h-full w-[360px] max-w-[85vw] bg-white z-[210] shadow-2xl translate-x-full transition-transform duration-500 ease-in-out p-6 flex flex-col">
+    <div class="flex items-center justify-between mb-8">
+      <div class="font-black text-xl text-[var(--kti-maroon)]">Menu</div>
+      <button id="drawerClose" class="p-2 bg-slate-100 rounded-full" aria-label="Close menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-2 overflow-y-auto">
+      <a href="index.html" class="p-3 font-black text-base border-b border-black/5">Home</a>
+      <a href="index.html#explorer" class="p-3 font-black text-base border-b border-black/5" onclick="toggleDrawer()">Programme Explorer</a>
+      <a href="programmes.html" class="p-3 font-black text-base border-b border-black/5">Catalogue</a>
+      <a href="about.html" class="p-3 font-black text-base border-b border-black/5">About KTI</a>
+      <a href="accreditation.html" class="p-3 font-black text-base border-b border-black/5">Accreditation</a>
+      <a href="contact.html" class="p-3 font-black text-base border-b border-black/5">Contact</a>
+    </div>
+
+    <div class="mt-auto pt-6 border-t border-black/5 flex flex-col gap-3">
+      <button class="btn btn-primary w-full" onclick="toggleEnquiryModal()">Apply / Enquire</button>
+      <div class="text-center text-[10px] text-black/40 font-black tracking-widest uppercase">Konwaba Training Institute</div>
+    </div>
+  </aside>
+
+  <!-- Hero -->
+  <section class="relative pt-14 lg:pt-20 pb-10 lg:pb-14 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="assets/img/kti_contact.jpg" alt="" class="w-full h-full object-cover opacity-[0.14]"
+           onerror="this.src='assets/img/campus_front.jpg';" />
+      <div class="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-[var(--kti-bg)]"></div>
+    </div>
+
+    <div class="wrap relative z-10">
+      <div class="rail">
+        <div class="grid lg:grid-cols-12 gap-10 items-end">
+          <div class="lg:col-span-8 reveal">
+            <div class="flex items-center gap-2 mb-6">
+              <span class="w-10 h-0.5 bg-[var(--kti-maroon)]"></span>
+              <span class="section-kicker text-[var(--kti-maroon)]">Contact</span>
+            </div>
+
+            <h1 class="h-title text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.08]">
+              Admissions support, sponsor onboarding and verification requests.
+            </h1>
+
+            <p class="p-lead text-base lg:text-lg mt-6 max-w-[85ch]">
+              Tell us what you need — programme guidance, intake requirements, sponsorship support or verification.
+              We’ll route your enquiry to the correct team.
+            </p>
+
+            <div class="mt-7 flex flex-wrap gap-3">
+              <span class="pill">Admissions</span>
+              <span class="pill">Sponsors & Employers</span>
+              <span class="pill">Verification</span>
+              <span class="pill">Accreditation queries</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 reveal">
+            <div class="surface p-7">
+              <div class="section-kicker mb-2">Quick contact</div>
+              <div class="text-[var(--kti-ink)] font-black text-xl">Reach us directly</div>
+              <div class="mt-4 grid gap-3 text-sm text-black/60 font-semibold">
+                <div class="flex items-start gap-3">
+                  <span class="mt-1 w-2 h-2 rounded-full bg-[var(--kti-maroon)]"></span>
+                  <span><span class="text-black/80 font-black">Phone:</span> 045 838 1000</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="mt-1 w-2 h-2 rounded-full bg-[var(--kti-maroon)]"></span>
+                  <span><span class="text-black/80 font-black">Email:</span> info@konwabatraining.co.za</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="mt-1 w-2 h-2 rounded-full bg-[var(--kti-maroon)]"></span>
+                  <span><span class="text-black/80 font-black">Hours:</span> Mon–Fri, 08:00–16:30</span>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-6 border-t border-black/5">
+                <button class="btn btn-primary w-full" onclick="toggleEnquiryModal()">Apply / Enquire</button>
+                <div class="text-[11px] text-black/45 mt-3">
+                  POPIA-aware processing — used only to respond to your enquiry.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Grid -->
+  <section class="py-12 lg:py-16">
+    <div class="wrap">
+      <div class="rail">
+        <div class="grid lg:grid-cols-12 gap-10 items-start">
+          <!-- Form -->
+          <div class="lg:col-span-7 reveal">
+            <div class="card p-7">
+              <div class="section-kicker mb-2">Enquiry form</div>
+              <h2 class="h-title text-2xl sm:text-3xl font-black">Send a message</h2>
+              <p class="p-lead mt-3">We’ll respond as soon as possible with the next steps.</p>
+
+              <form id="contactForm" class="mt-7 grid gap-4" novalidate>
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-black/45 mb-2">Full name</label>
+                    <input class="field w-full" name="name" required placeholder="Your name" />
+                  </div>
+                  <div>
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-black/45 mb-2">Phone</label>
+                    <input class="field w-full" name="phone" inputmode="tel" placeholder="0xx xxx xxxx" />
+                  </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-black/45 mb-2">Email</label>
+                    <input class="field w-full" name="email" type="email" required placeholder="name@domain.co.za" />
+                  </div>
+                  <div>
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-black/45 mb-2">Enquiry type</label>
+                    <select class="field w-full" name="type" required>
+                      <option value="">Select</option>
+                      <option>Admissions</option>
+                      <option>Sponsorship / Employer</option>
+                      <option>Verification</option>
+                      <option>Accreditation</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-[10px] font-black uppercase tracking-widest text-black/45 mb-2">Programme interest (optional)</label>
+                  <input class="field w-full" name="programme" placeholder="e.g. Office Administration, OHS, Municipal Finance" />
+                </div>
+
+                <div>
+                  <label class="block text-[10px] font-black uppercase tracking-widest text-black/45 mb-2">Message</label>
+                  <textarea class="field w-full h-32 resize-none" name="message" required placeholder="Describe what you need and the timeframe."></textarea>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between mt-1">
+                  <div class="text-[11px] text-black/45 font-semibold leading-relaxed">
+                    By submitting, you consent to us contacting you about your enquiry.
+                  </div>
+                  <button class="btn btn-primary px-8 py-4" type="submit">
+                    Submit
+                  </button>
+                </div>
+
+                <div id="formToast" class="hidden mt-3 text-sm font-extrabold text-emerald-600">
+                  Thank you. Your message has been captured.
+                </div>
+                <div id="formError" class="hidden mt-3 text-sm font-extrabold text-red-600">
+                  Please complete required fields correctly.
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Details -->
+          <div class="lg:col-span-5 reveal">
+            <div class="surface p-7">
+              <div class="section-kicker mb-2">Support</div>
+              <div class="text-[var(--kti-ink)] font-black text-xl">Common requests</div>
+              <div class="mt-4 grid gap-3 text-sm text-black/60 font-semibold">
+                <div class="flex items-start gap-3">
+                  <span class="mt-1 w-2 h-2 rounded-full bg-[var(--kti-maroon)]"></span>
+                  <span>Programme selection and entry requirements</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="mt-1 w-2 h-2 rounded-full bg-[var(--kti-maroon)]"></span>
+                  <span>Employer / sponsor onboarding and intake planning</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="mt-1 w-2 h-2 rounded-full bg-[var(--kti-maroon)]"></span>
+                  <span>Verification packs (where applicable)</span>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-6 border-t border-black/5">
+                <a href="accreditation.html" class="btn btn-silver w-full text-center">Accreditation</a>
+                <a href="programmes.html" class="btn btn-primary w-full text-center mt-3">Programme Catalogue</a>
+              </div>
+            </div>
+
+            <div class="mt-6 card overflow-hidden">
+              <div class="p-6 border-b border-black/5">
+                <div class="section-kicker mb-2">Location</div>
+                <div class="font-black text-[var(--kti-ink)] text-lg">Eastern Cape</div>
+                <div class="text-sm text-black/55 font-medium mt-2">
+                  Add your full campus address here when finalised for the catalogue.
+                </div>
+              </div>
+              <div class="h-[240px] bg-gradient-to-b from-slate-100 to-white flex items-center justify-center text-black/45 font-black">
+                Map placeholder
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white py-16">
+    <div class="wrap">
+      <div class="rail">
+        <div class="grid lg:grid-cols-4 gap-12 mb-14">
+          <div class="lg:col-span-1">
+            <div class="flex items-center gap-3 mb-6">
+              <img src="assets/img/khs_neutral.png" alt="KTI" class="h-9 w-auto rounded border border-black/10 bg-white" onerror="this.style.display='none'">
+              <div class="text-sm font-black text-[var(--kti-ink)]">Konwaba Training Institute</div>
+            </div>
+            <p class="text-sm text-black/55 leading-relaxed font-medium">
+              Professional training and skills development with structured programme pathways.
+            </p>
+          </div>
+
+          <div>
+            <div class="section-kicker mb-5">Links</div>
+            <div class="grid gap-3 text-sm font-semibold text-black/65">
+              <a href="index.html#explorer" class="hover:text-[var(--kti-maroon)]">Programme Explorer</a>
+              <a href="programmes.html" class="hover:text-[var(--kti-maroon)]">Catalogue</a>
+              <a href="about.html" class="hover:text-[var(--kti-maroon)]">About</a>
+              <a href="accreditation.html" class="hover:text-[var(--kti-maroon)]">Accreditation</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="section-kicker mb-5">Compliance</div>
+            <div class="grid gap-3 text-sm font-semibold text-black/65">
+              <a href="privacy.html" class="hover:text-[var(--kti-maroon)]">Privacy (POPIA)</a>
+              <a href="terms.html" class="hover:text-[var(--kti-maroon)]">Terms</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="section-kicker mb-5">Contact</div>
+            <div class="text-sm font-semibold text-black/65">
+              <div>045 838 1000</div>
+              <div class="mt-1">info@konwabatraining.co.za</div>
+              <div class="text-[11px] text-black/45 mt-4 leading-relaxed">
+                We process enquiries in line with POPIA and only use your details to respond.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-8 border-t border-black/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-black uppercase tracking-widest text-black/35">
+          <div>© <span id="year"></span> Konwaba Training Institute.</div>
+          <div class="flex gap-6">
+            <a href="privacy.html" class="hover:text-black">Privacy</a>
+            <a href="terms.html" class="hover:text-black">Terms</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Enquiry Modal (same component) -->
+  <div id="enquiryModalOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-md z-[500] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="enquiryModal" class="fixed inset-0 z-[510] flex items-center justify-center p-4 pointer-events-none">
+    <div class="bg-white w-full max-w-[580px] rounded-[26px] shadow-[0_32px_128px_rgba(0,0,0,0.30)] pointer-events-auto modal-panel overflow-hidden">
+      <div class="bg-[var(--kti-maroon)] p-8 text-white relative">
+        <h3 class="text-2xl font-black">Apply / Enquire</h3>
+        <p class="text-[11px] font-semibold uppercase tracking-widest opacity-75 mt-1">Admissions support</p>
+        <button onclick="toggleEnquiryModal()" class="absolute top-7 right-7 text-white/60 hover:text-white" aria-label="Close enquiry">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <form class="p-8 grid gap-4" onsubmit="return false;">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Name</label>
+            <input type="text" class="field w-full py-3" placeholder="Full name">
+          </div>
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Phone</label>
+            <input type="tel" class="field w-full py-3" placeholder="0xx xxx xxxx">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Programme interest</label>
+          <input type="text" class="field w-full py-3" placeholder="e.g. Office Administration, OHS, Municipal Finance">
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Message</label>
+          <textarea class="field w-full py-3 h-24 resize-none" placeholder="Tell us what you want to achieve (optional)"></textarea>
+        </div>
+
+        <button class="btn btn-primary w-full py-4 mt-2" id="submitEnquiry">Submit enquiry</button>
+        <div id="enquiryToast" class="hidden text-center text-xs font-bold text-emerald-600">Thank you. We will contact you shortly.</div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const $ = (s) => document.querySelector(s);
+      const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+      // Sticky nav
+      function setNavState(){
+        $('#nav')?.classList.toggle('scrolled', window.scrollY > 40);
+      }
+      window.addEventListener('scroll', setNavState);
+
+      // Hover + click-lock dropdown
+      const navItems = $$('.navitem[data-dropdown]');
+      let hoverTimeout = null;
+
+      const closeItem = (item) => {
+        if (!item) return;
+        item.classList.remove('open');
+        item.removeAttribute('data-locked');
+        item.querySelector('button')?.setAttribute('aria-expanded', 'false');
+      };
+
+      const openItem = (item, lock=false) => {
+        clearTimeout(hoverTimeout);
+        navItems.forEach(i => { if(i !== item) closeItem(i); });
+        item.classList.add('open');
+        item.querySelector('button')?.setAttribute('aria-expanded', 'true');
+        if(lock) item.setAttribute('data-locked', 'true');
+      };
+
+      navItems.forEach(item => {
+        const btn = item.querySelector('[data-trigger]');
+        const isDesktop = () => window.innerWidth >= 1024;
+
+        item.addEventListener('mouseenter', () => { if(isDesktop()) openItem(item); });
+        item.addEventListener('mouseleave', () => {
+          if(!isDesktop() || item.hasAttribute('data-locked')) return;
+          hoverTimeout = setTimeout(() => closeItem(item), 220);
+        });
+
+        btn?.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isOpen = item.classList.contains('open');
+          const isLocked = item.hasAttribute('data-locked');
+          if(isOpen && isLocked) closeItem(item);
+          else openItem(item, true);
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if(!e.target.closest('.navitem')) navItems.forEach(i => closeItem(i));
+      });
+
+      // Drawer
+      function toggleDrawer(){
+        const d = $('#mobileDrawer');
+        const o = $('#drawerOverlay');
+        if(!d || !o) return;
+        const isOpen = d.classList.contains('open');
+        if(!isOpen){
+          d.classList.add('open');
+          o.classList.add('open');
+          document.body.classList.add('overflow-hidden');
+        } else {
+          d.classList.remove('open');
+          o.classList.remove('open');
+          document.body.classList.remove('overflow-hidden');
+        }
+      }
+      window.toggleDrawer = toggleDrawer;
+      $('#mobileMenuBtn')?.addEventListener('click', toggleDrawer);
+      $('#drawerClose')?.addEventListener('click', toggleDrawer);
+      $('#drawerOverlay')?.addEventListener('click', toggleDrawer);
+
+      // Enquiry modal
+      function toggleEnquiryModal(){
+        const modal = $('#enquiryModal');
+        const overlay = $('#enquiryModalOverlay');
+        if(!modal || !overlay) return;
+
+        const isOpen = modal.classList.contains('open');
+        const panel = modal.querySelector('.modal-panel');
+
+        if(!isOpen){
+          modal.classList.add('open', 'pointer-events-auto');
+          overlay.style.opacity = "1";
+          overlay.style.pointerEvents = "auto";
+          panel?.classList.add('open');
+          document.body.classList.add('overflow-hidden');
+        } else {
+          modal.classList.remove('open', 'pointer-events-auto');
+          overlay.style.opacity = "0";
+          overlay.style.pointerEvents = "none";
+          panel?.classList.remove('open');
+          document.body.classList.remove('overflow-hidden');
+        }
+      }
+      window.toggleEnquiryModal = toggleEnquiryModal;
+
+      $('#enquiryModalOverlay')?.addEventListener('click', toggleEnquiryModal);
+      $('#submitEnquiry')?.addEventListener('click', function(){
+        const t = $('#enquiryToast');
+        if(t) t.classList.remove('hidden');
+        this.disabled = true;
+        this.textContent = "Submitted";
+        setTimeout(() => {
+          this.disabled = false;
+          this.textContent = "Submit enquiry";
+          if(t) t.classList.add('hidden');
+          toggleEnquiryModal();
+        }, 1600);
+      });
+
+      // Contact form (simple client-side validation)
+      $('#contactForm')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const form = e.currentTarget;
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const type = form.type.value.trim();
+        const msg = form.message.value.trim();
+
+        const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        const ok = name.length >= 2 && okEmail && type && msg.length >= 8;
+
+        const toast = $('#formToast');
+        const err = $('#formError');
+        toast?.classList.add('hidden');
+        err?.classList.add('hidden');
+
+        if(!ok){
+          err?.classList.remove('hidden');
+          return;
+        }
+        toast?.classList.remove('hidden');
+        form.reset();
+      });
+
+      // Reveal
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+      }, { threshold: 0.1 });
+
+      window.addEventListener('DOMContentLoaded', () => {
+        setNavState();
+        $$('.reveal').forEach(el => io.observe(el));
+        const y = $('#year'); if(y) y.textContent = new Date().getFullYear();
+      });
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Konwaba Training Institute | Accredited Skills Development</title>
+  <meta name="description" content="Konwaba Training Institute (KTI) delivers accredited, career-oriented education and skills development aligned to SETA and QCTO frameworks where applicable." />
+  <meta name="theme-color" content="#7B1E3A" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Corporate-only: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* =========================================================================
+       CORPORATE DESIGN SYSTEM
+       Colors: Light Maroon (#7B1E3A) and Silver (#D2D8E0)
+       ========================================================================= */
+    :root{
+      --kti-maroon:#7B1E3A;
+      --kti-maroon-dark:#5E142C;
+      --kti-ink:#101827;
+      --kti-silver:#D2D8E0;
+      --kti-bg:#F7F8FA;
+      --kti-ease:cubic-bezier(.2,.85,.2,1);
+      --ring: 0 0 0 4px rgba(123,30,58,.14);
+    }
+
+    html{ scroll-behavior:smooth; }
+    body{
+      background: var(--kti-bg);
+      color: rgba(16,24,40,.88);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Wide layout utilities */
+    .wrap{ width:100%; padding-left:28px; padding-right:28px; }
+    @media (min-width:1024px){ .wrap{ padding-left:44px; padding-right:44px; } }
+    @media (min-width:1536px){ .wrap{ padding-left:64px; padding-right:64px; } }
+    .rail{ max-width:1720px; margin-left:auto; margin-right:auto; }
+
+    /* Surfaces */
+    .surface{
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(16,24,40,.08);
+      box-shadow: 0 16px 52px rgba(16,24,40,.08);
+      border-radius: 16px;
+    }
+    .surface-maroon{
+      background: linear-gradient(135deg, var(--kti-maroon), var(--kti-maroon-dark));
+      color: white;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 20px;
+    }
+    .card{
+      background:#fff;
+      border: 1px solid rgba(16,24,40,.08);
+      border-radius: 16px;
+      box-shadow: 0 10px 28px rgba(16,24,40,.06);
+      transition: transform .22s var(--kti-ease), box-shadow .22s var(--kti-ease), border-color .22s var(--kti-ease);
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 22px 64px rgba(16,24,40,.12);
+      border-color: rgba(123,30,58,.18);
+    }
+
+    /* Buttons */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
+      padding:.9rem 1.3rem;
+      border-radius: 12px;
+      font-weight: 800;
+      transition: all .2s var(--kti-ease);
+      user-select:none; white-space:nowrap;
+    }
+    .btn:active{ transform: scale(0.98); }
+    .btn-primary{
+      color:#fff;
+      background: linear-gradient(135deg, var(--kti-maroon), var(--kti-maroon-dark));
+      box-shadow: 0 12px 32px rgba(123,30,58,.25);
+    }
+    .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 18px 48px rgba(123,30,58,.34); }
+    .btn-silver{
+      color: var(--kti-ink);
+      background: #fff;
+      border: 1px solid rgba(16,24,40,.12);
+      box-shadow: 0 8px 24px rgba(16,24,40,.06);
+    }
+    .btn-silver:hover{ background:#fdfdfd; border-color: rgba(16,24,40,.20); transform: translateY(-1px); }
+
+    /* Navigation */
+    header.nav{
+      position: sticky; top:0; z-index:100;
+      background: rgba(255,255,255,.84);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(16,24,40,.06);
+      transition: all .3s var(--kti-ease);
+    }
+    header.nav.scrolled{
+      background: rgba(255,255,255,1);
+      box-shadow: 0 12px 48px rgba(16,24,40,.10);
+    }
+    .navitem{ position: relative; }
+    .navlink{
+      display:inline-flex; align-items:center;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 800;
+      color: rgba(16,24,40,.82);
+      transition: all .2s var(--kti-ease);
+    }
+    .navlink:hover{ color: var(--kti-maroon); background: rgba(123,30,58,.05); }
+
+    /* Dropdowns */
+    .dd{
+      position:absolute;
+      top: calc(100% + 8px);
+      left:0;
+      min-width: 320px;
+      background: #fff;
+      border: 1px solid rgba(16,24,40,.10);
+      box-shadow: 0 32px 80px rgba(16,24,40,.15);
+      border-radius: 12px;
+      padding: 12px;
+      opacity:0; visibility:hidden;
+      transform: translateY(12px);
+      transition: all .25s var(--kti-ease);
+      pointer-events:none;
+    }
+    .navitem.open > .dd{ opacity:1; visibility:visible; transform: translateY(0); pointer-events:auto; }
+    .dd::before{
+      content:""; position:absolute; left:0; right:0; top:-16px; height:16px; background: transparent;
+    }
+    .mega-dd{
+      left: 50%;
+      width: min(1200px, calc(100vw - 40px));
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      transform: translate(-50%, 12px);
+    }
+    .navitem.open > .mega-dd{ transform: translate(-50%, 0); }
+
+    /* Inputs */
+    .search-input{
+      border-radius: 14px;
+      border: 2px solid rgba(16,24,40,.06);
+      padding: 1rem 1.25rem;
+      transition: all .2s var(--kti-ease);
+      background: #fff;
+    }
+    .search-input:focus{ outline:none; border-color: var(--kti-maroon); box-shadow: var(--ring); }
+
+    /* Modules list */
+    .module-item{
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.03);
+    }
+    .module-item:last-child{ border: none; }
+    .check-icon{ color: var(--kti-maroon); font-weight: 900; margin-top: 2px; flex-shrink: 0; }
+
+    /* Reveal animation */
+    .reveal{ opacity:0; transform: translateY(18px); transition: all .75s var(--kti-ease); }
+    .reveal.in{ opacity:1; transform: translateY(0); }
+
+    /* Modals */
+    .modal-panel{ transform: scale(0.98); opacity:0; transition: all .28s var(--kti-ease); }
+    .modal-panel.open{ transform: scale(1); opacity:1; }
+
+    /* Utility text styles */
+    .section-kicker{
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .32em;
+      color: rgba(16,24,40,.45);
+    }
+    .h-title{
+      color: var(--kti-ink);
+      letter-spacing: -0.02em;
+    }
+    .p-lead{
+      color: rgba(16,24,40,.60);
+      line-height: 1.75;
+      font-weight: 500;
+    }
+
+    /* Simple image placeholder */
+    .img-ph{
+      background: linear-gradient(180deg, rgba(16,24,40,.04), rgba(16,24,40,.02));
+      border: 1px solid rgba(16,24,40,.06);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .img-ph img{
+      width:100%; height:100%;
+      object-fit: cover;
+      filter: saturate(.95) contrast(1.02);
+    }
+  </style>
+</head>
+
+<body>
+
+  
+    <!-- Utility Bar -->
+    <div class="bg-slate-900 text-white py-2 text-[10px] font-bold tracking-[0.2em] uppercase">
+        <div class="max-w-[1536px] mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-6">
+                <span class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                    DHET Registered Training Institute
+                </span>
+                <span class="opacity-30 hidden sm:block">|</span>
+                <span class="hidden sm:block opacity-60">Accredited: LGSETA • AgriSETA • Services SETA</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="opacity-60">Nxuba Campus:</span>
+                <a href="tel:+27458381000" class="hover:text-maroon transition-colors">045 838 1000</a>
+            </div>
+        </div>
+    </div>
+
+
+  <!-- Main Navigation -->
+  <header id="nav" class="nav">
+    <div class="wrap">
+      <div class="rail flex items-center justify-between py-4">
+
+        <!-- Logo Branding -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img
+            src="assets/img/khs_neutral.png"
+            alt="Konwaba Training Institute"
+            class="h-11 w-auto rounded-lg border border-black/10 bg-white shadow-sm"
+            onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+          />
+          <!-- Fallback mark if image fails -->
+          <div class="hidden bg-[var(--kti-maroon)] text-white w-11 h-11 rounded-lg flex items-center justify-center font-black text-xl shadow-lg shadow-red-900/20 group-hover:scale-105 transition-transform">K</div>
+
+          <div class="leading-none">
+            <div class="text-[15px] font-black text-[var(--kti-ink)] tracking-tight">Konwaba Training Institute</div>
+            <div class="text-[10px] font-black uppercase tracking-[0.28em] text-black/40 mt-1">Skills Development • Career Pathways</div>
+          </div>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden lg:flex items-center gap-2" aria-label="Main menu">
+          <div class="navitem" data-dropdown="programmes">
+            <button class="navlink" aria-haspopup="true" aria-expanded="false" data-trigger>
+              Programmes
+              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"/></svg>
+            </button>
+
+            <div class="dd mega-dd">
+              <!-- Column 1 -->
+              <div class="p-4 bg-slate-50/60 rounded-lg border border-black/5">
+                <div class="section-kicker mb-4">By Type</div>
+                <div class="grid gap-2">
+                  <a href="#explorer" data-filter="type:full" class="flex flex-col p-3 hover:bg-white hover:shadow-sm rounded-lg transition-all">
+                    <span class="font-black text-sm text-[var(--kti-ink)]">Full Qualifications</span>
+                    <span class="text-xs text-black/55">Diplomas and certificates aligned to NQF</span>
+                  </a>
+                  <a href="#explorer" data-filter="type:occupational" class="flex flex-col p-3 hover:bg-white hover:shadow-sm rounded-lg transition-all">
+                    <span class="font-black text-sm text-[var(--kti-ink)]">Occupational Certificates</span>
+                    <span class="text-xs text-black/55">Workplace-oriented outcomes (QCTO-aligned)</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Column 2 -->
+              <div class="p-4">
+                <div class="section-kicker mb-4">By Sector</div>
+                <div class="grid gap-1">
+                  <a href="#explorer" data-filter="sector:administration" class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Office & Administration</a>
+                  <a href="#explorer" data-filter="sector:public_service" class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Public Service Administration</a>
+                  <a href="#explorer" data-filter="sector:ohs" class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Safety, Health & Quality (OHS)</a>
+                  <a href="#explorer" data-filter="sector:finance" class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Municipal Finance & Administration</a>
+                  <a href="#explorer" data-filter="sector:agriculture" class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Agriculture</a>
+                </div>
+              </div>
+
+              <!-- Column 3 -->
+              <div class="p-4 bg-slate-50/60 rounded-lg border border-black/5">
+                <div class="section-kicker mb-4">Actions</div>
+                <div class="grid gap-3">
+                  <a href="programmes.html" class="btn btn-primary text-xs w-full py-2">View Catalogue</a>
+                  <button class="btn btn-silver text-xs w-full py-2" onclick="toggleEnquiryModal()">Request Information</button>
+                  <div class="text-[11px] text-black/50 leading-relaxed">
+                    Need guidance? We can advise on entry requirements and best-fit options.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="navitem" data-dropdown="institute">
+            <button class="navlink" aria-haspopup="true" aria-expanded="false" data-trigger>
+              Institute
+              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"/></svg>
+            </button>
+            <div class="dd">
+              <a href="about.html" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg">
+                <span class="font-black text-sm">About KTI</span>
+                <span class="text-xs text-black/55">Institution overview and approach</span>
+              </a>
+              <a href="accreditation.html" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg mt-1">
+                <span class="font-black text-sm">Accreditation & Compliance</span>
+                <span class="text-xs text-black/55">Quality assurance and registrations</span>
+              </a>
+              <div class="h-px bg-black/5 my-2"></div>
+              <a href="successes.html" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg">
+                <span class="font-black text-sm">Learner Outcomes</span>
+                <span class="text-xs text-black/55">Success stories and impact</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="navitem" data-dropdown="umbrella">
+            <button class="navlink" aria-haspopup="true" aria-expanded="false" data-trigger>
+              Konwaba Group
+              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"/></svg>
+            </button>
+            <div class="dd">
+              <a href="#" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg">
+                <span class="font-black text-sm">Primary School</span>
+                <span class="text-xs text-black/55">Foundation phase</span>
+              </a>
+              <a href="#" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg mt-1">
+                <span class="font-black text-sm">High School</span>
+                <span class="text-xs text-black/55">Secondary education</span>
+              </a>
+            </div>
+          </div>
+
+          <a href="contact.html" class="navlink">Contact</a>
+        </nav>
+
+        <!-- CTAs -->
+        <div class="hidden lg:flex items-center gap-3">
+          <a href="#explorer" class="btn btn-silver text-xs">Programme Explorer</a>
+          <button class="btn btn-primary text-xs" onclick="toggleEnquiryModal()">Apply / Enquire</button>
+        </div>
+
+        <!-- Mobile Toggle -->
+        <div class="lg:hidden flex items-center gap-2">
+          <button class="btn btn-primary text-xs py-2 px-4" onclick="toggleEnquiryModal()">Enquire</button>
+          <button id="mobileMenuBtn" class="p-2 rounded-lg bg-slate-100 text-slate-800" aria-label="Menu">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay -->
+  <div id="drawerOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[200] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="mobileDrawer" class="fixed top-0 right-0 h-full w-[360px] max-w-[85vw] bg-white z-[210] shadow-2xl translate-x-full transition-transform duration-500 ease-in-out p-6 flex flex-col">
+    <div class="flex items-center justify-between mb-8">
+      <div class="font-black text-xl text-[var(--kti-maroon)]">Menu</div>
+      <button id="drawerClose" class="p-2 bg-slate-100 rounded-full" aria-label="Close menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-2 overflow-y-auto">
+      <a href="index.html" class="p-3 font-black text-base border-b border-black/5">Home</a>
+      <a href="#explorer" class="p-3 font-black text-base border-b border-black/5" onclick="toggleDrawer()">Programme Explorer</a>
+      <a href="about.html" class="p-3 font-black text-base border-b border-black/5">About KTI</a>
+      <a href="accreditation.html" class="p-3 font-black text-base border-b border-black/5">Accreditation</a>
+      <a href="contact.html" class="p-3 font-black text-base border-b border-black/5">Contact</a>
+    </div>
+
+    <div class="mt-auto pt-6 border-t border-black/5 flex flex-col gap-3">
+      <button class="btn btn-primary w-full" onclick="toggleEnquiryModal()">Apply / Enquire</button>
+      <div class="text-center text-[10px] text-black/40 font-black tracking-widest uppercase">Konwaba Training Institute</div>
+    </div>
+  </aside>
+
+  <!-- Hero Section (Corporate, tightened copy) -->
+  <section class="relative pt-12 lg:pt-20 pb-16 lg:pb-24 overflow-hidden">
+    <!-- Background image placeholder -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img
+        src="assets/img/kti_hero.jpg"
+        alt=""
+        class="w-full h-full object-cover opacity-[0.14]"
+        onerror="this.src='assets/img/campus_front.jpg';"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-[var(--kti-bg)]"></div>
+    </div>
+
+    <div class="wrap relative z-10">
+      <div class="rail">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+          <!-- Hero Copy -->
+          <div class="lg:col-span-7 reveal">
+            <div class="flex items-center gap-2 mb-6">
+              <span class="w-10 h-0.5 bg-[var(--kti-maroon)]"></span>
+              <span class="section-kicker text-[var(--kti-maroon)]">Professional Training</span>
+            </div>
+
+            <h1 class="h-title text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.08]">
+              Structured programmes that build practical workplace capability.
+            </h1>
+
+            <p class="p-lead text-base lg:text-lg mt-6 max-w-[70ch]">
+              Konwaba Training Institute provides career-oriented skills development across key sectors.
+              Explore programmes by type, NQF level and area of focus.
+            </p>
+
+            <div class="mt-8 flex flex-col sm:flex-row items-center gap-4">
+              <a href="#explorer" class="btn btn-primary w-full sm:w-auto px-10 py-4 text-sm uppercase tracking-widest">Explore Programmes</a>
+              <a href="accreditation.html" class="btn btn-silver w-full sm:w-auto px-10 py-4 text-sm uppercase tracking-widest">Accreditation</a>
+            </div>
+
+            <div class="mt-10 grid grid-cols-3 gap-6 pt-8 border-t border-black/5">
+              <div>
+                <div class="text-2xl font-black text-[var(--kti-ink)]">Since 2008</div>
+                <div class="text-[10px] font-black text-black/40 uppercase tracking-widest mt-1">Established</div>
+              </div>
+              <div>
+                <div class="text-2xl font-black text-[var(--kti-ink)]">NQF aligned</div>
+                <div class="text-[10px] font-black text-black/40 uppercase tracking-widest mt-1">Where applicable</div>
+              </div>
+              <div>
+                <div class="text-2xl font-black text-[var(--kti-ink)]">Outcome-driven</div>
+                <div class="text-[10px] font-black text-black/40 uppercase tracking-widest mt-1">Work readiness</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Widget -->
+          <div class="lg:col-span-5 reveal">
+            <div class="surface p-8 relative">
+              <div class="absolute -top-6 -right-6 bg-[var(--kti-maroon)] text-white px-4 py-3 rounded-2xl rotate-3 shadow-xl z-20 font-black text-[10px] uppercase tracking-widest">
+                Intake<br>Enquiries Open
+              </div>
+
+              <div class="section-kicker mb-2">Featured Areas</div>
+              <h3 class="h-title text-xl font-black mb-6">High-demand pathways</h3>
+
+              <div class="grid gap-4">
+                <a href="#explorer" data-filter="sector:administration" class="flex items-center gap-4 p-4 rounded-xl border border-black/5 bg-slate-50 hover:bg-white hover:shadow-lg transition-all">
+                  <div class="w-12 h-12 rounded-lg bg-red-50 text-[var(--kti-maroon)] flex items-center justify-center font-black text-sm">OA</div>
+                  <div>
+                    <div class="font-black text-sm text-[var(--kti-ink)]">Office Administration</div>
+                    <div class="text-[11px] font-semibold text-black/50 mt-0.5">Corporate administration capability</div>
+                  </div>
+                </a>
+
+                <a href="#explorer" data-filter="sector:public_service" class="flex items-center gap-4 p-4 rounded-xl border border-black/5 bg-slate-50 hover:bg-white hover:shadow-lg transition-all">
+                  <div class="w-12 h-12 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-black text-sm">PS</div>
+                  <div>
+                    <div class="font-black text-sm text-[var(--kti-ink)]">Public Service Administration</div>
+                    <div class="text-[11px] font-semibold text-black/50 mt-0.5">Public sector administration pathway</div>
+                  </div>
+                </a>
+
+                <a href="#explorer" data-filter="sector:ohs" class="flex items-center gap-4 p-4 rounded-xl border border-black/5 bg-slate-50 hover:bg-white hover:shadow-lg transition-all">
+                  <div class="w-12 h-12 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-black text-sm">OHS</div>
+                  <div>
+                    <div class="font-black text-sm text-[var(--kti-ink)]">Safety, Health & Quality</div>
+                    <div class="text-[11px] font-semibold text-black/50 mt-0.5">Compliance and workplace safety</div>
+                  </div>
+                </a>
+              </div>
+
+              <div class="mt-8">
+                <button class="btn btn-primary w-full" onclick="toggleEnquiryModal()">Request Information</button>
+                <div class="text-[11px] text-black/50 mt-3">
+                  We will advise on requirements, duration and supporting documents.
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 img-ph h-[170px]">
+              <img src="assets/img/kti_placeholder_1.jpg" alt="" onerror="this.src='assets/img/campus_front.jpg';" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accreditation Bar (kept neutral) -->
+  <section class="bg-white py-10 border-y border-black/5">
+    <div class="wrap">
+      <div class="rail">
+        <div class="flex flex-wrap justify-center lg:justify-between items-center gap-10 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+          <div class="section-kicker">Aligned to:</div>
+          <div class="font-black text-xl tracking-tight text-slate-700">DHET</div>
+          <div class="font-black text-xl tracking-tight text-slate-700">LGSETA</div>
+          <div class="font-black text-xl tracking-tight text-slate-700">AGRISETA</div>
+          <div class="font-black text-xl tracking-tight text-slate-700">QCTO</div>
+          <div class="font-black text-xl tracking-tight text-slate-700">POPIA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Academic Explorer -->
+  <section id="explorer" class="py-20 lg:py-28 bg-[var(--kti-bg)]">
+    <div class="wrap">
+      <div class="rail">
+
+        <div class="max-w-3xl mb-14 reveal">
+          <div class="section-kicker mb-3">Programme Explorer</div>
+          <h2 class="h-title text-3xl sm:text-4xl lg:text-5xl font-black">Filter programmes by sector, type, level and keyword.</h2>
+          <p class="p-lead text-base mt-5">
+            Click a programme card to view curriculum modules, entry requirements and learner profile.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-8 items-start">
+
+          <!-- Controls Panel -->
+          <div class="lg:col-span-4 sticky top-[100px] reveal">
+            <div class="surface p-8 shadow-2xl border-none">
+              <div class="flex items-center justify-between gap-3 pb-4 border-b border-black/5">
+                <div>
+                  <div class="section-kicker">Search & Filters</div>
+                  <div class="text-sm font-semibold text-black/55 mt-1">Refine the list to your needs.</div>
+                </div>
+                <span class="text-[10px] font-black uppercase tracking-[0.28em] text-black/40">KTI</span>
+              </div>
+
+              <div class="grid gap-6 mt-6">
+                <div>
+                  <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Keyword</label>
+                  <input type="text" id="searchInput" placeholder="e.g. finance, OHS, administration..." class="search-input w-full text-sm font-semibold">
+                </div>
+
+                <!-- ✅ ADDED: Type filter (keeps your logic intact, just expands it) -->
+                <div>
+                  <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Type</label>
+                  <select id="typeFilter" class="search-input w-full text-sm font-semibold appearance-none cursor-pointer">
+                    <option value="all">All Types</option>
+                    <option value="full">Full Qualification</option>
+                    <option value="occupational">Occupational Certificate</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Sector</label>
+                  <select id="sectorFilter" class="search-input w-full text-sm font-semibold appearance-none cursor-pointer">
+                    <option value="all">All Sectors</option>
+                    <option value="administration">Office & Administration</option>
+                    <option value="public_service">Public Service Administration</option>
+                    <option value="ohs">Safety, Health & Quality (OHS)</option>
+                    <option value="finance">Municipal Finance & Administration</option>
+                    <option value="agriculture">Agriculture</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">NQF level</label>
+                  <select id="nqfFilter" class="search-input w-full text-sm font-semibold appearance-none cursor-pointer">
+                    <option value="all">All Levels</option>
+                    <option value="2">NQF Level 2</option>
+                    <option value="3">NQF Level 3</option>
+                    <option value="4">NQF Level 4</option>
+                    <option value="5">NQF Level 5</option>
+                  </select>
+                </div>
+
+                <div class="pt-2 grid grid-cols-2 gap-3">
+                  <button id="resetFilters" class="btn btn-silver text-xs py-3">Clear</button>
+                  <button class="btn btn-primary text-xs py-3" onclick="performRender()">Apply</button>
+                </div>
+              </div>
+
+              <div class="mt-8 p-4 bg-slate-50 rounded-xl border border-black/5 text-black/55 text-[12px] leading-relaxed">
+                Tip: Use “Type” + “Sector” to narrow down quickly, then search by keyword.
+              </div>
+            </div>
+          </div>
+
+          <!-- Results Grid -->
+          <div class="lg:col-span-8">
+            <div class="flex items-center justify-between mb-8 reveal">
+              <div class="text-[10px] font-black text-black/30 uppercase tracking-[0.3em]">
+                Showing <span id="resCount" class="text-[var(--kti-maroon)]">0</span> programmes
+              </div>
+              <div class="flex gap-2">
+                <button class="text-[10px] font-black uppercase tracking-widest p-2 text-black/40 hover:text-black" type="button">
+                  Sort: A–Z
+                </button>
+              </div>
+            </div>
+
+            <div id="programmeGrid" class="grid sm:grid-cols-2 gap-6 reveal">
+              <!-- Rendered via JS -->
+            </div>
+
+            <div id="emptyState" class="hidden text-center py-20 reveal">
+              <div class="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 text-black/10 border border-black/5">
+                <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+              </div>
+              <div class="font-black text-xl text-black/80">No matches found</div>
+              <p class="text-black/45 mt-2">Try a broader keyword or reset filters.</p>
+              <button class="btn btn-silver text-xs mt-6" onclick="resetFilters()">Reset filters</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programme Details Side Panel -->
+  <div id="detailsOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[300] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="detailsPanel" class="fixed top-0 right-0 h-full w-[720px] max-w-[95vw] bg-white z-[310] shadow-2xl translate-x-full transition-transform duration-500 ease-in-out flex flex-col">
+    <!-- Header -->
+    <div class="p-8 border-b border-black/5 flex items-start justify-between">
+      <div>
+        <div id="detBadges" class="flex gap-2 mb-4"></div>
+        <h2 id="detTitle" class="text-2xl sm:text-3xl font-black text-[var(--kti-ink)] leading-tight">Programme Name</h2>
+        <div id="detMeta" class="text-[11px] font-black uppercase tracking-[0.2em] text-black/45 mt-2">Type • Duration • Level</div>
+      </div>
+      <button onclick="toggleDetails()" class="p-3 bg-slate-100 rounded-full hover:bg-slate-200 transition-colors" aria-label="Close details">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Content -->
+    <div class="flex-1 overflow-y-auto p-8">
+      <div class="grid gap-10">
+
+        <div>
+          <div class="section-kicker mb-3">Programme Overview</div>
+          <p id="detDesc" class="text-base text-black/70 leading-relaxed font-medium">Description text...</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-8">
+          <div class="bg-slate-50 p-6 rounded-2xl border border-black/5">
+            <div class="section-kicker mb-4">Entry Requirements</div>
+            <div id="detReq" class="text-sm font-semibold text-slate-800 leading-relaxed">Requirements...</div>
+          </div>
+          <div class="bg-slate-50 p-6 rounded-2xl border border-black/5">
+            <div class="section-kicker mb-4">Target Audience</div>
+            <div id="detAudience" class="text-sm font-semibold text-slate-800 leading-relaxed">Graduates & Professionals</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-kicker mb-3">Curriculum Modules</div>
+          <div id="detModules" class="grid gap-2"></div>
+        </div>
+
+        <div class="p-7 surface-maroon shadow-2xl relative overflow-hidden group">
+          <div class="absolute inset-0 bg-white/5 translate-x-full skew-x-12 group-hover:translate-x-[-100%] transition-transform duration-1000"></div>
+          <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-center md:text-left">
+              <div class="text-lg font-black mb-1">Apply / Enquire</div>
+              <p class="text-xs opacity-80 font-semibold">Request intake guidance, documentation requirements and next steps.</p>
+            </div>
+            <button class="btn btn-silver text-xs px-10" onclick="toggleEnquiryModal()">Open enquiry</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </aside>
+
+  <!-- Facilities (kept, tightened copy) -->
+  <section class="py-20 lg:py-28 bg-white">
+    <div class="wrap">
+      <div class="rail">
+        <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+          <div class="section-kicker mb-3">Facilities</div>
+          <h2 class="h-title text-3xl sm:text-4xl lg:text-5xl font-black">A learning environment built for consistent delivery.</h2>
+          <p class="p-lead mt-5">Structured delivery spaces, learner support and operational readiness.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-10">
+          <div class="reveal">
+            <div class="card overflow-hidden h-full flex flex-col">
+              <div class="img-ph h-[170px] rounded-none border-0">
+                <img src="assets/img/kti_campus_1.jpg" alt="" onerror="this.src='assets/img/campus_front.jpg';">
+              </div>
+              <div class="p-8 flex-1 flex flex-col">
+                <h4 class="font-black text-xl text-[var(--kti-ink)] mb-3">Nxuba Campus</h4>
+                <p class="text-black/55 text-sm leading-relaxed font-medium mb-6">
+                  Delivery hub serving the central Eastern Cape region with learner support services.
+                </p>
+                <div class="mt-auto pt-6 border-t border-black/5 flex items-center justify-between">
+                  <span class="text-[10px] font-black uppercase tracking-widest text-black/35">Delivery hub</span>
+                  <div class="w-1.5 h-1.5 bg-[var(--kti-maroon)] rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <div class="card overflow-hidden h-full flex flex-col">
+              <div class="img-ph h-[170px] rounded-none border-0">
+                <img src="assets/img/kti_campus_2.jpg" alt="" onerror="this.src='assets/img/campus_front.jpg';">
+              </div>
+              <div class="p-8 flex-1 flex flex-col">
+                <h4 class="font-black text-xl text-[var(--kti-ink)] mb-3">Middelburg Campus</h4>
+                <p class="text-black/55 text-sm leading-relaxed font-medium mb-6">
+                  Vocational delivery with practical learning alignment for sector-specific needs.
+                </p>
+                <div class="mt-auto pt-6 border-t border-black/5 flex items-center justify-between">
+                  <span class="text-[10px] font-black uppercase tracking-widest text-black/35">Practical delivery</span>
+                  <div class="w-1.5 h-1.5 bg-[var(--kti-maroon)] rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <div class="card overflow-hidden h-full flex flex-col">
+              <div class="img-ph h-[170px] rounded-none border-0">
+                <img src="assets/img/kti_campus_3.jpg" alt="" onerror="this.src='assets/img/campus_front.jpg';">
+              </div>
+              <div class="p-8 flex-1 flex flex-col">
+                <h4 class="font-black text-xl text-[var(--kti-ink)] mb-3">Digital Enablement</h4>
+                <p class="text-black/55 text-sm leading-relaxed font-medium mb-6">
+                  Training delivery supported by structured learning resources and digital tools.
+                </p>
+                <div class="mt-auto pt-6 border-t border-black/5 flex items-center justify-between">
+                  <span class="text-[10px] font-black uppercase tracking-widest text-black/35">Learning systems</span>
+                  <div class="w-1.5 h-1.5 bg-[var(--kti-maroon)] rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-14 surface p-8 reveal">
+          <div class="grid lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-8">
+              <div class="section-kicker mb-2">Admissions</div>
+              <h3 class="h-title text-2xl sm:text-3xl font-black">Need help selecting a programme?</h3>
+              <p class="p-lead mt-3">Submit an enquiry and we’ll advise on requirements, duration and next steps.</p>
+            </div>
+            <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-stretch">
+              <button class="btn btn-primary w-full" onclick="toggleEnquiryModal()">Apply / Enquire</button>
+              <a href="contact.html" class="btn btn-silver w-full text-center">Contact</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white py-16 border-t border-black/5">
+    <div class="wrap">
+      <div class="rail">
+        <div class="grid lg:grid-cols-4 gap-12 mb-14">
+          <div class="lg:col-span-1">
+            <div class="flex items-center gap-3 mb-6">
+              <img src="assets/img/khs_neutral.png" alt="KTI" class="h-9 w-auto rounded border border-black/10 bg-white" onerror="this.style.display='none'">
+              <div class="text-sm font-black text-[var(--kti-ink)]">Konwaba Training Institute</div>
+            </div>
+            <p class="text-sm text-black/55 leading-relaxed font-medium">
+              Career-oriented skills development with structured programme pathways aligned to recognised frameworks.
+            </p>
+          </div>
+
+          <div>
+            <div class="section-kicker mb-5">Programmes</div>
+            <div class="grid gap-3 text-sm font-semibold text-black/65">
+              <a href="#explorer" data-filter="sector:administration" class="hover:text-[var(--kti-maroon)]">Office & Administration</a>
+              <a href="#explorer" data-filter="sector:public_service" class="hover:text-[var(--kti-maroon)]">Public Service Administration</a>
+              <a href="#explorer" data-filter="sector:ohs" class="hover:text-[var(--kti-maroon)]">Safety, Health & Quality</a>
+              <a href="#explorer" data-filter="sector:finance" class="hover:text-[var(--kti-maroon)]">Municipal Finance & Administration</a>
+              <a href="#explorer" data-filter="sector:agriculture" class="hover:text-[var(--kti-maroon)]">Agriculture</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="section-kicker mb-5">Institute</div>
+            <div class="grid gap-3 text-sm font-semibold text-black/65">
+              <a href="about.html" class="hover:text-[var(--kti-maroon)]">About</a>
+              <a href="accreditation.html" class="hover:text-[var(--kti-maroon)]">Accreditation</a>
+              <a href="successes.html" class="hover:text-[var(--kti-maroon)]">Learner outcomes</a>
+              <a href="contact.html" class="hover:text-[var(--kti-maroon)]">Contact</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="section-kicker mb-5">Contact</div>
+            <div class="text-sm font-semibold text-black/65">
+              <div>045 838 1000</div>
+              <div class="mt-1">info@konwabatraining.co.za</div>
+              <div class="text-[11px] text-black/45 mt-4 leading-relaxed">
+                We process enquiries in line with POPIA and only use your details to respond.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-8 border-t border-black/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-black uppercase tracking-widest text-black/35">
+          <div>© <span id="year"></span> Konwaba Training Institute.</div>
+          <div class="flex gap-6">
+            <a href="privacy.html" class="hover:text-black">Privacy</a>
+            <a href="terms.html" class="hover:text-black">Terms</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Enquiry Modal -->
+  <div id="enquiryModalOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-md z-[500] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="enquiryModal" class="fixed inset-0 z-[510] flex items-center justify-center p-4 pointer-events-none">
+    <div class="bg-white w-full max-w-[580px] rounded-[26px] shadow-[0_32px_128px_rgba(0,0,0,0.30)] pointer-events-auto modal-panel overflow-hidden">
+      <div class="bg-[var(--kti-maroon)] p-8 text-white relative">
+        <h3 class="text-2xl font-black">Enquiry</h3>
+        <p class="text-[11px] font-semibold uppercase tracking-widest opacity-75 mt-1">Admissions support</p>
+        <button onclick="toggleEnquiryModal()" class="absolute top-7 right-7 text-white/60 hover:text-white" aria-label="Close enquiry">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <form class="p-8 grid gap-4" onsubmit="return false;">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Name</label>
+            <input type="text" class="search-input w-full py-3" placeholder="Full name">
+          </div>
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Phone</label>
+            <input type="tel" class="search-input w-full py-3" placeholder="0xx xxx xxxx">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Programme interest</label>
+          <select class="search-input w-full py-3 appearance-none cursor-pointer">
+            <option>Select an area</option>
+            <option>Office Administration</option>
+            <option>Public Service Administration</option>
+            <option>Safety, Health & Quality (OHS)</option>
+            <option>Municipal Finance & Administration</option>
+            <option>Agriculture</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Message</label>
+          <textarea class="search-input w-full py-3 h-24 resize-none" placeholder="Tell us what you want to achieve (optional)"></textarea>
+        </div>
+
+        <button class="btn btn-primary w-full py-4 mt-2" id="submitEnquiry">Submit enquiry</button>
+        <div id="enquiryToast" class="hidden text-center text-xs font-bold text-emerald-600">Thank you. We will contact you shortly.</div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      // Helpers
+      const $ = (s) => document.querySelector(s);
+      const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+      /**
+       * 1) DATA REPOSITORY
+       * (Programme content kept intact; only UI/copy refined.)
+       */
+      const PROGRAMMES = [
+        {
+          id: "adm_office",
+          title: "National Diploma In Office Administration",
+          type: "full",
+          sector: "administration",
+          nqf: 5,
+          duration: "24 Months",
+          audience: "High School Graduates & Working Professionals",
+          req: "Grade 12 / NQF Level 4 Equivalent",
+          desc: "A comprehensive diploma covering corporate support, digital literacy, and professional office administration.",
+          modules: [
+            "Effective Office Administration & Operations",
+            "Business Communication and Customer Service Excellence",
+            "Office Protocol, Deportment and Professional Etiquette",
+            "Apply End-User Computing (Microsoft Office Specialist)",
+            "Social Media and Digital Literacy for Workplace",
+            "Introductory Project Management Principles",
+            "Computerized Project Management Applications",
+            "Basic Business Calculations and Record Keeping",
+            "Resource and Procurement Management",
+            "Tender and Procurement Processes & Procedures",
+            "Document Management and Professional Record Keeping",
+            "Staffing and People Support Management (Intro to HR)",
+            "Principles of the NQF and Skills Development Planning",
+            "Public Relations, Marketing and Institutional Advocacy",
+            "Ready for Work Standards & Workplace Ethics"
+          ]
+        },
+        {
+          id: "psa_occupational",
+          title: "Occupational Certificate: Public Service Administrator",
+          type: "occupational",
+          sector: "public_service",
+          nqf: 4,
+          duration: "12 Months",
+          audience: "Municipal Staff & Aspiring Public Servants",
+          req: "NQF Level 3 or Grade 11 with relevant experience",
+          desc: "A QCTO-aligned pathway preparing candidates for administrative requirements in the public sector.",
+          modules: [
+            "Workplace Fundamentals in the Public Sector",
+            "Human Resource Administration for Municipalities",
+            "Programme and Management Methodologies",
+            "Public Service Communication and Admin Standards",
+            "Ethics, Good Administration and Integrity in Public Service",
+            "Developing Self in the Workplace (Professional Development)",
+            "Financial and Supply Chain Administration (MFMA focused)",
+            "Using Technology Effectively and Efficiently in Public Sector"
+          ]
+        },
+        {
+          id: "ohs_safety",
+          title: "Occupational Certificate: Safety, Health & Quality Practitioner",
+          type: "occupational",
+          sector: "ohs",
+          nqf: 4,
+          duration: "12–18 Months",
+          audience: "Health & Safety Officers, Site Supervisors",
+          req: "Grade 12 / NQF Level 4",
+          desc: "Training for OHS practitioners responsible for compliance, risk profiling, and workplace safety practices.",
+          modules: [
+            "Fundamentals of Occupational Health and Safety (OHS)",
+            "Fundamentals of Communication in Safety Environments",
+            "OHS Applications and Compliance Frameworks",
+            "OHS Management and Governance Systems",
+            "Operations Management and Workplace Supervision",
+            "Represent the Needs of Employees with Regard to OHS",
+            "Inspect Workplaces, Identify Hazards and Assess Risks",
+            "Consult with Employees and Raise Safety Concerns",
+            "Inspect Workplaces and Operational Environments",
+            "Coordinate the Work Activities of OHS Representatives",
+            "Develop a Professional Risk Profile",
+            "Establish, Maintain and Improve OHS Documentation",
+            "Advise on the Establishment and Maintenance of Safety Controls",
+            "Manage the Effectiveness of OHS Control Measures"
+          ]
+        },
+        {
+          id: "mun_finance",
+          title: "FET Certificate: Municipal Finance & Administration",
+          type: "full",
+          sector: "finance",
+          nqf: 4,
+          duration: "12 Months",
+          audience: "Municipal Finance Clerks & Administrators",
+          req: "NQF Level 3 Qualification",
+          desc: "Core competencies for municipal financial management, job evaluation, and expenditure control.",
+          modules: [
+            "Job Evaluation Principles and Processes",
+            "Demonstrate Knowledge of the Job Evaluation Process",
+            "Illustrate Knowledge of Public Sector Department Structures",
+            "Data and Statistics Analysis for Local Government",
+            "Revenue, Cost and Expenditure Management",
+            "Management of Financial Resources within Municipal Sector"
+          ]
+        },
+        {
+          id: "agri_animal",
+          title: "Agriculture: Animal Farming Specialist",
+          type: "full",
+          sector: "agriculture",
+          nqf: 2,
+          duration: "1 Year (6m Theory / 6m Practical)",
+          audience: "Aspiring Farmers & Agri-Entrepreneurs",
+          req: "NQF Level 1 / Grade 9",
+          desc: "Hands-on agricultural course split between theoretical grounding and practical field experience in animal husbandry.",
+          modules: [
+            "Introduction to Animal Farming Systems",
+            "Animal Husbandry and Health Management",
+            "Nutrition and Feeding Standards",
+            "Practical Farm Infrastructure Maintenance",
+            "Agricultural Safety and Ethics",
+            "Farm Resource Management"
+          ]
+        },
+        {
+          id: "agri_poultry",
+          title: "Agriculture: Poultry & Mixed Farming",
+          type: "full",
+          sector: "agriculture",
+          nqf: 2,
+          duration: "6–12 Months",
+          audience: "Small-scale Farmers & New Entrants",
+          req: "Basic Literacy / NQF Level 1",
+          desc: "Poultry production and integrated mixed farming fundamentals for sustainable agricultural outcomes.",
+          modules: [
+            "Poultry Farming Fundamentals",
+            "Mixed Farming Systems and Intercropping",
+            "Poultry Health and Disease Prevention",
+            "Sustainable Land Usage in Agriculture",
+            "Harvesting and Marketing of Produce"
+          ]
+        }
+      ];
+
+      /**
+       * 2) HYBRID NAVIGATION ENGINE (Hover + Click Lock)
+       */
+      const navItems = $$('.navitem[data-dropdown]');
+      let hoverTimeout = null;
+
+      const setNavState = () => {
+        const scrolled = window.scrollY > 40;
+        $('#nav')?.classList.toggle('scrolled', scrolled);
+      };
+
+      const closeItem = (item) => {
+        if (!item) return;
+        item.classList.remove('open');
+        item.removeAttribute('data-locked');
+        item.querySelector('button')?.setAttribute('aria-expanded', 'false');
+      };
+
+      const openItem = (item, lock = false) => {
+        if (!item) return;
+        clearTimeout(hoverTimeout);
+        navItems.forEach(i => { if(i !== item) closeItem(i); });
+        item.classList.add('open');
+        item.querySelector('button')?.setAttribute('aria-expanded', 'true');
+        if(lock) item.setAttribute('data-locked', 'true');
+      };
+
+      navItems.forEach(item => {
+        const btn = item.querySelector('[data-trigger]');
+        const isDesktop = () => window.innerWidth >= 1024;
+
+        item.addEventListener('mouseenter', () => {
+          if(!isDesktop()) return;
+          openItem(item);
+        });
+
+        item.addEventListener('mouseleave', () => {
+          if(!isDesktop() || item.hasAttribute('data-locked')) return;
+          hoverTimeout = setTimeout(() => closeItem(item), 220);
+        });
+
+        btn?.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isOpen = item.classList.contains('open');
+          const isLocked = item.hasAttribute('data-locked');
+
+          if(isOpen && isLocked) closeItem(item);
+          else openItem(item, true);
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if(!e.target.closest('.navitem')) navItems.forEach(i => closeItem(i));
+      });
+
+      /**
+       * 3) EXPLORER ENGINE
+       */
+      const grid = $('#programmeGrid');
+      const searchInp = $('#searchInput');
+      const typeFilt = $('#typeFilter');          // ✅ added
+      const secFilt = $('#sectorFilter');
+      const nqfFilt = $('#nqfFilter');
+      const resCount = $('#resCount');
+      const emptyState = $('#emptyState');
+
+      const getTypeLabel = (t) => t === 'full' ? 'Full Qualification' : 'Occupational Certificate';
+      const getSectorLabel = (s) => ({
+        administration: "Office & Administration",
+        public_service: "Public Service Administration",
+        ohs: "Safety, Health & Quality (OHS)",
+        finance: "Municipal Finance & Administration",
+        agriculture: "Agriculture"
+      }[s] || s);
+
+      function performRender() {
+        const query = (searchInp?.value || "").toLowerCase().trim();
+        const type = typeFilt?.value || "all";     // ✅ added
+        const sector = secFilt?.value || "all";
+        const nqf = nqfFilt?.value || "all";
+
+        const filtered = PROGRAMMES.filter(p => {
+          const matchesQuery =
+            !query ||
+            p.title.toLowerCase().includes(query) ||
+            p.desc.toLowerCase().includes(query) ||
+            p.modules.some(m => m.toLowerCase().includes(query));
+
+          const matchesType = type === 'all' || p.type === type;                 // ✅ added
+          const matchesSector = sector === 'all' || p.sector === sector;
+          const matchesNQF = nqf === 'all' || p.nqf.toString() === nqf;
+
+          return matchesQuery && matchesType && matchesSector && matchesNQF;     // ✅ updated
+        });
+
+        if (grid){
+          grid.innerHTML = filtered.map(p => `
+            <div class="card p-6 flex flex-col cursor-pointer" onclick="openDetails('${p.id}')">
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-[9px] font-black uppercase tracking-widest px-2 py-1 bg-red-50 text-[var(--kti-maroon)] rounded">
+                  ${getTypeLabel(p.type)}
+                </span>
+                <span class="text-[9px] font-black uppercase tracking-widest px-2 py-1 bg-slate-100 text-slate-600 rounded">
+                  NQF ${p.nqf}
+                </span>
+              </div>
+              <h4 class="text-lg font-black text-[var(--kti-ink)] leading-snug mb-2">${p.title}</h4>
+              <p class="text-sm text-black/55 leading-relaxed line-clamp-2 mb-6">${p.desc}</p>
+              <div class="mt-auto pt-4 border-t border-black/5 flex items-center justify-between">
+                <span class="text-[10px] font-bold text-black/45 uppercase tracking-widest">${getSectorLabel(p.sector)}</span>
+                <span class="text-[var(--kti-maroon)] font-black text-[10px] uppercase tracking-widest">View details →</span>
+              </div>
+            </div>
+          `).join("");
+        }
+
+        if (resCount) resCount.textContent = String(filtered.length);
+        if (emptyState) emptyState.classList.toggle('hidden', filtered.length > 0);
+      }
+
+      function resetFilters() {
+        if (searchInp) searchInp.value = "";
+        if (typeFilt) typeFilt.value = "all";      // ✅ added
+        if (secFilt) secFilt.value = "all";
+        if (nqfFilt) nqfFilt.value = "all";
+        performRender();
+      }
+
+      // Debounced search
+      let searchDebounce = null;
+      searchInp?.addEventListener('input', () => {
+        clearTimeout(searchDebounce);
+        searchDebounce = setTimeout(performRender, 150);
+      });
+      typeFilt?.addEventListener('change', performRender); // ✅ added
+      secFilt?.addEventListener('change', performRender);
+      nqfFilt?.addEventListener('change', performRender);
+      $('#resetFilters')?.addEventListener('click', resetFilters);
+
+      /**
+       * 4) DETAILS PANEL
+       */
+      window.openDetails = (id) => {
+        const p = PROGRAMMES.find(x => x.id === id);
+        if(!p) return;
+
+        $('#detTitle').textContent = p.title;
+        $('#detDesc').textContent = p.desc;
+        $('#detReq').textContent = p.req;
+        $('#detAudience').textContent = p.audience;
+        $('#detMeta').textContent = `${getTypeLabel(p.type)} • ${p.duration} • NQF Level ${p.nqf}`;
+
+        $('#detBadges').innerHTML = `
+          <span class="text-[9px] font-black uppercase tracking-widest px-2 py-1 bg-red-50 text-[var(--kti-maroon)] rounded">${getSectorLabel(p.sector)}</span>
+          <span class="text-[9px] font-black uppercase tracking-widest px-2 py-1 bg-slate-100 text-slate-600 rounded">${getTypeLabel(p.type)}</span>
+        `;
+
+        $('#detModules').innerHTML = p.modules.map(m => `
+          <div class="module-item">
+            <span class="check-icon">✓</span>
+            <span class="text-sm font-semibold text-slate-700">${m}</span>
+          </div>
+        `).join("");
+
+        toggleDetails(true);
+      };
+
+      window.toggleDetails = (forceOpen = false) => {
+        const panel = $('#detailsPanel');
+        const overlay = $('#detailsOverlay');
+        if (!panel || !overlay) return;
+
+        const isOpen = panel.classList.contains('open');
+
+        if(forceOpen || !isOpen) {
+          panel.classList.add('open', 'translate-x-0');
+          overlay.classList.add('open');
+          overlay.style.opacity = "1";
+          overlay.style.pointerEvents = "auto";
+          document.body.classList.add('overflow-hidden');
+        } else {
+          panel.classList.remove('open', 'translate-x-0');
+          overlay.classList.remove('open');
+          overlay.style.opacity = "0";
+          overlay.style.pointerEvents = "none";
+          document.body.classList.remove('overflow-hidden');
+        }
+      };
+
+      $('#detailsOverlay')?.addEventListener('click', () => toggleDetails());
+
+      /**
+       * 5) ENQUIRY MODAL
+       */
+      window.toggleEnquiryModal = () => {
+        const modal = $('#enquiryModal');
+        const overlay = $('#enquiryModalOverlay');
+        if (!modal || !overlay) return;
+
+        const isOpen = modal.classList.contains('open');
+        const panel = modal.querySelector('.modal-panel');
+
+        if(!isOpen) {
+          modal.classList.add('open', 'pointer-events-auto');
+          overlay.classList.add('open');
+          overlay.style.opacity = "1";
+          overlay.style.pointerEvents = "auto";
+          panel?.classList.add('open');
+          document.body.classList.add('overflow-hidden');
+        } else {
+          modal.classList.remove('open', 'pointer-events-auto');
+          overlay.classList.remove('open');
+          overlay.style.opacity = "0";
+          overlay.style.pointerEvents = "none";
+          panel?.classList.remove('open');
+          document.body.classList.remove('overflow-hidden');
+        }
+      };
+
+      $('#enquiryModalOverlay')?.addEventListener('click', toggleEnquiryModal);
+      $('#submitEnquiry')?.addEventListener('click', function() {
+        const t = $('#enquiryToast');
+        if (t) t.classList.remove('hidden');
+        this.disabled = true;
+        this.textContent = "Submitted";
+        setTimeout(() => {
+          this.disabled = false;
+          this.textContent = "Submit enquiry";
+          if (t) t.classList.add('hidden');
+          toggleEnquiryModal();
+        }, 1600);
+      });
+
+      /**
+       * 6) MOBILE DRAWER
+       */
+      window.toggleDrawer = () => {
+        const d = $('#mobileDrawer');
+        const o = $('#drawerOverlay');
+        if (!d || !o) return;
+
+        const isOpen = d.classList.contains('open');
+
+        if(!isOpen) {
+          d.classList.add('open', 'translate-x-0');
+          o.classList.add('open');
+          o.style.opacity = "1";
+          o.style.pointerEvents = "auto";
+          document.body.classList.add('overflow-hidden');
+        } else {
+          d.classList.remove('open', 'translate-x-0');
+          o.classList.remove('open');
+          o.style.opacity = "0";
+          o.style.pointerEvents = "none";
+          document.body.classList.remove('overflow-hidden');
+        }
+      };
+
+      $('#mobileMenuBtn')?.addEventListener('click', toggleDrawer);
+      $('#drawerClose')?.addEventListener('click', toggleDrawer);
+      $('#drawerOverlay')?.addEventListener('click', toggleDrawer);
+
+      /**
+       * 7) REVEAL OBSERVER & INIT
+       */
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+      }, { threshold: 0.1 });
+
+      window.addEventListener('scroll', setNavState);
+
+      window.addEventListener('DOMContentLoaded', () => {
+        setNavState();
+        performRender();
+        $$('.reveal').forEach(el => io.observe(el));
+        const y = $('#year'); if (y) y.textContent = new Date().getFullYear();
+
+        // ✅ Quick Filters from nav + hero (sector/type)
+        document.addEventListener('click', (e) => {
+          const qf = e.target.closest('[data-filter]');
+          if(qf && qf.tagName !== 'SELECT') {
+            const raw = qf.getAttribute('data-filter') || "";
+            const [key, val] = raw.split(':');
+            if(key === 'sector' && secFilt) secFilt.value = val;
+            if(key === 'type' && typeFilt) typeFilt.value = val; // ✅ now works
+            performRender();
+          }
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>

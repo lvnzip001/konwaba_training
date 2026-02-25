@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Accreditation | Konwaba Training Institute</title>
+  <meta name="description" content="Konwaba Training Institute accreditation, quality assurance approach, compliance posture and learner protection commitments." />
+  <meta name="theme-color" content="#7B1E3A" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+ <style>
+    /* =========================================================================
+       CORPORATE DESIGN SYSTEM (unchanged)
+       ========================================================================= */
+    :root{
+      --kti-maroon:#7B1E3A;
+      --kti-maroon-dark:#5E142C;
+      --kti-ink:#101827;
+      --kti-silver:#D2D8E0;
+      --kti-bg:#F7F8FA;
+      --kti-ease:cubic-bezier(.2,.85,.2,1);
+      --ring: 0 0 0 4px rgba(123,30,58,.14);
+    }
+
+    html{ scroll-behavior:smooth; }
+    body{
+      background: var(--kti-bg);
+      color: rgba(16,24,40,.88);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Wide layout utilities */
+    .wrap{ width:100%; padding-left:28px; padding-right:28px; }
+    @media (min-width:1024px){ .wrap{ padding-left:44px; padding-right:44px; } }
+    @media (min-width:1536px){ .wrap{ padding-left:64px; padding-right:64px; } }
+    .rail{ max-width:1720px; margin-left:auto; margin-right:auto; }
+
+    /* Surfaces */
+    .surface{
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(16,24,40,.08);
+      box-shadow: 0 16px 52px rgba(16,24,40,.08);
+      border-radius: 16px;
+    }
+    .surface-maroon{
+      background: linear-gradient(135deg, var(--kti-maroon), var(--kti-maroon-dark));
+      color: white;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 20px;
+    }
+    .card{
+      background:#fff;
+      border: 1px solid rgba(16,24,40,.08);
+      border-radius: 16px;
+      box-shadow: 0 10px 28px rgba(16,24,40,.06);
+      transition: transform .22s var(--kti-ease), box-shadow .22s var(--kti-ease), border-color .22s var(--kti-ease);
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 22px 64px rgba(16,24,40,.12);
+      border-color: rgba(123,30,58,.18);
+    }
+
+    /* Buttons */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
+      padding:.9rem 1.3rem;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: all .2s var(--kti-ease);
+      user-select:none; white-space:nowrap;
+    }
+    .btn:active{ transform: scale(0.98); }
+    .btn-primary{
+      color:#fff;
+      background: linear-gradient(135deg, var(--kti-maroon), var(--kti-maroon-dark));
+      box-shadow: 0 12px 32px rgba(123,30,58,.25);
+    }
+    .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 18px 48px rgba(123,30,58,.34); }
+    .btn-silver{
+      color: var(--kti-ink);
+      background: #fff;
+      border: 1px solid rgba(16,24,40,.12);
+      box-shadow: 0 8px 24px rgba(16,24,40,.06);
+    }
+    .btn-silver:hover{ background:#fdfdfd; border-color: rgba(16,24,40,.20); transform: translateY(-1px); }
+
+    /* Navigation */
+    header.nav{
+      position: sticky; top:0; z-index:100;
+      background: rgba(255,255,255,.84);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(16,24,40,.06);
+      transition: all .3s var(--kti-ease);
+    }
+    header.nav.scrolled{
+      background: rgba(255,255,255,1);
+      box-shadow: 0 12px 48px rgba(16,24,40,.10);
+    }
+    .navitem{ position: relative; }
+    .navlink{
+      display:inline-flex; align-items:center;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 700;
+      color: rgba(16,24,40,.82);
+      transition: all .2s var(--kti-ease);
+    }
+    .navlink:hover{ color: var(--kti-maroon); background: rgba(123,30,58,.05); }
+
+    /* Dropdowns */
+    .dd{
+      position:absolute;
+      top: calc(100% + 8px);
+      left:0;
+      min-width: 320px;
+      background: #fff;
+      border: 1px solid rgba(16,24,40,.10);
+      box-shadow: 0 32px 80px rgba(16,24,40,.15);
+      border-radius: 12px;
+      padding: 12px;
+      opacity:0; visibility:hidden;
+      transform: translateY(12px);
+      transition: all .25s var(--kti-ease);
+      pointer-events:none;
+    }
+    .navitem.open > .dd{ opacity:1; visibility:visible; transform: translateY(0); pointer-events:auto; }
+    .dd::before{
+      content:""; position:absolute; left:0; right:0; top:-16px; height:16px; background: transparent;
+    }
+    .mega-dd{
+      left: 50%;
+      width: min(1200px, calc(100vw - 40px));
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      transform: translate(-50%, 12px);
+    }
+    .navitem.open > .mega-dd{ transform: translate(-50%, 0); }
+
+    /* Inputs */
+    .search-input{
+      border-radius: 14px;
+      border: 2px solid rgba(16,24,40,.06);
+      padding: 1rem 1.25rem;
+      transition: all .2s var(--kti-ease);
+      background: #fff;
+    }
+    .search-input:focus{ outline:none; border-color: var(--kti-maroon); box-shadow: var(--ring); }
+
+    /* Modules list */
+    .module-item{
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.03);
+    }
+    .module-item:last-child{ border: none; }
+    .check-icon{ color: var(--kti-maroon); font-weight: 900; margin-top: 2px; flex-shrink: 0; }
+
+    /* Reveal animation */
+    .reveal{ opacity:0; transform: translateY(18px); transition: all .75s var(--kti-ease); }
+    .reveal.in{ opacity:1; transform: translateY(0); }
+
+    /* Modals */
+    .modal-panel{ transform: scale(0.98); opacity:0; transition: all .28s var(--kti-ease); }
+    .modal-panel.open{ transform: scale(1); opacity:1; }
+
+    /* Utility text styles */
+    .section-kicker{
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .32em;
+      color: rgba(16,24,40,.45);
+    }
+    .h-title{
+      color: var(--kti-ink);
+      letter-spacing: -0.02em;
+    }
+    .p-lead{
+      color: rgba(16,24,40,.60);
+      line-height: 1.75;
+      font-weight: 500;
+    }
+
+    /* Simple image placeholder */
+    .img-ph{
+      background: linear-gradient(180deg, rgba(16,24,40,.04), rgba(16,24,40,.02));
+      border: 1px solid rgba(16,24,40,.06);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .img-ph img{
+      width:100%; height:100%;
+      object-fit: cover;
+      filter: saturate(.95) contrast(1.02);
+    }
+
+    /* =========================================================================
+       HERO CAROUSEL (Splide) — full‑width, elegant, clickable controls
+       ========================================================================= */
+    .hero-carousel{
+      position: relative;
+      background: radial-gradient(1200px 600px at 15% 10%, rgba(123,30,58,.16), transparent 60%),
+                  linear-gradient(180deg, rgba(255,255,255,1), rgba(247,248,250,1));
+      border-bottom: 1px solid rgba(16,24,40,.06);
+    }
+
+    .hero-slide{
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-slide__content{
+      display: grid;
+      align-items: center;
+      gap: 28px;
+      min-height: 520px;
+    }
+    @media (min-width: 1024px){
+      .hero-slide__content{
+        grid-template-columns: 1.05fr .95fr;
+        gap: 36px;
+        min-height: 560px;
+      }
+    }
+
+    .hero-slide__left{
+      padding: 40px 0;
+    }
+
+    .hero-slide__right{
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(16,24,40,.08);
+      box-shadow: 0 22px 70px rgba(16,24,40,.18);
+      background: rgba(255,255,255,.6);
+      height: 100%;
+      max-height: 520px;
+    }
+    .hero-slide__right img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(.98) contrast(1.02);
+    }
+
+    .hero-chip{
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .45rem .75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(16,24,40,.10);
+      background: rgba(255,255,255,.74);
+      backdrop-filter: blur(12px);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(16,24,40,.62);
+    }
+    .hero-chip .dot{
+      width: 8px; height: 8px;
+      border-radius: 999px;
+      background: rgba(34,197,94,1);
+      box-shadow: 0 0 0 4px rgba(34,197,94,.14);
+    }
+
+    .hero-h1{
+      font-weight: 650;
+      letter-spacing: -0.03em;
+      line-height: 1.06;
+      color: var(--kti-ink);
+    }
+    .hero-sub{
+      color: rgba(16,24,40,.62);
+      font-weight: 500;
+      line-height: 1.75;
+    }
+
+    /* Splide customisation */
+    .splide__pagination{
+      bottom: 16px;
+    }
+    .splide__pagination__page{
+      width: 9px; height: 9px;
+      opacity: .35;
+      background: rgba(16,24,40,.55);
+      transform: scale(1);
+      transition: all .18s var(--kti-ease);
+    }
+    .splide__pagination__page.is-active{
+      opacity: 1;
+      background: var(--kti-maroon);
+      transform: scale(1.15);
+    }
+    .splide__arrow{
+      width: 40px; height: 40px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(16,24,40,.10);
+      box-shadow: 0 14px 40px rgba(16,24,40,.16);
+      transition: transform .18s var(--kti-ease), background .18s var(--kti-ease);
+    }
+    .splide__arrow:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.95);
+    }
+    .splide__arrow svg{
+      fill: rgba(16,24,40,.78);
+    }
+    .splide__arrow--prev{
+      left: 1em;
+    }
+    .splide__arrow--next{
+      right: 1em;
+    }
+
+    /* glass effect (reused) */
+    .glass{
+      background: rgba(255,255,255,.72);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,.55);
+      box-shadow: 0 18px 60px rgba(16,24,40,.12);
+      border-radius: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Utilities -->
+  <div class="bg-white border-b border-black/5 py-2">
+    <div class="wrap">
+      <div class="rail flex flex-col md:flex-row justify-between items-center gap-2 text-[11px] font-bold text-black/50 tracking-wider uppercase">
+        <div class="flex flex-wrap items-center gap-4">
+          <span class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+            Quality assurance & learner protection
+          </span>
+          <span>• POPIA aware</span>
+          <span>• Assessment integrity</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-4">
+          <span>Call: 045 838 1000</span>
+          <span>• Eastern Cape</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <header id="nav" class="nav">
+    <div class="wrap">
+      <div class="rail flex items-center justify-between py-4">
+
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="assets/img/khs_neutral.png" alt="Konwaba Training Institute"
+               class="h-11 w-auto rounded-lg border border-black/10 bg-white shadow-sm"
+               onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');" />
+          <div class="hidden bg-[var(--kti-maroon)] text-white w-11 h-11 rounded-lg flex items-center justify-center font-black text-xl shadow-lg shadow-red-900/20 group-hover:scale-105 transition-transform">K</div>
+
+          <div class="leading-none">
+            <div class="text-[15px] font-black text-[var(--kti-ink)] tracking-tight">Konwaba Training Institute</div>
+            <div class="text-[10px] font-black uppercase tracking-[0.28em] text-black/40 mt-1">Accreditation • Quality Assurance</div>
+          </div>
+        </a>
+
+        <!-- Desktop -->
+        <nav class="hidden lg:flex items-center gap-2" aria-label="Main menu">
+          <div class="navitem" data-dropdown="programmes">
+            <button class="navlink" aria-haspopup="true" aria-expanded="false" data-trigger>
+              Programmes
+              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"/></svg>
+            </button>
+            <div class="dd">
+              <a href="index.html#explorer" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg">
+                <span class="font-black text-sm">Programme Explorer</span>
+                <span class="text-xs text-black/55">Filter by sector, type and NQF</span>
+              </a>
+              <a href="programmes.html" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg mt-1">
+                <span class="font-black text-sm">Catalogue</span>
+                <span class="text-xs text-black/55">Full programme list</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="navitem" data-dropdown="institute">
+            <button class="navlink" aria-haspopup="true" aria-expanded="false" data-trigger>
+              Institute
+              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"/></svg>
+            </button>
+            <div class="dd">
+              <a href="about.html" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg">
+                <span class="font-black text-sm">About KTI</span>
+                <span class="text-xs text-black/55">Institution overview</span>
+              </a>
+              <a href="accreditation.html" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg mt-1">
+                <span class="font-black text-sm">Accreditation</span>
+                <span class="text-xs text-black/55">Quality assurance and compliance</span>
+              </a>
+              <a href="contact.html" class="flex flex-col p-3 hover:bg-slate-50 rounded-lg mt-1">
+                <span class="font-black text-sm">Contact</span>
+                <span class="text-xs text-black/55">Admissions support</span>
+              </a>
+            </div>
+          </div>
+
+          <a href="contact.html" class="navlink">Contact</a>
+        </nav>
+
+        <div class="hidden lg:flex items-center gap-3">
+          <a href="index.html#explorer" class="btn btn-silver text-xs">Programme Explorer</a>
+          <button class="btn btn-primary text-xs" onclick="toggleEnquiryModal()">Apply / Enquire</button>
+        </div>
+
+        <!-- Mobile -->
+        <div class="lg:hidden flex items-center gap-2">
+          <button class="btn btn-primary text-xs py-2 px-4" onclick="toggleEnquiryModal()">Enquire</button>
+          <button id="mobileMenuBtn" class="p-2 rounded-lg bg-slate-100 text-slate-800" aria-label="Menu">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="drawerOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[200] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="mobileDrawer" class="fixed top-0 right-0 h-full w-[360px] max-w-[85vw] bg-white z-[210] shadow-2xl translate-x-full transition-transform duration-500 ease-in-out p-6 flex flex-col">
+    <div class="flex items-center justify-between mb-8">
+      <div class="font-black text-xl text-[var(--kti-maroon)]">Menu</div>
+      <button id="drawerClose" class="p-2 bg-slate-100 rounded-full" aria-label="Close menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-2 overflow-y-auto">
+      <a href="index.html" class="p-3 font-black text-base border-b border-black/5">Home</a>
+      <a href="index.html#explorer" class="p-3 font-black text-base border-b border-black/5" onclick="toggleDrawer()">Programme Explorer</a>
+      <a href="about.html" class="p-3 font-black text-base border-b border-black/5">About KTI</a>
+      <a href="accreditation.html" class="p-3 font-black text-base border-b border-black/5">Accreditation</a>
+      <a href="contact.html" class="p-3 font-black text-base border-b border-black/5">Contact</a>
+    </div>
+
+    <div class="mt-auto pt-6 border-t border-black/5 flex flex-col gap-3">
+      <button class="btn btn-primary w-full" onclick="toggleEnquiryModal()">Apply / Enquire</button>
+      <div class="text-center text-[10px] text-black/40 font-black tracking-widest uppercase">Konwaba Training Institute</div>
+    </div>
+  </aside>
+
+  <!-- Hero -->
+  <section class="relative pt-14 lg:pt-20 pb-14 lg:pb-20 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="assets/img/kti_quality.jpg" alt="" class="w-full h-full object-cover opacity-[0.14]"
+           onerror="this.src='assets/img/campus_front.jpg';" />
+      <div class="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-[var(--kti-bg)]"></div>
+    </div>
+
+    <div class="wrap relative z-10">
+      <div class="rail">
+        <div class="grid lg:grid-cols-12 gap-12 items-end">
+
+          <div class="lg:col-span-8 reveal">
+            <div class="flex items-center gap-2 mb-6">
+              <span class="w-10 h-0.5 bg-[var(--kti-maroon)]"></span>
+              <span class="section-kicker text-[var(--kti-maroon)]">Accreditation</span>
+            </div>
+
+            <h1 class="h-title text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.08]">
+              Quality assurance, compliance and learner protection.
+            </h1>
+
+            <p class="p-lead text-base lg:text-lg mt-6 max-w-[80ch]">
+              KTI maintains quality assurance controls to support credible delivery, assessment integrity, and consistent learner outcomes.
+              This page outlines our accreditation posture and how we safeguard programme quality.
+            </p>
+
+            <div class="mt-9 flex flex-col sm:flex-row items-center gap-4">
+              <a href="#frameworks" class="btn btn-primary w-full sm:w-auto px-10 py-4 text-sm uppercase tracking-widest">Quality Frameworks</a>
+              <a href="#faq" class="btn btn-silver w-full sm:w-auto px-10 py-4 text-sm uppercase tracking-widest">FAQ</a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 reveal">
+            <div class="surface p-7">
+              <div class="section-kicker mb-2">What to expect</div>
+              <div class="text-[var(--kti-ink)] font-black text-xl">Verification-ready documentation</div>
+              <div class="mt-4 grid gap-3 text-sm text-black/60 font-semibold">
+                <div class="flex items-start gap-3">
+                  <span class="mt-1 w-2 h-2 rounded-full bg-[var(--kti-maroon)]"></span>
+                  <span>Accreditation and registrations (where applicable) available on request.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="mt-1 w-2 h-2 rounded-full bg-[var(--kti-maroon)]"></span>
+                  <span>Assessment moderation and internal quality checks support delivery consistency.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="mt-1 w-2 h-2 rounded-full bg-[var(--kti-maroon)]"></span>
+                  <span>POPIA-aware information handling for enquiries and learner data.</span>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-6 border-t border-black/5">
+                <button class="btn btn-primary w-full" onclick="toggleEnquiryModal()">Request verification pack</button>
+                <div class="text-[11px] text-black/45 mt-3">
+                  We’ll share relevant registrations and supporting evidence based on the programme area.
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 overflow-hidden rounded-2xl border border-black/5 bg-white">
+              <img src="assets/img/kti_placeholder_2.jpg" alt="" class="w-full h-[150px] object-cover"
+                   onerror="this.src='assets/img/campus_front.jpg';" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Evidence Blocks -->
+  <section id="frameworks" class="py-18 lg:py-24">
+    <div class="wrap">
+      <div class="rail">
+
+        <div class="max-w-3xl mb-12 reveal">
+          <div class="section-kicker mb-3">Quality Frameworks</div>
+          <h2 class="h-title text-3xl sm:text-4xl lg:text-5xl font-black">Aligned to recognised South African training frameworks.</h2>
+          <p class="p-lead mt-5">
+            Our delivery, assessment and learner administration approach is designed to align with the governance expectations typically
+            required in accredited and occupational training contexts.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <div class="card p-7 reveal">
+            <div class="flex items-center justify-between">
+              <div class="section-kicker text-[var(--kti-maroon)]">Delivery</div>
+              <div class="text-[10px] font-black uppercase tracking-widest text-black/35">Standardised</div>
+            </div>
+            <div class="mt-3 font-black text-xl text-[var(--kti-ink)]">Structured learning delivery</div>
+            <p class="mt-3 text-sm text-black/55 font-medium leading-relaxed">
+              Consistent facilitation, programme schedules, and learner support processes to drive predictable learning outcomes.
+            </p>
+            <div class="mt-5 pt-5 border-t border-black/5 grid gap-2 text-sm text-slate-700 font-semibold">
+              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Delivery planning and session control</div>
+              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Attendance and learner progress tracking</div>
+              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Learning material governance</div>
+            </div>
+          </div>
+
+          <div class="card p-7 reveal">
+            <div class="flex items-center justify-between">
+              <div class="section-kicker text-[var(--kti-maroon)]">Assessment</div>
+              <div class="text-[10px] font-black uppercase tracking-widest text-black/35">Controlled</div>
+            </div>
+            <div class="mt-3 font-black text-xl text-[var(--kti-ink)]">Assessment integrity</div>
+            <p class="mt-3 text-sm text-black/55 font-medium leading-relaxed">
+              Defined assessment controls, evidence management, moderation (where required), and results governance.
+            </p>
+            <div class="mt-5 pt-5 border-t border-black/5 grid gap-2 text-sm text-slate-700 font-semibold">
+              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Controlled assessments and evidence packs</div>
+              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Moderation support where applicable</div>
+              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Secure results capture and reporting</div>
+            </div>
+          </div>
+
+          <div class="card p-7 reveal">
+            <div class="flex items-center justify-between">
+              <div class="section-kicker text-[var(--kti-maroon)]">Compliance</div>
+              <div class="text-[10px] font-black uppercase tracking-widest text-black/35">Auditable</div>
+            </div>
+            <div class="mt-3 font-black text-xl text-[var(--kti-ink)]">Documentation and governance</div>
+            <p class="mt-3 text-sm text-black/55 font-medium leading-relaxed">
+              Learner administration, document controls and POPIA-aware handling to support transparency and audit readiness.
+            </p>
+            <div class="mt-5 pt-5 border-t border-black/5 grid gap-2 text-sm text-slate-700 font-semibold">
+              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Learner records and retention controls</div>
+              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Controlled documentation and templates</div>
+              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> POPIA-aware data handling</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accreditation entities row (no invented numbers) -->
+        <div class="mt-12 surface p-8 reveal">
+          <div class="grid lg:grid-cols-12 gap-10 items-center">
+            <div class="lg:col-span-8">
+              <div class="section-kicker mb-2">Accreditation and registrations</div>
+              <h3 class="h-title text-2xl sm:text-3xl font-black">We share verification evidence relevant to your programme area.</h3>
+              <p class="p-lead mt-3">
+                Accreditation and registration details depend on the specific programme stream (SETA-aligned, occupational, or other).
+                For procurement and verification processes, request a verification pack.
+              </p>
+            </div>
+            <div class="lg:col-span-4 flex flex-col gap-3">
+              <button class="btn btn-primary w-full" onclick="toggleEnquiryModal()">Request verification pack</button>
+              <a class="btn btn-silver w-full text-center" href="index.html#explorer">Explore programmes</a>
+            </div>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-black/5 flex flex-wrap items-center justify-center gap-10 opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+            <div class="font-black text-lg tracking-tight text-slate-700">DHET</div>
+            <div class="font-black text-lg tracking-tight text-slate-700">QCTO</div>
+            <div class="font-black text-lg tracking-tight text-slate-700">LGSETA</div>
+            <div class="font-black text-lg tracking-tight text-slate-700">AGRISETA</div>
+            <div class="font-black text-lg tracking-tight text-slate-700">POPIA</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-18 lg:py-24 bg-white border-y border-black/5">
+    <div class="wrap">
+      <div class="rail">
+        <div class="max-w-3xl mb-10 reveal">
+          <div class="section-kicker mb-3">FAQ</div>
+          <h2 class="h-title text-3xl sm:text-4xl lg:text-5xl font-black">Accreditation questions, answered clearly.</h2>
+          <p class="p-lead mt-5">
+            If you’re a learner, sponsor, employer or procurement team, these answers cover the usual verification topics.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-7 reveal">
+            <div class="surface p-3">
+              <!-- Accordion items -->
+              <div class="divide-y divide-black/5">
+                <button class="faq-btn w-full text-left p-5 flex items-start justify-between gap-6" aria-expanded="false">
+                  <div>
+                    <div class="font-black text-[var(--kti-ink)]">Is KTI accredited?</div>
+                    <div class="text-sm text-black/55 font-medium mt-1">Accreditation depends on the specific programme stream.</div>
+                  </div>
+                  <span class="faq-ico mt-1 text-[var(--kti-maroon)] font-black text-lg">+</span>
+                </button>
+                <div class="faq-panel hidden px-5 pb-5">
+                  <p class="text-sm text-black/60 font-medium leading-relaxed">
+                    KTI provides programmes across different training streams. Some are delivered under recognised accreditation or registration
+                    frameworks (where applicable). For formal verification, request the verification pack and specify the programme you are checking.
+                  </p>
+                </div>
+
+                <button class="faq-btn w-full text-left p-5 flex items-start justify-between gap-6" aria-expanded="false">
+                  <div>
+                    <div class="font-black text-[var(--kti-ink)]">How do employers verify certificates?</div>
+                    <div class="text-sm text-black/55 font-medium mt-1">We support verification processes for sponsors and employers.</div>
+                  </div>
+                  <span class="faq-ico mt-1 text-[var(--kti-maroon)] font-black text-lg">+</span>
+                </button>
+                <div class="faq-panel hidden px-5 pb-5">
+                  <p class="text-sm text-black/60 font-medium leading-relaxed">
+                    Employers can submit a verification request with learner details and programme name. We respond with the relevant
+                    evidence and verification information based on the programme stream and records available.
+                  </p>
+                </div>
+
+                <button class="faq-btn w-full text-left p-5 flex items-start justify-between gap-6" aria-expanded="false">
+                  <div>
+                    <div class="font-black text-[var(--kti-ink)]">Do you comply with POPIA?</div>
+                    <div class="text-sm text-black/55 font-medium mt-1">We handle information with privacy-aware controls.</div>
+                  </div>
+                  <span class="faq-ico mt-1 text-[var(--kti-maroon)] font-black text-lg">+</span>
+                </button>
+                <div class="faq-panel hidden px-5 pb-5">
+                  <p class="text-sm text-black/60 font-medium leading-relaxed">
+                    KTI is POPIA-aware and uses personal information only for learner administration, delivery, assessment and responding to enquiries.
+                    We do not sell personal information. Where appropriate, information access is limited to authorised staff.
+                  </p>
+                </div>
+
+                <button class="faq-btn w-full text-left p-5 flex items-start justify-between gap-6" aria-expanded="false">
+                  <div>
+                    <div class="font-black text-[var(--kti-ink)]">What quality checks do you apply?</div>
+                    <div class="text-sm text-black/55 font-medium mt-1">Delivery controls, assessment controls, and documentation governance.</div>
+                  </div>
+                  <span class="faq-ico mt-1 text-[var(--kti-maroon)] font-black text-lg">+</span>
+                </button>
+                <div class="faq-panel hidden px-5 pb-5">
+                  <p class="text-sm text-black/60 font-medium leading-relaxed">
+                    We apply structured delivery planning, evidence management, moderation support where applicable, and controlled administration.
+                    These controls help ensure consistent outcomes and verifiable programme delivery.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 reveal">
+            <div class="card p-7">
+              <div class="section-kicker mb-2 text-[var(--kti-maroon)]">Procurement / Sponsors</div>
+              <div class="text-xl font-black text-[var(--kti-ink)]">Need a compliance pack?</div>
+              <p class="mt-3 text-sm text-black/55 font-medium leading-relaxed">
+                If you are sponsoring learners or onboarding a training provider, request a verification pack.
+                We’ll share relevant registrations, policies and supporting evidence aligned to the programme area.
+              </p>
+
+              <div class="mt-6 grid gap-3">
+                <button class="btn btn-primary w-full" onclick="toggleEnquiryModal()">Request verification pack</button>
+                <a href="contact.html" class="btn btn-silver w-full text-center">Contact admissions</a>
+              </div>
+
+              <div class="mt-6 pt-6 border-t border-black/5 text-[11px] text-black/45 font-semibold leading-relaxed">
+                Tip: Include programme name, learner count, delivery location, and target start date.
+              </div>
+            </div>
+
+            <div class="mt-6 overflow-hidden rounded-2xl border border-black/5 bg-white">
+              <img src="assets/img/kti_docs.jpg" alt="" class="w-full h-[170px] object-cover"
+                   onerror="this.src='assets/img/campus_front.jpg';" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white py-16">
+    <div class="wrap">
+      <div class="rail">
+        <div class="grid lg:grid-cols-4 gap-12 mb-14">
+          <div class="lg:col-span-1">
+            <div class="flex items-center gap-3 mb-6">
+              <img src="assets/img/khs_neutral.png" alt="KTI" class="h-9 w-auto rounded border border-black/10 bg-white" onerror="this.style.display='none'">
+              <div class="text-sm font-black text-[var(--kti-ink)]">Konwaba Training Institute</div>
+            </div>
+            <p class="text-sm text-black/55 leading-relaxed font-medium">
+              Professional training and skills development with structured programme pathways.
+            </p>
+          </div>
+
+          <div>
+            <div class="section-kicker mb-5">Links</div>
+            <div class="grid gap-3 text-sm font-semibold text-black/65">
+              <a href="index.html#explorer" class="hover:text-[var(--kti-maroon)]">Programme Explorer</a>
+              <a href="programmes.html" class="hover:text-[var(--kti-maroon)]">Catalogue</a>
+              <a href="about.html" class="hover:text-[var(--kti-maroon)]">About</a>
+              <a href="contact.html" class="hover:text-[var(--kti-maroon)]">Contact</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="section-kicker mb-5">Compliance</div>
+            <div class="grid gap-3 text-sm font-semibold text-black/65">
+              <a href="privacy.html" class="hover:text-[var(--kti-maroon)]">Privacy (POPIA)</a>
+              <a href="terms.html" class="hover:text-[var(--kti-maroon)]">Terms</a>
+              <a href="#" class="hover:text-[var(--kti-maroon)]">Verification process</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="section-kicker mb-5">Contact</div>
+            <div class="text-sm font-semibold text-black/65">
+              <div>045 838 1000</div>
+              <div class="mt-1">info@konwabatraining.co.za</div>
+              <div class="text-[11px] text-black/45 mt-4 leading-relaxed">
+                We process enquiries in line with POPIA and only use your details to respond.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-8 border-t border-black/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-black uppercase tracking-widest text-black/35">
+          <div>© <span id="year"></span> Konwaba Training Institute.</div>
+          <div class="flex gap-6">
+            <a href="privacy.html" class="hover:text-black">Privacy</a>
+            <a href="terms.html" class="hover:text-black">Terms</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Enquiry Modal -->
+  <div id="enquiryModalOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-md z-[500] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="enquiryModal" class="fixed inset-0 z-[510] flex items-center justify-center p-4 pointer-events-none">
+    <div class="bg-white w-full max-w-[600px] rounded-[26px] shadow-[0_32px_128px_rgba(0,0,0,0.30)] pointer-events-auto modal-panel overflow-hidden">
+      <div class="bg-[var(--kti-maroon)] p-8 text-white relative">
+        <h3 class="text-2xl font-black">Request a verification pack</h3>
+        <p class="text-[11px] font-semibold uppercase tracking-widest opacity-75 mt-1">Accreditation & compliance</p>
+        <button onclick="toggleEnquiryModal()" class="absolute top-7 right-7 text-white/60 hover:text-white" aria-label="Close">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <form class="p-8 grid gap-4" onsubmit="return false;">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Name</label>
+            <input type="text" class="search-input w-full py-3" placeholder="Full name">
+          </div>
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Email</label>
+            <input type="email" class="search-input w-full py-3" placeholder="name@company.co.za">
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Organisation (optional)</label>
+            <input type="text" class="search-input w-full py-3" placeholder="Company / Sponsor">
+          </div>
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Programme area</label>
+            <select class="search-input w-full py-3 appearance-none cursor-pointer">
+              <option>Select</option>
+              <option>Office & Administration</option>
+              <option>Public Service Administration</option>
+              <option>Safety, Health & Quality (OHS)</option>
+              <option>Municipal Finance & Administration</option>
+              <option>Agriculture</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Message</label>
+          <textarea class="search-input w-full py-3 h-24 resize-none" placeholder="What do you need verified? (e.g., programme, learner count, start date)"></textarea>
+        </div>
+
+        <button class="btn btn-primary w-full py-4 mt-2" id="submitEnquiry">Submit request</button>
+        <div id="enquiryToast" class="hidden text-center text-xs font-bold text-emerald-600">Thank you. We will contact you shortly.</div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const $ = (s) => document.querySelector(s);
+      const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+      // Sticky nav state
+      function setNavState(){
+        $('#nav')?.classList.toggle('scrolled', window.scrollY > 40);
+      }
+      window.addEventListener('scroll', setNavState);
+
+      // Hover + click-lock dropdown (same pattern as index)
+      const navItems = $$('.navitem[data-dropdown]');
+      let hoverTimeout = null;
+
+      const closeItem = (item) => {
+        if (!item) return;
+        item.classList.remove('open');
+        item.removeAttribute('data-locked');
+        item.querySelector('button')?.setAttribute('aria-expanded', 'false');
+      };
+
+      const openItem = (item, lock=false) => {
+        clearTimeout(hoverTimeout);
+        navItems.forEach(i => { if(i !== item) closeItem(i); });
+        item.classList.add('open');
+        item.querySelector('button')?.setAttribute('aria-expanded', 'true');
+        if(lock) item.setAttribute('data-locked', 'true');
+      };
+
+      navItems.forEach(item => {
+        const btn = item.querySelector('[data-trigger]');
+        const isDesktop = () => window.innerWidth >= 1024;
+
+        item.addEventListener('mouseenter', () => { if(isDesktop()) openItem(item); });
+        item.addEventListener('mouseleave', () => {
+          if(!isDesktop() || item.hasAttribute('data-locked')) return;
+          hoverTimeout = setTimeout(() => closeItem(item), 220);
+        });
+
+        btn?.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isOpen = item.classList.contains('open');
+          const isLocked = item.hasAttribute('data-locked');
+          if(isOpen && isLocked) closeItem(item);
+          else openItem(item, true);
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if(!e.target.closest('.navitem')) navItems.forEach(i => closeItem(i));
+      });
+
+      // Mobile drawer
+      function toggleDrawer(){
+        const d = $('#mobileDrawer');
+        const o = $('#drawerOverlay');
+        if(!d || !o) return;
+        const isOpen = d.classList.contains('open');
+        if(!isOpen){
+          d.classList.add('open');
+          o.classList.add('open');
+          document.body.classList.add('overflow-hidden');
+        } else {
+          d.classList.remove('open');
+          o.classList.remove('open');
+          document.body.classList.remove('overflow-hidden');
+        }
+      }
+      window.toggleDrawer = toggleDrawer;
+
+      $('#mobileMenuBtn')?.addEventListener('click', toggleDrawer);
+      $('#drawerClose')?.addEventListener('click', toggleDrawer);
+      $('#drawerOverlay')?.addEventListener('click', toggleDrawer);
+
+      // Enquiry modal (same pattern as index)
+      function toggleEnquiryModal(){
+        const modal = $('#enquiryModal');
+        const overlay = $('#enquiryModalOverlay');
+        if(!modal || !overlay) return;
+
+        const isOpen = modal.classList.contains('open');
+        const panel = modal.querySelector('.modal-panel');
+
+        if(!isOpen){
+          modal.classList.add('open', 'pointer-events-auto');
+          overlay.style.opacity = "1";
+          overlay.style.pointerEvents = "auto";
+          panel?.classList.add('open');
+          document.body.classList.add('overflow-hidden');
+        } else {
+          modal.classList.remove('open', 'pointer-events-auto');
+          overlay.style.opacity = "0";
+          overlay.style.pointerEvents = "none";
+          panel?.classList.remove('open');
+          document.body.classList.remove('overflow-hidden');
+        }
+      }
+      window.toggleEnquiryModal = toggleEnquiryModal;
+
+      $('#enquiryModalOverlay')?.addEventListener('click', toggleEnquiryModal);
+      $('#submitEnquiry')?.addEventListener('click', function(){
+        const t = $('#enquiryToast');
+        if(t) t.classList.remove('hidden');
+        this.disabled = true;
+        this.textContent = "Submitted";
+        setTimeout(() => {
+          this.disabled = false;
+          this.textContent = "Submit request";
+          if(t) t.classList.add('hidden');
+          toggleEnquiryModal();
+        }, 1600);
+      });
+
+      // FAQ accordion (single-open)
+      const btns = $$('.faq-btn');
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          // close all
+          btns.forEach(b => {
+            b.setAttribute('aria-expanded','false');
+            b.querySelector('.faq-ico') && (b.querySelector('.faq-ico').textContent = '+');
+            const panel = b.nextElementSibling;
+            panel?.classList.add('hidden');
+          });
+          // open current if not expanded
+          if(!expanded){
+            btn.setAttribute('aria-expanded','true');
+            btn.querySelector('.faq-ico') && (btn.querySelector('.faq-ico').textContent = '–');
+            btn.nextElementSibling?.classList.remove('hidden');
+          }
+        });
+      });
+
+      // Reveal
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+      }, { threshold: 0.1 });
+
+      window.addEventListener('DOMContentLoaded', () => {
+        setNavState();
+        $$('.reveal').forEach(el => io.observe(el));
+        const y = $('#year'); if(y) y.textContent = new Date().getFullYear();
+      });
+    })();
+  </script>
+
+</body>
+</html>

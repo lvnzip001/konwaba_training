@@ -1,0 +1,118 @@
+
+:root {
+	--hue: 223;
+	--bg: hsl(var(--hue),10%,90%);
+	--fg: hsl(var(--hue),10%,10%);
+	--primary: hsl(var(--hue),90%,55%);
+	--trans-dur: 0.3s;
+	--pl-dur: 3s;
+	
+}
+
+.pl {
+    color: hsl(223deg 96.11% 20.72%);
+    font: 1em/1.5 sans-serif;
+    position: fixed;
+	font-size: 7px;
+    width: 9em;
+    height: 12em;
+    transition: opacity 0.25s, visibility 0.25s;
+    z-index: 9999;
+    
+    /* Center horizontally and vertically */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.white-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255); /* Semi-transparent white background */
+    z-index: 9998; /* Below the spinner */
+}
+
+.pl-hidden{
+	opacity: 0;
+	visibility: hidden;
+}
+.pl:before,
+.pl:after {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	width: inherit;
+	height: 12em;
+}
+
+.pl:before {
+	animation:
+		top calc(var(--pl-dur) / 2) linear infinite,
+		flipZ var(--pl-dur) steps(1) infinite;
+	border-radius: 4.5em 0 0 0 / 4em 0 0 0;
+	box-shadow: 0 4em 0 0 inset;
+	top: 0;
+}
+.pl:after {
+	animation: bottom calc(var(--pl-dur) / 2) linear infinite;
+	animation-delay: calc(var(--pl-dur) * -0.25);
+	border-radius: 0 0 0 4.5em / 0 0 0 4em;
+	box-shadow: 0 -4em 0 0 var(--primary) inset;
+	bottom: 0;
+}
+.pl__sr {
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: hsl(var(--hue),10%,10%);
+		--fg: hsl(var(--hue),10%,90%);
+	}
+}
+
+/* Animations */
+@keyframes top {
+	from {
+		animation-timing-function: ease-in;
+		clip-path: polygon(0 0, 123% 0, 123% 70%, 123% 70%, 123% 0, 123% 0, 123% 100%, 0 100%);
+	}
+	50% {
+		animation-timing-function: ease-out;
+		clip-path: polygon(0 0, 0 0, 0 70%, 77% 70%, 77% 0, 100% 0, 100% 100%, 0 100%);
+	}
+	to {
+		clip-path: polygon(0 0, 0 0, 0 70%, 0 70%, 0 0, 100% 0, 100% 100%, 0 100%);
+	}
+}
+@keyframes bottom {
+	from {
+		animation-timing-function: ease-in;
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 30%, 0 30%, 0 100%, 0 100%);
+	}
+	50% {
+		animation-timing-function: ease-out;
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 77% 100%, 77% 30%, 0 30%, 0 100%, 0 100%);
+	}
+	to {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 123% 100%, 123% 30%, 100% 30%, 100% 100%, 0 100%);
+	}
+}
+@keyframes flipZ {
+	from {
+		z-index: 0;
+	}
+	50%,
+	to {
+		z-index: 1;
+	}
+}
