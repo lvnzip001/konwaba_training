@@ -37,20 +37,7 @@
     @media (min-width:1536px){ .wrap{ padding-left:64px; padding-right:64px; } }
     .rail{ max-width:1720px; margin-left:auto; margin-right:auto; }
 
-    header.nav{
-      position: sticky; top:0; z-index:100;
-      background: rgba(255,255,255,.86);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(16,24,40,.06);
-      transition: all .3s var(--kti-ease);
-    }
-    header.nav.scrolled{
-      background: rgba(255,255,255,1);
-      box-shadow: 0 12px 48px rgba(16,24,40,.10);
-    }
-
-    .navitem{ position: relative; }
-       .navitem{
+     .navitem{
     position: relative;
   }
 
@@ -117,6 +104,16 @@
     background: transparent;
     pointer-events:none;
   }
+
+  .mega-dd{
+      left: 50%;
+      width: min(1200px, calc(100vw - 40px));
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      transform: translate(-50%, 12px);
+    }
+    .navitem.open > .mega-dd{ transform: translate(-50%, 0); }
+
+
 
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
@@ -550,11 +547,11 @@
               <div class="p-4 bg-slate-50/60 rounded-lg border border-black/5">
                 <div class="section-kicker mb-4">By Type</div>
                 <div class="grid gap-2">
-                  <a href="programmes.html" data-filter="type:full" class="flex flex-col p-3 hover:bg-white hover:shadow-sm rounded-lg transition-all">
+                  <a href="index.html" data-filter="type:full" class="flex flex-col p-3 hover:bg-white hover:shadow-sm rounded-lg transition-all">
                     <span class="font-black text-sm text-[var(--kti-ink)]">Full Qualifications</span>
                     <span class="text-xs text-black/55">Diplomas and certificates aligned to NQF</span>
                   </a>
-                  <a href="programmes.html" data-filter="type:occupational" class="flex flex-col p-3 hover:bg-white hover:shadow-sm rounded-lg transition-all">
+                  <a href="index.html" data-filter="type:occupational" class="flex flex-col p-3 hover:bg-white hover:shadow-sm rounded-lg transition-all">
                     <span class="font-black text-sm text-[var(--kti-ink)]">Occupational Certificates</span>
                     <span class="text-xs text-black/55">Workplace-oriented outcomes (QCTO-aligned)</span>
                   </a>
@@ -836,9 +833,18 @@
                   Add your full campus address here when finalised for the catalogue.
                 </div>
               </div>
-              <div class="h-[240px] bg-gradient-to-b from-slate-100 to-white flex items-center justify-center text-black/45 font-black">
-                Map placeholder
-              </div>
+               <div class="relative overflow-hidden rounded-[var(--radius-lg)] border-4 border-white shadow-xl transition-all duration-500 hover:shadow-2xl hov-lift">
+                    
+                  <div class="aspect-[21/9] md:aspect-[3/1] w-full">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3356.4443194553224!2d25.6174776!3d-32.1652431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e663e26f8d09f79%3A0x67341996ec86f0c8!2s16%20Cawood%20St%2C%20Cradock%2C%205880!5e0!3m2!1sen!2sza!4v1700000000000!5m2!1sen!2sza" 
+                            class="absolute inset-0 w-full h-full border-0 grayscale-[20%] contrast-[1.1] group-hover:grayscale-0 transition-all duration-700" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
             </div>
 
           </div>
