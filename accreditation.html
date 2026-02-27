@@ -706,7 +706,6 @@
 
         <!-- Mobile Toggle -->
         <div class="lg:hidden flex items-center gap-2">
-          <button class="btn btn-primary text-xs py-2 px-4" onclick="toggleEnquiryModal()">Enquire</button>
           <button id="mobileMenuBtn" class="p-2 rounded-lg bg-slate-100 text-slate-800" aria-label="Menu">
             <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
           </button>
@@ -717,7 +716,7 @@
 
   <!-- Mobile Drawer Overlay -->
   <div id="drawerOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[200] opacity-0 pointer-events-none transition-opacity duration-300"></div>
-  <aside id="mobileDrawer" class="fixed top-0 right-0 h-full w-[360px] max-w-[85vw] bg-white z-[1000] shadow-2xl translate-x-full transition-transform duration-500 ease-in-out p-6 flex flex-col">
+  <aside id="mobileDrawer" class="fixed top-0 right-0 h-full w-[360px] max-w-[85vw] bg-white z-[1100] shadow-2xl translate-x-full transition-transform duration-500 ease-in-out p-6 flex flex-col">
     <div class="flex items-center justify-between mb-8">
       <div class="font-black text-xl text-[var(--kti-maroon)]">Menu</div>
       <button id="drawerClose" class="p-2 bg-slate-100 rounded-full" aria-label="Close menu">
@@ -732,7 +731,9 @@
       <a href="contact.html" class="p-3 font-black text-base border-b border-black/5">Contact</a>
     </div>
     <div class="mt-auto pt-6 border-t border-black/5 flex flex-col gap-3">
-      <button class="btn btn-primary w-full" onclick="toggleEnquiryModal()">Apply / Enquire</button>
+      <button class="btn btn-primary w-full" onclick="toggleEnquiryModal(true); toggleDrawer(false);">
+        Apply / Enquire
+      </button>
       <div class="text-center text-[10px] text-black/40 font-black tracking-widest uppercase">Konwaba Training Institute</div>
     </div>
   </aside>
@@ -1058,8 +1059,8 @@
   </footer>
 
   <!-- Enquiry Modal -->
-  <div id="enquiryModalOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-md z-[500] opacity-0 pointer-events-none transition-opacity duration-300"></div>
-  <div id="enquiryModal" class="fixed inset-0 z-[510] flex items-center justify-center p-4 pointer-events-none">
+ <div id="enquiryModalOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-md z-[1005] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="enquiryModal" class="fixed inset-0 z-[1010] flex items-center justify-center p-4 pointer-events-none">
     <div class="bg-white w-full max-w-[600px] rounded-[26px] shadow-[0_32px_128px_rgba(0,0,0,0.30)] pointer-events-auto modal-panel overflow-hidden">
       <div class="bg-[var(--kti-maroon)] p-8 text-white relative">
         <h3 class="text-2xl font-black">Request a verification pack</h3>
