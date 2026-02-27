@@ -356,15 +356,13 @@
     }
 
     /* Mobile: no clip-path + less padding */
-    @media (max-width:1023.98px){
+     @media (max-width:1023.98px){
       .kti-hero__left{
         clip-path: none;
         width: 100%;
-        border-left: 1px solid rgba(255,255,255,0.05);
-        border-right: 1px solid rgba(255,255,255,0.05);
-        border-radius: 18px;
       }
     }
+
 
     .kti-hero__inner{
       position: relative;
@@ -465,15 +463,13 @@
     }
 
     /* Mobile: media becomes top panel, no negative z-index (critical) */
-    @media (max-width:1023.98px){
+ @media (max-width:1023.98px){
       .kti-hero__grid{ gap: 10px; }
       .kti-hero__media{
         order: -1;
         height: clamp(210px, 30vh, 320px);
-        border-radius: 18px;
         margin-left: 0;
         clip-path: none;
-        border: 1px solid rgba(16,24,40,.06);
       }
       .kti-hero__media::after{
         /* slightly stronger so arrows + pagination stay readable on mobile */
@@ -721,7 +717,7 @@
 
   <!-- Mobile Drawer Overlay -->
   <div id="drawerOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[200] opacity-0 pointer-events-none transition-opacity duration-300"></div>
-  <aside id="mobileDrawer" class="fixed top-0 right-0 h-full w-[360px] max-w-[85vw] bg-white z-[210] shadow-2xl translate-x-full transition-transform duration-500 ease-in-out p-6 flex flex-col">
+  <aside id="mobileDrawer" class="fixed top-0 right-0 h-full w-[360px] max-w-[85vw] bg-white z-[1000] shadow-2xl translate-x-full transition-transform duration-500 ease-in-out p-6 flex flex-col">
     <div class="flex items-center justify-between mb-8">
       <div class="font-black text-xl text-[var(--kti-maroon)]">Menu</div>
       <button id="drawerClose" class="p-2 bg-slate-100 rounded-full" aria-label="Close menu">

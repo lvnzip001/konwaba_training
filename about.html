@@ -37,15 +37,22 @@
     @media (min-width:1536px){ .wrap{ padding-left:64px; padding-right:64px; } }
     .rail{ max-width:1720px; margin-left:auto; margin-right:auto; }
 
-    /* Navigation */
-    header.nav{
+   /* 1. GENERAL / DESKTOP STYLES (Base) */
+    header.nav {
       position: sticky; 
-      top:0;
-      z-index:1000;
+      top: 0;
+      z-index: 1000; /* This stays 1000 by default */
       background: rgba(255,255,255,.84);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(16,24,40,.06);
       transition: all .3s var(--kti-ease);
+    }
+
+    /* 2. MOBILE OVERRIDES (Specific) */
+    @media (max-width: 1023.98px) {
+      header.nav {
+        z-index: 50; /* Changed from 1000 to 50 for mobile layers */
+      }
     }
     header.nav.scrolled{
       background: rgba(255,255,255,1);
@@ -301,9 +308,6 @@
       .kti-hero__left{
         clip-path: none;
         width: 100%;
-        border-left: 1px solid rgba(255,255,255,0.05);
-        border-right: 1px solid rgba(255,255,255,0.05);
-        border-radius: 18px;
       }
     }
 
@@ -328,7 +332,6 @@
         text-align: center;
       }
     }
-
     .kti-hero__plate{
       background: none;
       border: none;
@@ -338,7 +341,6 @@
       max-width: 720px;
       margin: 0 auto;
     }
-
     .kti-hero__chip{
       display:inline-flex; align-items:center; gap:.55rem;
       padding:.42rem .74rem;
@@ -356,7 +358,6 @@
       background:#22c55e;
       box-shadow:0 0 0 4px rgba(34,197,94,0.18);
     }
-
     .kti-hero__h{
       margin-top: 10px;
       font-weight: 650;
@@ -364,14 +365,12 @@
       line-height: 1.06;
       color: #fff;
     }
-
     .kti-hero__p{
       margin-top: 10px;
       color: rgba(255,255,255,0.70);
       font-weight: 500;
       line-height: 1.7;
     }
-
     .kti-hero__actions{
       margin-top: 14px;
       display: flex;
@@ -387,7 +386,6 @@
         justify-content: center;
       }
     }
-
     /* RIGHT MEDIA */
     .kti-hero__media{
       position: relative;
@@ -411,17 +409,14 @@
       .kti-hero__media{
         order: -1;
         height: clamp(210px, 30vh, 320px);
-        border-radius: 18px;
         margin-left: 0;
         clip-path: none;
-        border: 1px solid rgba(16,24,40,.06);
       }
       .kti-hero__media::after{
         /* slightly stronger so arrows + pagination stay readable on mobile */
         background: linear-gradient(180deg, rgba(16,24,40,.12) 0%, rgba(16,24,40,.28) 100%);
       }
     }
-
     .kti-hero__media img{
       width:100%;
       height:100%;
@@ -431,12 +426,10 @@
       filter: saturate(.98) contrast(1.02);
       border: none;
     }
-
     .fade-left {
       -webkit-mask-image: linear-gradient(to right, transparent, black 10%);
       mask-image: linear-gradient(to right, transparent, black 10%);
     }
-
     .kti-hero__media::after{
       content:"";
       position:absolute; inset:0;
@@ -663,7 +656,7 @@
 
   <!-- Mobile Drawer Overlay -->
   <div id="drawerOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[200] opacity-0 pointer-events-none transition-opacity duration-300"></div>
-  <aside id="mobileDrawer" class="fixed top-0 right-0 h-full w-[360px] max-w-[85vw] bg-white z-[210] shadow-2xl translate-x-full transition-transform duration-500 ease-in-out p-6 flex flex-col">
+  <aside id="mobileDrawer" class="fixed top-0 right-0 h-full w-[360px] max-w-[85vw] bg-white z-[1000] shadow-2xl translate-x-full transition-transform duration-500 ease-in-out p-6 flex flex-col">
     <div class="flex items-center justify-between mb-8">
       <div class="font-black text-xl text-[var(--kti-maroon)]">Menu</div>
       <button id="drawerClose" class="p-2 bg-slate-100 rounded-full" aria-label="Close menu">

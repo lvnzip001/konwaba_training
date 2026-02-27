@@ -110,6 +110,16 @@
       border-bottom: 1px solid rgba(16,24,40,.06);
       transition: all .3s var(--kti-ease);
     }
+
+    
+    /* 2. MOBILE OVERRIDES (Specific) */
+    @media (max-width: 1023.98px) {
+      header.nav {
+        z-index: 50; /* Changed from 1000 to 50 for mobile layers */
+      }
+    }
+    
+
     header.nav.scrolled{
       background: rgba(255,255,255,1);
       box-shadow: 0 12px 48px rgba(16,24,40,.10);
@@ -326,9 +336,6 @@
       .kti-hero__left{
         clip-path: none;
         width: 100%;
-        border-left: 1px solid rgba(255,255,255,0.05);
-        border-right: 1px solid rgba(255,255,255,0.05);
-        border-radius: 18px;
       }
     }
 
@@ -436,10 +443,8 @@
       .kti-hero__media{
         order: -1;
         height: clamp(210px, 30vh, 320px);
-        border-radius: 18px;
         margin-left: 0;
         clip-path: none;
-        border: 1px solid rgba(16,24,40,.06);
       }
       .kti-hero__media::after{
         /* slightly stronger so arrows + pagination stay readable on mobile */
@@ -709,7 +714,7 @@
 
   <!-- Mobile Drawer Overlay -->
   <div id="drawerOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[200] opacity-0 pointer-events-none transition-opacity duration-300"></div>
-  <aside id="mobileDrawer" class="fixed top-0 right-0 h-full w-[360px] max-w-[85vw] bg-white z-[210] shadow-2xl translate-x-full transition-transform duration-500 ease-in-out p-6 flex flex-col">
+  <aside id="mobileDrawer" class="fixed top-0 right-0 h-full w-[360px] max-w-[85vw] bg-white z-[1000] shadow-2xl translate-x-full transition-transform duration-500 ease-in-out p-6 flex flex-col">
     <div class="flex items-center justify-between mb-8">
       <div class="font-black text-xl text-[var(--kti-maroon)]">Menu</div>
       <button id="drawerClose" class="p-2 bg-slate-100 rounded-full" aria-label="Close menu">
@@ -720,7 +725,7 @@
       <a href="index.html" class="p-3 font-black text-base border-b border-black/5">Home</a>
       <a href="#explorer" class="p-3 font-black text-base border-b border-black/5" onclick="toggleDrawer()">Programme Explorer</a>
       <a href="about.html" class="p-3 font-black text-base border-b border-black/5">About KTI</a>
-      <a href="accreditation.html" class="p-3 font-black text-base border-b border-black/5">Accreditation</a>
+      <a href="accreditation.html" class="p-3 font-black text-base border-b border-black/5">Accreditations</a>
       <a href="contact.html" class="p-3 font-black text-base border-b border-black/5">Contact</a>
     </div>
     <div class="mt-auto pt-6 border-t border-black/5 flex flex-col gap-3">
