@@ -1060,9 +1060,11 @@
   </footer>
 
   <!-- Enquiry Modal -->
- <div id="enquiryModalOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-md z-[1005] opacity-0 pointer-events-none transition-opacity duration-300"></div>
-  <div id="enquiryModal" class="fixed inset-0 z-[1010] flex items-center justify-center p-4 pointer-events-none">
-    <div class="bg-white w-full max-w-[600px] rounded-[26px] shadow-[0_32px_128px_rgba(0,0,0,0.30)] pointer-events-auto modal-panel overflow-hidden">
+<div id="enquiryModalOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-md z-[1005] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+<div id="enquiryModal" class="fixed inset-0 z-[1010] flex items-center justify-center p-4 pointer-events-none opacity-0 invisible transition-all duration-300">
+    
+    <div class="bg-white w-full max-w-[600px] rounded-[26px] shadow-[0_32px_128px_rgba(0,0,0,0.30)] modal-panel overflow-hidden">
       <div class="bg-[var(--kti-maroon)] p-8 text-white relative">
         <h3 class="text-2xl font-black">Request a verification pack</h3>
         <p class="text-[11px] font-semibold uppercase tracking-widest opacity-75 mt-1">Accreditation & compliance</p>
@@ -1166,50 +1168,57 @@
       });
 
       // Mobile drawer
-      function toggleDrawer(){
-        const d = $('#mobileDrawer');
-        const o = $('#drawerOverlay');
-        if(!d || !o) return;
+        window.toggleDrawer = () => {
+        const d = $('#mobileDrawer'), o = $('#drawerOverlay');
+        if(!d||!o) return;
         const isOpen = d.classList.contains('open');
-        if(!isOpen){
-          d.classList.add('open');
+
+        if(!isOpen) {
+          d.classList.add('open','translate-x-0');
           o.classList.add('open');
+          o.style.opacity="1";
+          o.style.pointerEvents="auto";
           document.body.classList.add('overflow-hidden');
         } else {
-          d.classList.remove('open');
+          d.classList.remove('open','translate-x-0');
           o.classList.remove('open');
+          o.style.opacity="0";
+          o.style.pointerEvents="none";
           document.body.classList.remove('overflow-hidden');
         }
-      }
-      window.toggleDrawer = toggleDrawer;
-
+      };
       $('#mobileMenuBtn')?.addEventListener('click', toggleDrawer);
       $('#drawerClose')?.addEventListener('click', toggleDrawer);
       $('#drawerOverlay')?.addEventListener('click', toggleDrawer);
 
-      // Enquiry modal (same pattern as index)
-      function toggleEnquiryModal(){
-        const modal = $('#enquiryModal');
-        const overlay = $('#enquiryModalOverlay');
-        if(!modal || !overlay) return;
+    // 2. Update toggleEnquiryModal to close the drawer on open
+    function toggleEnquiryModal() {
+      const modal = $('#enquiryModal');
+      const overlay = $('#enquiryModalOverlay');
+      if (!modal || !overlay) return;
 
-        const isOpen = modal.classList.contains('open');
-        const panel = modal.querySelector('.modal-panel');
+      const isOpen = modal.classList.contains('open');
+      const panel = modal.querySelector('.modal-panel');
 
-        if(!isOpen){
-          modal.classList.add('open', 'pointer-events-auto');
-          overlay.style.opacity = "1";
-          overlay.style.pointerEvents = "auto";
-          panel?.classList.add('open');
-          document.body.classList.add('overflow-hidden');
-        } else {
-          modal.classList.remove('open', 'pointer-events-auto');
-          overlay.style.opacity = "0";
-          overlay.style.pointerEvents = "none";
-          panel?.classList.remove('open');
-          document.body.classList.remove('overflow-hidden');
-        }
+      if (!isOpen) {
+        // --- CRITICAL ADDITION ---
+        toggleDrawer(false); // Force the mobile menu to close
+        
+        modal.classList.add('open', 'pointer-events-auto', 'opacity-100');
+        modal.classList.remove('invisible', 'opacity-0');
+        overlay.style.opacity = "1";
+        overlay.style.pointerEvents = "auto";
+        panel?.classList.add('open');
+        document.body.classList.add('overflow-hidden');
+      } else {
+        modal.classList.remove('open', 'pointer-events-auto', 'opacity-100');
+        modal.classList.add('invisible', 'opacity-0');
+        overlay.style.opacity = "0";
+        overlay.style.pointerEvents = "none";
+        panel?.classList.remove('open');
+        document.body.classList.remove('overflow-hidden');
       }
+    }
       window.toggleEnquiryModal = toggleEnquiryModal;
 
       $('#enquiryModalOverlay')?.addEventListener('click', toggleEnquiryModal);
