@@ -162,6 +162,14 @@
     pointer-events:none;
   }
 
+  #nav.scrolled {
+  background: rgba(255, 255, 255, 0.4); /* Semi-transparent white */
+  backdrop-filter: blur(12px);           /* Frosted glass effect */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding-top: 4px;                      /* Optional: shrink height on scroll */
+  padding-bottom: 4px;
+}
+
     .mega-dd{
       left: 50%;
       width: min(1200px, calc(100vw - 40px));
@@ -591,8 +599,7 @@
   </div>
 
   <!-- Main Navigation -->
-  <header id="nav" class="nav">
-    <div class="wrap">
+<header id="nav" class="sticky top-0 z-[1000] w-full transition-all duration-300" >    <div class="wrap">
       <div class="rail flex items-center justify-between py-4">
         <!-- Logo Branding -->
         <a href="index.html" class="flex items-center gap-3 group min-w-0">
