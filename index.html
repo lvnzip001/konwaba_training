@@ -101,7 +101,7 @@
     .btn-silver:hover{ background:#fdfdfd; border-color: rgba(16,24,40,.20); transform: translateY(-1px); }
 
     /* Navigation */
-    header.nav{
+    /* header.nav{
       position: sticky; 
       top:0;
       z-index:1000;
@@ -109,7 +109,7 @@
       backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(16,24,40,.06);
       transition: all .3s var(--kti-ease);
-    }
+    } */
 
     
     /* 2. MOBILE OVERRIDES (Specific) */
@@ -124,82 +124,88 @@
       background: rgba(255, 255, 255, 0.4);
       box-shadow: 0 12px 48px rgba(16,24,40,.10);
     }
-    /* NAV ITEM WRAPPER */
-  .navitem{
-    position: relative;
-  }
+     .navitem {
+      position: relative;
+    }
 
-  /* TRIGGER BUTTON */
-  .navlink{
-    display:inline-flex;
-    align-items:center;
-    padding: 10px 16px;
-    border-radius: 10px;
-    font-weight: 700;
-    color: rgba(16,24,40,.82);
-    transition: all .2s var(--kti-ease);
-  }
-  .navlink:hover{
-    color: var(--kti-maroon);
-    background: rgba(123,30,58,.05);
-  }
+    /* TRIGGER BUTTON */
+    .navlink {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 700;
+      color: rgba(16, 24, 40, .82);
+      transition: all .2s var(--kti-ease);
+    }
 
-  /* DROPDOWN PANEL */
-  .dd{
-    position:absolute;
-    top: calc(100% + 8px);
-    left:0;
-    min-width: 320px;
-    background: #fff;
-    border: 1px solid rgba(16,24,40,.10);
-    box-shadow: 0 32px 80px rgba(16,24,40,.15);
-    border-radius: 12px;
-    padding: 12px;
+    .navlink:hover {
+      color: var(--kti-maroon);
+      background: rgba(123, 30, 58, .05);
+    }
 
-    /* hidden state */
-    opacity:0;
-    visibility:hidden;
-    transform: translateY(12px);
-    pointer-events:none;
+    /* DROPDOWN PANEL */
+    .dd {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      min-width: 320px;
+      background: #fff;
+      border: 1px solid rgba(16, 24, 40, .10);
+      box-shadow: 0 32px 80px rgba(16, 24, 40, .15);
+      border-radius: 12px;
+      padding: 12px;
 
-    /* THIS FIXES THE GHOST BLOCKER */
-    max-height: 0;
-    overflow: hidden;
+      /* hidden state */
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      pointer-events: none;
 
-    z-index: 9999;
-    transition: all .25s var(--kti-ease);
-  }
+      /* THIS FIXES THE GHOST BLOCKER */
+      max-height: 0;
+      overflow: hidden;
 
-  /* OPEN STATE */
-  .navitem.open > .dd{
-    opacity:1;
-    visibility:visible;
-    transform: translateY(0);
-    pointer-events:auto;
+      z-index: 9999;
+      transition: all .25s var(--kti-ease);
+    }
 
-    /* allow full height */
-    max-height: 1000px;
-  }
+    /* OPEN STATE */
+    .navitem.open>.dd {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
 
-  /* INVISIBLE GAP ABOVE DROPDOWN (for hover stability) */
-  .dd::before{
-    content:"";
-    position:absolute;
-    left:0;
-    right:0;
-    top:-16px;
-    height:16px;
-    background: transparent;
-    pointer-events:none;
-  }
+      /* allow full height */
+      max-height: 1000px;
+    }
 
-    .mega-dd{
+    /* INVISIBLE GAP ABOVE DROPDOWN (for hover stability) */
+    .dd::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -16px;
+      height: 16px;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .mega-dd {
       left: 50%;
       width: min(1200px, calc(100vw - 40px));
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
       transform: translate(-50%, 12px);
     }
-    .navitem.open > .mega-dd{ transform: translate(-50%, 0); }
+
+    .navitem.open>.mega-dd {
+      transform: translate(-50%, 0);
+    }
+
 
     /* Inputs */
     .search-input{
