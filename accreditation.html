@@ -1,378 +1,486 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Accreditation | Konwaba Training Institute</title>
-  <meta name="description" content="Konwaba Training Institute accreditation, quality assurance approach, compliance posture and learner protection commitments." />
+  <meta name="description"
+    content="Konwaba Training Institute accreditation, quality assurance approach, compliance posture and learner protection commitments." />
   <meta name="theme-color" content="#7B1E3A" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
- <style>
+  <style>
     /* =========================================================================
        CORPORATE DESIGN SYSTEM (unchanged)
        ========================================================================= */
-    :root{
-      --kti-maroon:#7B1E3A;
-      --kti-maroon-dark:#5E142C;
-      --kti-ink:#101827;
-      --kti-silver:#D2D8E0;
-      --kti-bg:#F7F8FA;
-      --kti-ease:cubic-bezier(.2,.85,.2,1);
-      --ring: 0 0 0 4px rgba(123,30,58,.14);
+    :root {
+      --kti-maroon: #7B1E3A;
+      --kti-maroon-dark: #5E142C;
+      --kti-ink: #101827;
+      --kti-silver: #D2D8E0;
+      --kti-bg: #F7F8FA;
+      --kti-ease: cubic-bezier(.2, .85, .2, 1);
+      --ring: 0 0 0 4px rgba(123, 30, 58, .14);
     }
 
-    html{ scroll-behavior:smooth; }
-    body{
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
       background: var(--kti-bg);
-      color: rgba(16,24,40,.88);
+      color: rgba(16, 24, 40, .88);
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
     /* Wide layout utilities */
-    .wrap{ width:100%; padding-left:28px; padding-right:28px; }
-    @media (min-width:1024px){ .wrap{ padding-left:44px; padding-right:44px; } }
-    @media (min-width:1536px){ .wrap{ padding-left:64px; padding-right:64px; } }
-    .rail{ max-width:1720px; margin-left:auto; margin-right:auto; }
+    .wrap {
+      width: 100%;
+      padding-left: 28px;
+      padding-right: 28px;
+    }
+
+    @media (min-width:1024px) {
+      .wrap {
+        padding-left: 44px;
+        padding-right: 44px;
+      }
+    }
+
+    @media (min-width:1536px) {
+      .wrap {
+        padding-left: 64px;
+        padding-right: 64px;
+      }
+    }
+
+    .rail {
+      max-width: 1720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
     /* Surfaces */
-    .surface{
-      background: rgba(255,255,255,.92);
+    .surface {
+      background: rgba(255, 255, 255, .92);
       backdrop-filter: blur(16px);
-      border: 1px solid rgba(16,24,40,.08);
-      box-shadow: 0 16px 52px rgba(16,24,40,.08);
+      border: 1px solid rgba(16, 24, 40, .08);
+      box-shadow: 0 16px 52px rgba(16, 24, 40, .08);
       border-radius: 16px;
     }
-    .surface-maroon{
+
+    .surface-maroon {
       background: linear-gradient(135deg, var(--kti-maroon), var(--kti-maroon-dark));
       color: white;
-      border: 1px solid rgba(255,255,255,.10);
+      border: 1px solid rgba(255, 255, 255, .10);
       border-radius: 20px;
     }
-    .card{
-      background:#fff;
-      border: 1px solid rgba(16,24,40,.08);
+
+    .card {
+      background: #fff;
+      border: 1px solid rgba(16, 24, 40, .08);
       border-radius: 16px;
-      box-shadow: 0 10px 28px rgba(16,24,40,.06);
+      box-shadow: 0 10px 28px rgba(16, 24, 40, .06);
       transition: transform .22s var(--kti-ease), box-shadow .22s var(--kti-ease), border-color .22s var(--kti-ease);
     }
-    .card:hover{
+
+    .card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 22px 64px rgba(16,24,40,.12);
-      border-color: rgba(123,30,58,.18);
+      box-shadow: 0 22px 64px rgba(16, 24, 40, .12);
+      border-color: rgba(123, 30, 58, .18);
     }
 
     /* Buttons */
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
-      padding:.9rem 1.3rem;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      padding: .9rem 1.3rem;
       border-radius: 12px;
       font-weight: 700;
       transition: all .2s var(--kti-ease);
-      user-select:none; white-space:nowrap;
+      user-select: none;
+      white-space: nowrap;
     }
-    .btn:active{ transform: scale(0.98); }
-    .btn-primary{
-      color:#fff;
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      color: #fff;
       background: linear-gradient(135deg, var(--kti-maroon), var(--kti-maroon-dark));
-      box-shadow: 0 12px 32px rgba(123,30,58,.25);
+      box-shadow: 0 12px 32px rgba(123, 30, 58, .25);
     }
-    .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 18px 48px rgba(123,30,58,.34); }
-    .btn-silver{
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 48px rgba(123, 30, 58, .34);
+    }
+
+    .btn-silver {
       color: var(--kti-ink);
       background: #fff;
-      border: 1px solid rgba(16,24,40,.12);
-      box-shadow: 0 8px 24px rgba(16,24,40,.06);
+      border: 1px solid rgba(16, 24, 40, .12);
+      box-shadow: 0 8px 24px rgba(16, 24, 40, .06);
     }
-    .btn-silver:hover{ background:#fdfdfd; border-color: rgba(16,24,40,.20); transform: translateY(-1px); }
 
-     .navitem{
-    position: relative;
-  }
+    .btn-silver:hover {
+      background: #fdfdfd;
+      border-color: rgba(16, 24, 40, .20);
+      transform: translateY(-1px);
+    }
 
-  /* TRIGGER BUTTON */
-  .navlink{
-    display:inline-flex;
-    align-items:center;
-    padding: 10px 16px;
-    border-radius: 10px;
-    font-weight: 700;
-    color: rgba(16,24,40,.82);
-    transition: all .2s var(--kti-ease);
-  }
-  .navlink:hover{
-    color: var(--kti-maroon);
-    background: rgba(123,30,58,.05);
-  }
+    .navitem {
+      position: relative;
+    }
 
-  /* DROPDOWN PANEL */
-  .dd{
-    position:absolute;
-    top: calc(100% + 8px);
-    left:0;
-    min-width: 320px;
-    background: #fff;
-    border: 1px solid rgba(16,24,40,.10);
-    box-shadow: 0 32px 80px rgba(16,24,40,.15);
-    border-radius: 12px;
-    padding: 12px;
+    /* TRIGGER BUTTON */
+    .navlink {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 700;
+      color: rgba(16, 24, 40, .82);
+      transition: all .2s var(--kti-ease);
+    }
 
-    /* hidden state */
-    opacity:0;
-    visibility:hidden;
-    transform: translateY(12px);
-    pointer-events:none;
+    .navlink:hover {
+      color: var(--kti-maroon);
+      background: rgba(123, 30, 58, .05);
+    }
 
-    /* THIS FIXES THE GHOST BLOCKER */
-    max-height: 0;
-    overflow: hidden;
+    /* DROPDOWN PANEL */
+    .dd {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      min-width: 320px;
+      background: #fff;
+      border: 1px solid rgba(16, 24, 40, .10);
+      box-shadow: 0 32px 80px rgba(16, 24, 40, .15);
+      border-radius: 12px;
+      padding: 12px;
 
-    z-index: 9999;
-    transition: all .25s var(--kti-ease);
-  }
+      /* hidden state */
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      pointer-events: none;
 
-  /* OPEN STATE */
-  .navitem.open > .dd{
-    opacity:1;
-    visibility:visible;
-    transform: translateY(0);
-    pointer-events:auto;
+      /* THIS FIXES THE GHOST BLOCKER */
+      max-height: 0;
+      overflow: hidden;
 
-    /* allow full height */
-    max-height: 1000px;
-  }
+      z-index: 9999;
+      transition: all .25s var(--kti-ease);
+    }
 
-  /* INVISIBLE GAP ABOVE DROPDOWN (for hover stability) */
-  .dd::before{
-    content:"";
-    position:absolute;
-    left:0;
-    right:0;
-    top:-16px;
-    height:16px;
-    background: transparent;
-    pointer-events:none;
-  }
+    /* OPEN STATE */
+    .navitem.open>.dd {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
 
-  #nav.scrolled {
-  background: rgba(255, 255, 255, 0.4); /* Semi-transparent white */
-  backdrop-filter: blur(12px);           /* Frosted glass effect */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  padding-top: 4px;                      /* Optional: shrink height on scroll */
-  padding-bottom: 4px;
-}
+      /* allow full height */
+      max-height: 1000px;
+    }
 
-    .mega-dd{
+    /* INVISIBLE GAP ABOVE DROPDOWN (for hover stability) */
+    .dd::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -16px;
+      height: 16px;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    #nav.scrolled {
+      background: rgba(255, 255, 255, 0.4);
+      /* Semi-transparent white */
+      backdrop-filter: blur(12px);
+      /* Frosted glass effect */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding-top: 4px;
+      /* Optional: shrink height on scroll */
+      padding-bottom: 4px;
+    }
+
+    .mega-dd {
       left: 50%;
       width: min(1200px, calc(100vw - 40px));
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
       transform: translate(-50%, 12px);
     }
-    .navitem.open > .mega-dd{ transform: translate(-50%, 0); }
+
+    .navitem.open>.mega-dd {
+      transform: translate(-50%, 0);
+    }
 
     /* Inputs */
-    .search-input{
+    .search-input {
       border-radius: 14px;
-      border: 2px solid rgba(16,24,40,.06);
+      border: 2px solid rgba(16, 24, 40, .06);
       padding: 1rem 1.25rem;
       transition: all .2s var(--kti-ease);
       background: #fff;
     }
-    .search-input:focus{ outline:none; border-color: var(--kti-maroon); box-shadow: var(--ring); }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--kti-maroon);
+      box-shadow: var(--ring);
+    }
 
     /* Modules list */
-    .module-item{
-      display: flex; align-items: flex-start; gap: 10px;
-      padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.03);
+    .module-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.03);
     }
-    .module-item:last-child{ border: none; }
-    .check-icon{ color: var(--kti-maroon); font-weight: 900; margin-top: 2px; flex-shrink: 0; }
+
+    .module-item:last-child {
+      border: none;
+    }
+
+    .check-icon {
+      color: var(--kti-maroon);
+      font-weight: 900;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
 
     /* Reveal animation */
-    .reveal{ opacity:0; transform: translateY(18px); transition: all .75s var(--kti-ease); }
-    .reveal.in{ opacity:1; transform: translateY(0); }
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: all .75s var(--kti-ease);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* Modals */
-    .modal-panel{ transform: scale(0.98); opacity:0; transition: all .28s var(--kti-ease); }
-    .modal-panel.open{ transform: scale(1); opacity:1; }
+    .modal-panel {
+      transform: scale(0.98);
+      opacity: 0;
+      transition: all .28s var(--kti-ease);
+    }
+
+    .modal-panel.open {
+      transform: scale(1);
+      opacity: 1;
+    }
 
     /* Utility text styles */
-    .section-kicker{
+    .section-kicker {
       font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: .32em;
-      color: rgba(16,24,40,.45);
+      color: rgba(16, 24, 40, .45);
     }
-    .h-title{
+
+    .h-title {
       color: var(--kti-ink);
       letter-spacing: -0.02em;
     }
-    .p-lead{
-      color: rgba(16,24,40,.60);
+
+    .p-lead {
+      color: rgba(16, 24, 40, .60);
       line-height: 1.75;
       font-weight: 500;
     }
 
     /* Simple image placeholder */
-    .img-ph{
-      background: linear-gradient(180deg, rgba(16,24,40,.04), rgba(16,24,40,.02));
-      border: 1px solid rgba(16,24,40,.06);
+    .img-ph {
+      background: linear-gradient(180deg, rgba(16, 24, 40, .04), rgba(16, 24, 40, .02));
+      border: 1px solid rgba(16, 24, 40, .06);
       border-radius: 16px;
       overflow: hidden;
     }
-    .img-ph img{
-      width:100%; height:100%;
+
+    .img-ph img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       filter: saturate(.95) contrast(1.02);
     }
 
 
     /* Splide customisation */
-    .splide__pagination{
+    .splide__pagination {
       bottom: 16px;
     }
-    .splide__pagination__page{
-      width: 9px; height: 9px;
+
+    .splide__pagination__page {
+      width: 9px;
+      height: 9px;
       opacity: .35;
-      background: rgba(16,24,40,.55);
+      background: rgba(16, 24, 40, .55);
       transform: scale(1);
       transition: all .18s var(--kti-ease);
     }
-    .splide__pagination__page.is-active{
+
+    .splide__pagination__page.is-active {
       opacity: 1;
       background: var(--kti-maroon);
       transform: scale(1.15);
     }
-    .splide__arrow{
-      width: 40px; height: 40px;
+
+    .splide__arrow {
+      width: 40px;
+      height: 40px;
       border-radius: 999px;
-      background: rgba(255,255,255,.85);
-      border: 1px solid rgba(16,24,40,.10);
-      box-shadow: 0 14px 40px rgba(16,24,40,.16);
+      background: rgba(255, 255, 255, .85);
+      border: 1px solid rgba(16, 24, 40, .10);
+      box-shadow: 0 14px 40px rgba(16, 24, 40, .16);
       transition: transform .18s var(--kti-ease), background .18s var(--kti-ease);
     }
-    .splide__arrow:hover{
+
+    .splide__arrow:hover {
       transform: translateY(-1px);
-      background: rgba(255,255,255,.95);
+      background: rgba(255, 255, 255, .95);
     }
-    .splide__arrow svg{
-      fill: rgba(16,24,40,.78);
+
+    .splide__arrow svg {
+      fill: rgba(16, 24, 40, .78);
     }
-    .splide__arrow--prev{
+
+    .splide__arrow--prev {
       left: 1em;
     }
-    .splide__arrow--next{
+
+    .splide__arrow--next {
       right: 1em;
     }
 
     /* glass effect (reused) */
-    .glass{
-      background: rgba(255,255,255,.72);
+    .glass {
+      background: rgba(255, 255, 255, .72);
       backdrop-filter: blur(18px);
-      border: 1px solid rgba(255,255,255,.55);
-      box-shadow: 0 18px 60px rgba(16,24,40,.12);
+      border: 1px solid rgba(255, 255, 255, .55);
+      box-shadow: 0 18px 60px rgba(16, 24, 40, .12);
       border-radius: 18px;
     }
 
-     /* =========================================================================
+    /* =========================================================================
        HERO (mobile friendly refinements – no JS changes)
        ========================================================================= */
 
-    .kti-hero{
+    .kti-hero {
       position: relative;
       width: 100%;
       overflow: hidden;
       background: #fff;
-      border-bottom: 1px solid rgba(16,24,40,.06);
+      border-bottom: 1px solid rgba(16, 24, 40, .06);
     }
 
-    .kti-hero::before{
-      content:"";
-      position:absolute; inset:0;
-      pointer-events:none;
+    .kti-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
       background:
-        radial-gradient(1000px 540px at 14% 18%, rgba(123,30,58,.12), transparent 60%),
-        radial-gradient(900px 620px at 86% 24%, rgba(16,24,40,.10), transparent 62%),
+        radial-gradient(1000px 540px at 14% 18%, rgba(123, 30, 58, .12), transparent 60%),
+        radial-gradient(900px 620px at 86% 24%, rgba(16, 24, 40, .10), transparent 62%),
         linear-gradient(180deg, #ffffff 0%, #F7F8FA 92%);
     }
 
     /* Fix: stable sizing on mobile (previous max-height clamp with 150vh could behave oddly) */
-    .kti-hero__slide{
+    .kti-hero__slide {
       position: relative;
       max-height: clamp(450px, 150vh, 600px);
       padding: 10px 0 12px;
-      display:flex;
+      display: flex;
       align-items: stretch;
     }
-    @media (min-width:1024px){
-      .kti-hero__slide{
+
+    @media (min-width:1024px) {
+      .kti-hero__slide {
         min-height: clamp(360px, 44vh, 475px);
         padding: 12px 0 14px;
       }
     }
 
-    .kti-hero__grid{
+    .kti-hero__grid {
       position: relative;
       width: 100%;
-      display:grid;
+      display: grid;
       grid-template-columns: 1fr;
       gap: 12px;
       align-items: stretch;
     }
-    @media (min-width:1024px){
-      .kti-hero__grid{
+
+    @media (min-width:1024px) {
+      .kti-hero__grid {
         grid-template-columns: 1.06fr .94fr;
         gap: 0;
       }
     }
 
     /* LEFT PANEL */
-    .kti-hero__left{
+    .kti-hero__left {
       position: relative;
       overflow: hidden;
       background: #1a1a1c;
       clip-path: polygon(0% 0%, 100% 0%, 87% 100%, 0% 100%);
       width: calc(100% + 3%);
       z-index: 10;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .kti-hero__left::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
+    .kti-hero__left::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
       background-color: rgba(30, 30, 32, 0.94);
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600' viewBox='0 0 1200 600'%3E%3Cg fill='none'%3E%3Cpath d='M80 80 L180 260 L0 260 Z' stroke='%235E142C' stroke-width='2.2' opacity='0.50'/%3E%3Cpath d='M1020 60 L1120 240 L920 240 Z' stroke='%237B1E3A' stroke-width='2.2' opacity='0.46'/%3E%3Ccircle cx='120' cy='500' r='54' stroke='%23C9CED6' stroke-width='2.2' opacity='0.22'/%3E%3Ccircle cx='1080' cy='480' r='84' stroke='%237B1E3A' stroke-width='2.2' opacity='0.34'/%3E%3Ccircle cx='1050' cy='160' r='44' stroke='%235E142C' stroke-width='2.2' opacity='0.38'/%3E%3C/g%3E%3C/svg%3E");
-      background-repeat:no-repeat;
+      background-repeat: no-repeat;
       background-size: 100% 100%;
       background-position: center;
     }
 
-    @media (min-width:1024px){
-      .kti-hero__left{ border-left: 1px solid rgba(255,255,255,0.05); }
+    @media (min-width:1024px) {
+      .kti-hero__left {
+        border-left: 1px solid rgba(255, 255, 255, 0.05);
+      }
     }
 
     /* Mobile: no clip-path + less padding */
-     @media (max-width:1023.98px){
-      .kti-hero__left{
+    @media (max-width:1023.98px) {
+      .kti-hero__left {
         clip-path: none;
         width: 100%;
       }
     }
 
 
-    .kti-hero__inner{
+    .kti-hero__inner {
       position: relative;
       z-index: 2;
       display: flex;
@@ -382,11 +490,15 @@
       padding: 14px 14px;
       text-align: center;
     }
-    @media (min-width:640px){
-      .kti-hero__inner{ padding: 16px 18px; }
+
+    @media (min-width:640px) {
+      .kti-hero__inner {
+        padding: 16px 18px;
+      }
     }
-    @media (min-width:1024px){
-      .kti-hero__inner{
+
+    @media (min-width:1024px) {
+      .kti-hero__inner {
         padding: 18px 28px;
         max-width: 820px;
         margin-left: clamp(18px, 3vw, 44px);
@@ -394,7 +506,7 @@
       }
     }
 
-    .kti-hero__plate{
+    .kti-hero__plate {
       background: none;
       border: none;
       box-shadow: none;
@@ -404,25 +516,30 @@
       margin: 0 auto;
     }
 
-    .kti-hero__chip{
-      display:inline-flex; align-items:center; gap:.55rem;
-      padding:.42rem .74rem;
-      border-radius:999px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.18);
+    .kti-hero__chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .42rem .74rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       color: #fff;
       font-size: 11px;
       font-weight: 750;
       letter-spacing: .18em;
       text-transform: uppercase;
     }
-    .kti-hero__chip .dot{
-      width:8px; height:8px; border-radius:999px;
-      background:#22c55e;
-      box-shadow:0 0 0 4px rgba(34,197,94,0.18);
+
+    .kti-hero__chip .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
     }
 
-    .kti-hero__h{
+    .kti-hero__h {
       margin-top: 10px;
       font-weight: 650;
       letter-spacing: -0.035em;
@@ -430,14 +547,14 @@
       color: #fff;
     }
 
-    .kti-hero__p{
+    .kti-hero__p {
       margin-top: 10px;
-      color: rgba(255,255,255,0.70);
+      color: rgba(255, 255, 255, 0.70);
       font-weight: 500;
       line-height: 1.7;
     }
 
-    .kti-hero__actions{
+    .kti-hero__actions {
       margin-top: 14px;
       display: flex;
       flex-direction: column;
@@ -445,8 +562,9 @@
       align-items: center;
       justify-content: center;
     }
-    @media (min-width:640px){
-      .kti-hero__actions{
+
+    @media (min-width:640px) {
+      .kti-hero__actions {
         flex-direction: row;
         align-items: center;
         justify-content: center;
@@ -454,42 +572,46 @@
     }
 
     /* RIGHT MEDIA */
-    .kti-hero__media{
+    .kti-hero__media {
       position: relative;
       overflow: hidden;
-      background:#0b1322;
-      box-shadow: 0 26px 84px rgba(16,24,40,.18);
+      background: #0b1322;
+      box-shadow: 0 26px 84px rgba(16, 24, 40, .18);
       z-index: 5;
     }
 
     /* Desktop diagonal */
-    @media (min-width:1024px){
-      .kti-hero__media{
+    @media (min-width:1024px) {
+      .kti-hero__media {
         clip-path: polygon(13% 0%, 100% 0%, 100% 100%, 0% 100%);
         margin-left: -13%;
       }
     }
 
     /* Mobile: media becomes top panel, no negative z-index (critical) */
- @media (max-width:1023.98px){
-      .kti-hero__grid{ gap: 10px; }
-      .kti-hero__media{
+    @media (max-width:1023.98px) {
+      .kti-hero__grid {
+        gap: 10px;
+      }
+
+      .kti-hero__media {
         order: -1;
         height: clamp(210px, 30vh, 320px);
         margin-left: 0;
         clip-path: none;
       }
-      .kti-hero__media::after{
+
+      .kti-hero__media::after {
         /* slightly stronger so arrows + pagination stay readable on mobile */
-        background: linear-gradient(180deg, rgba(16,24,40,.12) 0%, rgba(16,24,40,.28) 100%);
+        background: linear-gradient(180deg, rgba(16, 24, 40, .12) 0%, rgba(16, 24, 40, .28) 100%);
       }
     }
 
-    .kti-hero__media img{
-      width:100%;
-      height:100%;
+    .kti-hero__media img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      display:block;
+      display: block;
       transform: scale(1.03);
       filter: saturate(.98) contrast(1.02);
       border: none;
@@ -500,64 +622,90 @@
       mask-image: linear-gradient(to right, transparent, black 10%);
     }
 
-    .kti-hero__media::after{
-      content:"";
-      position:absolute; inset:0;
-      pointer-events:none;
+    .kti-hero__media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
       background:
-        linear-gradient(90deg, rgba(16,24,40,.24) 0%, rgba(16,24,40,.10) 40%, rgba(16,24,40,.08) 100%);
+        linear-gradient(90deg, rgba(16, 24, 40, .24) 0%, rgba(16, 24, 40, .10) 40%, rgba(16, 24, 40, .08) 100%);
     }
 
     /* Splide arrows + pagination (kept same behaviour, just ensure visible on mobile media panel) */
-    .kti-hero .splide__arrows{
-      position:absolute;
-      inset:0;
+    .kti-hero .splide__arrows {
+      position: absolute;
+      inset: 0;
       z-index: 20;
-      pointer-events:none;
+      pointer-events: none;
     }
-    .kti-hero .splide__arrow{
-      pointer-events:auto;
-      width: 44px; height: 44px;
+
+    .kti-hero .splide__arrow {
+      pointer-events: auto;
+      width: 44px;
+      height: 44px;
       border-radius: 999px;
-      background: rgba(255,255,255,.86);
-      border: 1px solid rgba(16,24,40,.10);
-      box-shadow: 0 14px 40px rgba(16,24,40,.14);
+      background: rgba(255, 255, 255, .86);
+      border: 1px solid rgba(16, 24, 40, .10);
+      box-shadow: 0 14px 40px rgba(16, 24, 40, .14);
       transition: transform .18s var(--kti-ease), background .18s var(--kti-ease);
     }
-    .kti-hero .splide__arrow:hover{ transform: translateY(-1px); background: rgba(255,255,255,.96); }
-    .kti-hero .splide__arrow svg{ fill: rgba(16,24,40,.78); }
 
-    @media (min-width:1024px){
-      .kti-hero .splide__arrow--prev{
-        left:auto !important;
+    .kti-hero .splide__arrow:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, .96);
+    }
+
+    .kti-hero .splide__arrow svg {
+      fill: rgba(16, 24, 40, .78);
+    }
+
+    @media (min-width:1024px) {
+      .kti-hero .splide__arrow--prev {
+        left: auto !important;
         right: 90px !important;
         top: 50% !important;
         transform: translateY(-50%);
       }
-      .kti-hero .splide__arrow--next{
+
+      .kti-hero .splide__arrow--next {
         right: 26px !important;
         top: 50% !important;
         transform: translateY(-50%);
       }
+
       .kti-hero .splide__arrow--prev:hover,
-      .kti-hero .splide__arrow--next:hover{
+      .kti-hero .splide__arrow--next:hover {
         transform: translateY(calc(-50% - 1px));
       }
     }
 
-    @media (max-width:1023.98px){
-      .kti-hero .splide__arrow--prev{ left:12px !important; bottom:12px !important; top:auto !important; }
-      .kti-hero .splide__arrow--next{ right:12px !important; bottom:12px !important; top:auto !important; }
-      .kti-hero .splide__pagination{ bottom: 12px; }
+    @media (max-width:1023.98px) {
+      .kti-hero .splide__arrow--prev {
+        left: 12px !important;
+        bottom: 12px !important;
+        top: auto !important;
+      }
+
+      .kti-hero .splide__arrow--next {
+        right: 12px !important;
+        bottom: 12px !important;
+        top: auto !important;
+      }
+
+      .kti-hero .splide__pagination {
+        bottom: 12px;
+      }
     }
 
-    .kti-hero .splide__pagination__page{
-      width: 9px; height: 9px;
+    .kti-hero .splide__pagination__page {
+      width: 9px;
+      height: 9px;
       opacity: .32;
-      background: rgba(16,24,40,.55);
+      background: rgba(16, 24, 40, .55);
       transition: all .18s var(--kti-ease);
     }
-    .kti-hero .splide__pagination__page.is-active{
+
+    .kti-hero .splide__pagination__page.is-active {
       opacity: 1;
       background: var(--kti-maroon);
       transform: scale(1.12);
@@ -570,10 +718,25 @@
       mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
       -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
     }
-    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .animate-marquee { display: flex; animation: marquee 35s linear infinite; }
-    .animate-marquee:hover { animation-play-state: paused; }
 
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .animate-marquee {
+      display: flex;
+      animation: marquee 35s linear infinite;
+    }
+
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
   </style>
 </head>
 
@@ -581,15 +744,16 @@
 
   <!-- Utility Bar -->
   <div class="bg-slate-900 text-white py-2 text-[10px] font-bold tracking-[0.2em] uppercase">
-    <div class="max-w-[1536px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0">
+    <div
+      class="max-w-[1536px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0">
       <div class="flex items-center gap-4 sm:gap-6 flex-wrap">
         <span class="flex items-center gap-2">
           <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-             Admissions support
+          Admissions support
         </span>
         <span class="opacity-30 hidden sm:block">|</span>
         <span>• Sponsors & employers</span>
-          <span>• Verification requests</span>
+        <span>• Verification requests</span>
       </div>
       <div class="flex items-center gap-3 sm:gap-4">
         <span class="opacity-60">Nxuba Campus:</span>
@@ -599,22 +763,24 @@
   </div>
 
   <!-- Main Navigation -->
-<header id="nav" class="sticky top-0 z-[1000] w-full transition-all duration-300" >    <div class="wrap">
+  <header id="nav" class="sticky top-0 z-[1000] w-full transition-all duration-300">
+    <div class="wrap">
       <div class="rail flex items-center justify-between py-4">
         <!-- Logo Branding -->
         <a href="index.html" class="flex items-center gap-3 group min-w-0">
-          <img
-            src="assets/img/khs_neutral.png"
-            alt="Konwaba Training Institute"
+          <img src="assets/img/khs_neutral.png" alt="Konwaba Training Institute"
             class="h-11 w-auto rounded-lg border border-black/10 bg-white shadow-sm"
-            onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
-          />
-          <div class="hidden bg-[var(--kti-maroon)] text-white w-11 h-11 rounded-lg flex items-center justify-center font-black text-xl shadow-lg shadow-red-900/20 group-hover:scale-105 transition-transform">K</div>
+            onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');" />
+          <div
+            class="hidden bg-[var(--kti-maroon)] text-white w-11 h-11 rounded-lg flex items-center justify-center font-black text-xl shadow-lg shadow-red-900/20 group-hover:scale-105 transition-transform">
+            K</div>
           <div class="leading-none min-w-0">
-            <div class="text-[15px] font-black text-[var(--kti-ink)] tracking-tight truncate">Konwaba Training Institute</div>
+            <div class="text-[15px] font-black text-[var(--kti-ink)] tracking-tight truncate">Konwaba Training Institute
+            </div>
             <div class="hidden lg:block text-[10px] font-black uppercase tracking-[0.28em] text-black/40 mt-1">
-  Skills Development • Career Pathways
-</div>          </div>
+              Skills Development • Career Pathways
+            </div>
+          </div>
         </a>
 
         <!-- Desktop Nav -->
@@ -622,17 +788,21 @@
           <div class="navitem" data-dropdown="programmes">
             <button class="navlink" aria-haspopup="true" aria-expanded="false" data-trigger>
               Programmes
-              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"/></svg>
+              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7" stroke-width="3" />
+              </svg>
             </button>
             <div class="dd mega-dd">
               <div class="p-4 bg-slate-50/60 rounded-lg border border-black/5">
                 <div class="section-kicker mb-4">By Type</div>
                 <div class="grid gap-2">
-                  <a href="programmes.html" data-filter="type:full" class="flex flex-col p-3 hover:bg-white hover:shadow-sm rounded-lg transition-all">
+                  <a href="programmes.html" data-filter="type:full"
+                    class="flex flex-col p-3 hover:bg-white hover:shadow-sm rounded-lg transition-all">
                     <span class="font-black text-sm text-[var(--kti-ink)]">Full Qualifications</span>
                     <span class="text-xs text-black/55">Diplomas and certificates aligned to NQF</span>
                   </a>
-                  <a href="programmes.html" data-filter="type:occupational" class="flex flex-col p-3 hover:bg-white hover:shadow-sm rounded-lg transition-all">
+                  <a href="programmes.html" data-filter="type:occupational"
+                    class="flex flex-col p-3 hover:bg-white hover:shadow-sm rounded-lg transition-all">
                     <span class="font-black text-sm text-[var(--kti-ink)]">Occupational Certificates</span>
                     <span class="text-xs text-black/55">Workplace-oriented outcomes (QCTO-aligned)</span>
                   </a>
@@ -641,18 +811,28 @@
               <div class="p-4">
                 <div class="section-kicker mb-4">By Sector</div>
                 <div class="grid gap-1">
-                  <a href="programmes.html" data-filter="sector:administration" class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Office & Administration</a>
-                  <a href="programmes.html" data-filter="sector:public_service" class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Public Service Administration</a>
-                  <a href="programmes.html" data-filter="sector:ohs" class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Safety, Health & Quality (OHS)</a>
-                  <a href="programmes.html" data-filter="sector:finance" class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Municipal Finance & Administration</a>
-                  <a href="programmes.html" data-filter="sector:agriculture" class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Agriculture</a>
+                  <a href="index.html#explorer" data-filter="sector:administration"
+                    class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Office &
+                    Administration</a>
+                  <a href="index.html#explorer" data-filter="sector:public_service"
+                    class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Public Service
+                    Administration</a>
+                  <a href="index.html#explorer" data-filter="sector:ohs"
+                    class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Safety, Health &
+                    Quality (OHS)</a>
+                  <a href="index.html#explorer" data-filter="sector:finance"
+                    class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Municipal Finance
+                    & Administration</a>
+                  <a href="index.html#explorer" data-filter="sector:agriculture"
+                    class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Agriculture</a>
                 </div>
               </div>
               <div class="p-4 bg-slate-50/60 rounded-lg border border-black/5">
                 <div class="section-kicker mb-4">Actions</div>
                 <div class="grid gap-3">
                   <a href="programmes.html" class="btn btn-primary text-xs w-full py-2">View Catalogue</a>
-                  <button class="btn btn-silver text-xs w-full py-2" onclick="toggleEnquiryModal()">Request Information</button>
+                  <button class="btn btn-silver text-xs w-full py-2" onclick="toggleEnquiryModal()">Request
+                    Information</button>
                   <div class="text-[11px] text-black/50 leading-relaxed">
                     Need guidance? We can advise on entry requirements and best-fit options.
                   </div>
@@ -664,39 +844,48 @@
           <div class="navitem" data-dropdown="institute">
             <button class="navlink" aria-haspopup="true" aria-expanded="false" data-trigger>
               Institute
-              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"/></svg>
+              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7" stroke-width="3" />
+              </svg>
             </button>
             <div class="dd">
-              <a href="about.html" class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg">
+              <a href="about.html"
+                class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg">
                 <span class="font-black text-sm">About KTI</span>
                 <span class="text-xs text-black/55">Institution overview and approach</span>
               </a>
 
-                        <a href="successes.html" class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg">
+              <a href="successes.html"
+                class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg">
                 <span class="font-black text-sm">Learner Outcomes</span>
                 <span class="text-xs text-black/55">Success stories and impact</span>
               </a>
-              
-              <a href="accreditation.html" class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg mt-1">
+
+              <a href="accreditation.html"
+                class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg mt-1">
                 <span class="font-black text-sm">Accreditation & Compliance</span>
                 <span class="text-xs text-black/55">Quality assurance and registrations</span>
               </a>
-           
-    
+
+
             </div>
           </div>
 
           <div class="navitem" data-dropdown="umbrella">
             <button class="navlink" aria-haspopup="true" aria-expanded="false" data-trigger>
               Konwaba Group
-              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"/></svg>
+              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7" stroke-width="3" />
+              </svg>
             </button>
             <div class="dd">
-              <a href="https://www.konwabaschools.co.za/primaryschool/home.html" class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg">
+              <a href="https://www.konwabaschools.co.za/primaryschool/home.html"
+                class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg">
                 <span class="font-black text-sm">Primary School</span>
                 <span class="text-xs text-black/55">Foundation phase</span>
               </a>
-              <a href="https://www.konwabaschools.co.za/index.html" class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg mt-1">
+              <a href="https://www.konwabaschools.co.za/index.html"
+                class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg mt-1">
                 <span class="font-black text-sm">High School</span>
                 <span class="text-xs text-black/55">Secondary education</span>
               </a>
@@ -715,7 +904,9 @@
         <!-- Mobile Toggle -->
         <div class="lg:hidden flex items-center gap-2">
           <button id="mobileMenuBtn" class="p-2 rounded-lg bg-slate-100 text-slate-800" aria-label="Menu">
-            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
           </button>
         </div>
       </div>
@@ -723,17 +914,23 @@
   </header>
 
   <!-- Mobile Drawer Overlay -->
-  <div id="drawerOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[200] opacity-0 pointer-events-none transition-opacity duration-300"></div>
-  <aside id="mobileDrawer" class="fixed top-0 right-0 h-full w-[360px] max-w-[85vw] bg-white z-[1100] shadow-2xl translate-x-full transition-transform duration-500 ease-in-out p-6 flex flex-col">
+  <div id="drawerOverlay"
+    class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[200] opacity-0 pointer-events-none transition-opacity duration-300">
+  </div>
+  <aside id="mobileDrawer"
+    class="fixed top-0 right-0 h-full w-[360px] max-w-[85vw] bg-white z-[1100] shadow-2xl translate-x-full transition-transform duration-500 ease-in-out p-6 flex flex-col">
     <div class="flex items-center justify-between mb-8">
       <div class="font-black text-xl text-[var(--kti-maroon)]">Menu</div>
       <button id="drawerClose" class="p-2 bg-slate-100 rounded-full" aria-label="Close menu">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+          <path d="M6 18L18 6M6 6l12 12" />
+        </svg>
       </button>
     </div>
     <div class="flex flex-col gap-2 overflow-y-auto">
       <a href="index.html" class="p-3 font-black text-base border-b border-black/5">Home</a>
-      <a href="#explorer" class="p-3 font-black text-base border-b border-black/5" onclick="toggleDrawer()">Programme Explorer</a>
+      <a href="#explorer" class="p-3 font-black text-base border-b border-black/5" onclick="toggleDrawer()">Programme
+        Explorer</a>
       <a href="about.html" class="p-3 font-black text-base border-b border-black/5">About KTI</a>
       <a href="accreditation.html" class="p-3 font-black text-base border-b border-black/5">Accreditation</a>
       <a href="contact.html" class="p-3 font-black text-base border-b border-black/5">Contact</a>
@@ -742,12 +939,13 @@
       <button class="btn btn-primary w-full" onclick="toggleEnquiryModal(true); toggleDrawer(false);">
         Apply / Enquire
       </button>
-      <div class="text-center text-[10px] text-black/40 font-black tracking-widest uppercase">Konwaba Training Institute</div>
+      <div class="text-center text-[10px] text-black/40 font-black tracking-widest uppercase">Konwaba Training Institute
+      </div>
     </div>
   </aside>
 
 
-  
+
   <!-- HERO (Full Width + Mobile Friendly Stack) -->
   <section class="kti-hero">
     <div id="heroSplide" class="splide hero-splide" aria-label="KTI Hero Carousel">
@@ -764,7 +962,8 @@
                     <div class="kti-hero__plate">
                       <div class="flex items-center justify-center gap-4">
                         <div class="kti-hero__chip">
-                          <span class="dot" style="background:#60a5fa; box-shadow:0 0 0 4px rgba(96,165,250,.16)"></span>
+                          <span class="dot"
+                            style="background:#60a5fa; box-shadow:0 0 0 4px rgba(96,165,250,.16)"></span>
                           <span>Programme Explorer</span>
                         </div>
                       </div>
@@ -778,10 +977,12 @@
                       </p>
 
                       <div class="kti-hero__actions">
-                        <a href="#explorer" class="btn btn-primary w-full sm:w-auto px-8 py-3 text-[11px] uppercase tracking-widest">
+                        <a href="#explorer"
+                          class="btn btn-primary w-full sm:w-auto px-8 py-3 text-[11px] uppercase tracking-widest">
                           Open Explorer
                         </a>
-                        <button class="btn btn-silver w-full sm:w-auto px-8 py-3 text-[11px] uppercase tracking-widest" onclick="toggleEnquiryModal()">
+                        <button class="btn btn-silver w-full sm:w-auto px-8 py-3 text-[11px] uppercase tracking-widest"
+                          onclick="toggleEnquiryModal()">
                           Request Guidance
                         </button>
                       </div>
@@ -790,12 +991,8 @@
                 </div>
 
                 <div class="kti-hero__media" aria-hidden="true">
-                  <img
-                    src="assets/img/professionalcred.avif"
-                    alt=""
-                    loading="lazy"
-                    onerror="this.src='assets/img/grad2_.jpg';"
-                  />
+                  <img src="assets/img/professionalcred.avif" alt="" loading="lazy"
+                    onerror="this.src='assets/img/grad2_.jpg';" />
                 </div>
 
               </div>
@@ -816,9 +1013,11 @@
 
         <div class="max-w-3xl mb-12 reveal">
           <div class="section-kicker mb-3">Quality Frameworks</div>
-          <h2 class="h-title text-3xl sm:text-4xl lg:text-5xl font-black">Aligned to recognised South African training frameworks.</h2>
+          <h2 class="h-title text-3xl sm:text-4xl lg:text-5xl font-black">Aligned to recognised South African training
+            frameworks.</h2>
           <p class="p-lead mt-5">
-            Our delivery, assessment and learner administration approach is designed to align with the governance expectations typically
+            Our delivery, assessment and learner administration approach is designed to align with the governance
+            expectations typically
             required in accredited and occupational training contexts.
           </p>
         </div>
@@ -831,12 +1030,16 @@
             </div>
             <div class="mt-3 font-black text-xl text-[var(--kti-ink)]">Structured learning delivery</div>
             <p class="mt-3 text-sm text-black/55 font-medium leading-relaxed">
-              Consistent facilitation, programme schedules, and learner support processes to drive predictable learning outcomes.
+              Consistent facilitation, programme schedules, and learner support processes to drive predictable learning
+              outcomes.
             </p>
             <div class="mt-5 pt-5 border-t border-black/5 grid gap-2 text-sm text-slate-700 font-semibold">
-              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Delivery planning and session control</div>
-              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Attendance and learner progress tracking</div>
-              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Learning material governance</div>
+              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Delivery
+                planning and session control</div>
+              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Attendance
+                and learner progress tracking</div>
+              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Learning
+                material governance</div>
             </div>
           </div>
 
@@ -850,9 +1053,12 @@
               Defined assessment controls, evidence management, moderation (where required), and results governance.
             </p>
             <div class="mt-5 pt-5 border-t border-black/5 grid gap-2 text-sm text-slate-700 font-semibold">
-              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Controlled assessments and evidence packs</div>
-              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Moderation support where applicable</div>
-              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Secure results capture and reporting</div>
+              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Controlled
+                assessments and evidence packs</div>
+              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Moderation
+                support where applicable</div>
+              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Secure
+                results capture and reporting</div>
             </div>
           </div>
 
@@ -863,12 +1069,16 @@
             </div>
             <div class="mt-3 font-black text-xl text-[var(--kti-ink)]">Documentation and governance</div>
             <p class="mt-3 text-sm text-black/55 font-medium leading-relaxed">
-              Learner administration, document controls and POPIA-aware handling to support transparency and audit readiness.
+              Learner administration, document controls and POPIA-aware handling to support transparency and audit
+              readiness.
             </p>
             <div class="mt-5 pt-5 border-t border-black/5 grid gap-2 text-sm text-slate-700 font-semibold">
-              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Learner records and retention controls</div>
-              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Controlled documentation and templates</div>
-              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> POPIA-aware data handling</div>
+              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Learner
+                records and retention controls</div>
+              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> Controlled
+                documentation and templates</div>
+              <div class="flex items-start gap-2"><span class="text-[var(--kti-maroon)] font-black">✓</span> POPIA-aware
+                data handling</div>
             </div>
           </div>
         </div>
@@ -878,9 +1088,11 @@
           <div class="grid lg:grid-cols-12 gap-10 items-center">
             <div class="lg:col-span-8">
               <div class="section-kicker mb-2">Accreditation and registrations</div>
-              <h3 class="h-title text-2xl sm:text-3xl font-black">We share verification evidence relevant to your programme area.</h3>
+              <h3 class="h-title text-2xl sm:text-3xl font-black">We share verification evidence relevant to your
+                programme area.</h3>
               <p class="p-lead mt-3">
-                Accreditation and registration details depend on the specific programme stream (SETA-aligned, occupational, or other).
+                Accreditation and registration details depend on the specific programme stream (SETA-aligned,
+                occupational, or other).
                 For procurement and verification processes, request a verification pack.
               </p>
             </div>
@@ -890,7 +1102,8 @@
             </div>
           </div>
 
-          <div class="mt-8 pt-6 border-t border-black/5 flex flex-wrap items-center justify-center gap-10 opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+          <div
+            class="mt-8 pt-6 border-t border-black/5 flex flex-wrap items-center justify-center gap-10 opacity-80 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
             <div class="font-black text-lg tracking-tight text-slate-700">DHET</div>
             <div class="font-black text-lg tracking-tight text-slate-700">QCTO</div>
             <div class="font-black text-lg tracking-tight text-slate-700">LGSETA</div>
@@ -909,9 +1122,11 @@
       <div class="rail">
         <div class="max-w-3xl mb-10 reveal">
           <div class="section-kicker mb-3">FAQ</div>
-          <h2 class="h-title text-3xl sm:text-4xl lg:text-5xl font-black">Accreditation questions, answered clearly.</h2>
+          <h2 class="h-title text-3xl sm:text-4xl lg:text-5xl font-black">Accreditation questions, answered clearly.
+          </h2>
           <p class="p-lead mt-5">
-            If you’re a learner, sponsor, employer or procurement team, these answers cover the usual verification topics.
+            If you’re a learner, sponsor, employer or procurement team, these answers cover the usual verification
+            topics.
           </p>
         </div>
 
@@ -920,58 +1135,72 @@
             <div class="surface p-3">
               <!-- Accordion items -->
               <div class="divide-y divide-black/5">
-                <button class="faq-btn w-full text-left p-5 flex items-start justify-between gap-6" aria-expanded="false">
+                <button class="faq-btn w-full text-left p-5 flex items-start justify-between gap-6"
+                  aria-expanded="false">
                   <div>
                     <div class="font-black text-[var(--kti-ink)]">Is KTI accredited?</div>
-                    <div class="text-sm text-black/55 font-medium mt-1">Accreditation depends on the specific programme stream.</div>
+                    <div class="text-sm text-black/55 font-medium mt-1">Accreditation depends on the specific programme
+                      stream.</div>
                   </div>
                   <span class="faq-ico mt-1 text-[var(--kti-maroon)] font-black text-lg">+</span>
                 </button>
                 <div class="faq-panel hidden px-5 pb-5">
                   <p class="text-sm text-black/60 font-medium leading-relaxed">
-                    KTI provides programmes across different training streams. Some are delivered under recognised accreditation or registration
-                    frameworks (where applicable). For formal verification, request the verification pack and specify the programme you are checking.
+                    KTI provides programmes across different training streams. Some are delivered under recognised
+                    accreditation or registration
+                    frameworks (where applicable). For formal verification, request the verification pack and specify
+                    the programme you are checking.
                   </p>
                 </div>
 
-                <button class="faq-btn w-full text-left p-5 flex items-start justify-between gap-6" aria-expanded="false">
+                <button class="faq-btn w-full text-left p-5 flex items-start justify-between gap-6"
+                  aria-expanded="false">
                   <div>
                     <div class="font-black text-[var(--kti-ink)]">How do employers verify certificates?</div>
-                    <div class="text-sm text-black/55 font-medium mt-1">We support verification processes for sponsors and employers.</div>
+                    <div class="text-sm text-black/55 font-medium mt-1">We support verification processes for sponsors
+                      and employers.</div>
                   </div>
                   <span class="faq-ico mt-1 text-[var(--kti-maroon)] font-black text-lg">+</span>
                 </button>
                 <div class="faq-panel hidden px-5 pb-5">
                   <p class="text-sm text-black/60 font-medium leading-relaxed">
-                    Employers can submit a verification request with learner details and programme name. We respond with the relevant
+                    Employers can submit a verification request with learner details and programme name. We respond with
+                    the relevant
                     evidence and verification information based on the programme stream and records available.
                   </p>
                 </div>
 
-                <button class="faq-btn w-full text-left p-5 flex items-start justify-between gap-6" aria-expanded="false">
+                <button class="faq-btn w-full text-left p-5 flex items-start justify-between gap-6"
+                  aria-expanded="false">
                   <div>
                     <div class="font-black text-[var(--kti-ink)]">Do you comply with POPIA?</div>
-                    <div class="text-sm text-black/55 font-medium mt-1">We handle information with privacy-aware controls.</div>
+                    <div class="text-sm text-black/55 font-medium mt-1">We handle information with privacy-aware
+                      controls.</div>
                   </div>
                   <span class="faq-ico mt-1 text-[var(--kti-maroon)] font-black text-lg">+</span>
                 </button>
                 <div class="faq-panel hidden px-5 pb-5">
                   <p class="text-sm text-black/60 font-medium leading-relaxed">
-                    KTI is POPIA-aware and uses personal information only for learner administration, delivery, assessment and responding to enquiries.
-                    We do not sell personal information. Where appropriate, information access is limited to authorised staff.
+                    KTI is POPIA-aware and uses personal information only for learner administration, delivery,
+                    assessment and responding to enquiries.
+                    We do not sell personal information. Where appropriate, information access is limited to authorised
+                    staff.
                   </p>
                 </div>
 
-                <button class="faq-btn w-full text-left p-5 flex items-start justify-between gap-6" aria-expanded="false">
+                <button class="faq-btn w-full text-left p-5 flex items-start justify-between gap-6"
+                  aria-expanded="false">
                   <div>
                     <div class="font-black text-[var(--kti-ink)]">What quality checks do you apply?</div>
-                    <div class="text-sm text-black/55 font-medium mt-1">Delivery controls, assessment controls, and documentation governance.</div>
+                    <div class="text-sm text-black/55 font-medium mt-1">Delivery controls, assessment controls, and
+                      documentation governance.</div>
                   </div>
                   <span class="faq-ico mt-1 text-[var(--kti-maroon)] font-black text-lg">+</span>
                 </button>
                 <div class="faq-panel hidden px-5 pb-5">
                   <p class="text-sm text-black/60 font-medium leading-relaxed">
-                    We apply structured delivery planning, evidence management, moderation support where applicable, and controlled administration.
+                    We apply structured delivery planning, evidence management, moderation support where applicable, and
+                    controlled administration.
                     These controls help ensure consistent outcomes and verifiable programme delivery.
                   </p>
                 </div>
@@ -1000,7 +1229,7 @@
 
             <div class="mt-6 overflow-hidden rounded-2xl border border-black/5 bg-white">
               <img src="assets/img/kti_docs.jpg" alt="" class="w-full h-[170px] object-cover"
-                   onerror="this.src='assets/img/campus_front.jpg';" />
+                onerror="this.src='assets/img/campus_front.jpg';" />
             </div>
           </div>
         </div>
@@ -1016,7 +1245,8 @@
         <div class="grid lg:grid-cols-4 gap-12 mb-14">
           <div class="lg:col-span-1">
             <div class="flex items-center gap-3 mb-6">
-              <img src="assets/img/khs_neutral.png" alt="KTI" class="h-9 w-auto rounded border border-black/10 bg-white" onerror="this.style.display='none'">
+              <img src="assets/img/khs_neutral.png" alt="KTI" class="h-9 w-auto rounded border border-black/10 bg-white"
+                onerror="this.style.display='none'">
               <div class="text-sm font-black text-[var(--kti-ink)]">Konwaba Training Institute</div>
             </div>
             <p class="text-sm text-black/55 leading-relaxed font-medium">
@@ -1055,7 +1285,8 @@
           </div>
         </div>
 
-        <div class="pt-8 border-t border-black/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-black uppercase tracking-widest text-black/35">
+        <div
+          class="pt-8 border-t border-black/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-black uppercase tracking-widest text-black/35">
           <div>© <span id="year"></span> Konwaba Training Institute.</div>
           <div class="flex gap-6">
             <a href="privacy.html" class="hover:text-black">Privacy</a>
@@ -1067,16 +1298,23 @@
   </footer>
 
   <!-- Enquiry Modal -->
-<div id="enquiryModalOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-md z-[1005] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="enquiryModalOverlay"
+    class="fixed inset-0 bg-black/50 backdrop-blur-md z-[1005] opacity-0 pointer-events-none transition-opacity duration-300">
+  </div>
 
-<div id="enquiryModal" class="fixed inset-0 z-[1010] flex items-center justify-center p-4 pointer-events-none opacity-0 invisible transition-all duration-300">
-    
-    <div class="bg-white w-full max-w-[600px] rounded-[26px] shadow-[0_32px_128px_rgba(0,0,0,0.30)] modal-panel overflow-hidden">
+  <div id="enquiryModal"
+    class="fixed inset-0 z-[1010] flex items-center justify-center p-4 pointer-events-none opacity-0 invisible transition-all duration-300">
+
+    <div
+      class="bg-white w-full max-w-[600px] rounded-[26px] shadow-[0_32px_128px_rgba(0,0,0,0.30)] modal-panel overflow-hidden">
       <div class="bg-[var(--kti-maroon)] p-8 text-white relative">
         <h3 class="text-2xl font-black">Request a verification pack</h3>
         <p class="text-[11px] font-semibold uppercase tracking-widest opacity-75 mt-1">Accreditation & compliance</p>
-        <button onclick="toggleEnquiryModal()" class="absolute top-7 right-7 text-white/60 hover:text-white" aria-label="Close">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        <button onclick="toggleEnquiryModal()" class="absolute top-7 right-7 text-white/60 hover:text-white"
+          aria-label="Close">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </button>
       </div>
 
@@ -1094,11 +1332,13 @@
 
         <div class="grid sm:grid-cols-2 gap-4">
           <div>
-            <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Organisation (optional)</label>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Organisation
+              (optional)</label>
             <input type="text" class="search-input w-full py-3" placeholder="Company / Sponsor">
           </div>
           <div>
-            <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Programme area</label>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Programme
+              area</label>
             <select class="search-input w-full py-3 appearance-none cursor-pointer">
               <option>Select</option>
               <option>Office & Administration</option>
@@ -1112,22 +1352,24 @@
 
         <div>
           <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Message</label>
-          <textarea class="search-input w-full py-3 h-24 resize-none" placeholder="What do you need verified? (e.g., programme, learner count, start date)"></textarea>
+          <textarea class="search-input w-full py-3 h-24 resize-none"
+            placeholder="What do you need verified? (e.g., programme, learner count, start date)"></textarea>
         </div>
 
         <button class="btn btn-primary w-full py-4 mt-2" id="submitEnquiry">Submit request</button>
-        <div id="enquiryToast" class="hidden text-center text-xs font-bold text-emerald-600">Thank you. We will contact you shortly.</div>
+        <div id="enquiryToast" class="hidden text-center text-xs font-bold text-emerald-600">Thank you. We will contact
+          you shortly.</div>
       </form>
     </div>
   </div>
 
   <script>
-    (function(){
+    (function () {
       const $ = (s) => document.querySelector(s);
       const $$ = (s) => Array.from(document.querySelectorAll(s));
 
       // Sticky nav state
-      function setNavState(){
+      function setNavState() {
         $('#nav')?.classList.toggle('scrolled', window.scrollY > 40);
       }
       window.addEventListener('scroll', setNavState);
@@ -1143,21 +1385,21 @@
         item.querySelector('button')?.setAttribute('aria-expanded', 'false');
       };
 
-      const openItem = (item, lock=false) => {
+      const openItem = (item, lock = false) => {
         clearTimeout(hoverTimeout);
-        navItems.forEach(i => { if(i !== item) closeItem(i); });
+        navItems.forEach(i => { if (i !== item) closeItem(i); });
         item.classList.add('open');
         item.querySelector('button')?.setAttribute('aria-expanded', 'true');
-        if(lock) item.setAttribute('data-locked', 'true');
+        if (lock) item.setAttribute('data-locked', 'true');
       };
 
       navItems.forEach(item => {
         const btn = item.querySelector('[data-trigger]');
         const isDesktop = () => window.innerWidth >= 1024;
 
-        item.addEventListener('mouseenter', () => { if(isDesktop()) openItem(item); });
+        item.addEventListener('mouseenter', () => { if (isDesktop()) openItem(item); });
         item.addEventListener('mouseleave', () => {
-          if(!isDesktop() || item.hasAttribute('data-locked')) return;
+          if (!isDesktop() || item.hasAttribute('data-locked')) return;
           hoverTimeout = setTimeout(() => closeItem(item), 220);
         });
 
@@ -1165,32 +1407,32 @@
           e.preventDefault();
           const isOpen = item.classList.contains('open');
           const isLocked = item.hasAttribute('data-locked');
-          if(isOpen && isLocked) closeItem(item);
+          if (isOpen && isLocked) closeItem(item);
           else openItem(item, true);
         });
       });
 
       document.addEventListener('click', (e) => {
-        if(!e.target.closest('.navitem')) navItems.forEach(i => closeItem(i));
+        if (!e.target.closest('.navitem')) navItems.forEach(i => closeItem(i));
       });
 
       // Mobile drawer
-        window.toggleDrawer = () => {
+      window.toggleDrawer = () => {
         const d = $('#mobileDrawer'), o = $('#drawerOverlay');
-        if(!d||!o) return;
+        if (!d || !o) return;
         const isOpen = d.classList.contains('open');
 
-        if(!isOpen) {
-          d.classList.add('open','translate-x-0');
+        if (!isOpen) {
+          d.classList.add('open', 'translate-x-0');
           o.classList.add('open');
-          o.style.opacity="1";
-          o.style.pointerEvents="auto";
+          o.style.opacity = "1";
+          o.style.pointerEvents = "auto";
           document.body.classList.add('overflow-hidden');
         } else {
-          d.classList.remove('open','translate-x-0');
+          d.classList.remove('open', 'translate-x-0');
           o.classList.remove('open');
-          o.style.opacity="0";
-          o.style.pointerEvents="none";
+          o.style.opacity = "0";
+          o.style.pointerEvents = "none";
           document.body.classList.remove('overflow-hidden');
         }
       };
@@ -1198,46 +1440,46 @@
       $('#drawerClose')?.addEventListener('click', toggleDrawer);
       $('#drawerOverlay')?.addEventListener('click', toggleDrawer);
 
-    // 2. Update toggleEnquiryModal to close the drawer on open
-    function toggleEnquiryModal() {
-      const modal = $('#enquiryModal');
-      const overlay = $('#enquiryModalOverlay');
-      if (!modal || !overlay) return;
+      // 2. Update toggleEnquiryModal to close the drawer on open
+      function toggleEnquiryModal() {
+        const modal = $('#enquiryModal');
+        const overlay = $('#enquiryModalOverlay');
+        if (!modal || !overlay) return;
 
-      const isOpen = modal.classList.contains('open');
-      const panel = modal.querySelector('.modal-panel');
+        const isOpen = modal.classList.contains('open');
+        const panel = modal.querySelector('.modal-panel');
 
-      if (!isOpen) {
-        // --- CRITICAL ADDITION ---
-        toggleDrawer(false); // Force the mobile menu to close
-        
-        modal.classList.add('open', 'pointer-events-auto', 'opacity-100');
-        modal.classList.remove('invisible', 'opacity-0');
-        overlay.style.opacity = "1";
-        overlay.style.pointerEvents = "auto";
-        panel?.classList.add('open');
-        document.body.classList.add('overflow-hidden');
-      } else {
-        modal.classList.remove('open', 'pointer-events-auto', 'opacity-100');
-        modal.classList.add('invisible', 'opacity-0');
-        overlay.style.opacity = "0";
-        overlay.style.pointerEvents = "none";
-        panel?.classList.remove('open');
-        document.body.classList.remove('overflow-hidden');
+        if (!isOpen) {
+          // --- CRITICAL ADDITION ---
+          toggleDrawer(false); // Force the mobile menu to close
+
+          modal.classList.add('open', 'pointer-events-auto', 'opacity-100');
+          modal.classList.remove('invisible', 'opacity-0');
+          overlay.style.opacity = "1";
+          overlay.style.pointerEvents = "auto";
+          panel?.classList.add('open');
+          document.body.classList.add('overflow-hidden');
+        } else {
+          modal.classList.remove('open', 'pointer-events-auto', 'opacity-100');
+          modal.classList.add('invisible', 'opacity-0');
+          overlay.style.opacity = "0";
+          overlay.style.pointerEvents = "none";
+          panel?.classList.remove('open');
+          document.body.classList.remove('overflow-hidden');
+        }
       }
-    }
       window.toggleEnquiryModal = toggleEnquiryModal;
 
       $('#enquiryModalOverlay')?.addEventListener('click', toggleEnquiryModal);
-      $('#submitEnquiry')?.addEventListener('click', function(){
+      $('#submitEnquiry')?.addEventListener('click', function () {
         const t = $('#enquiryToast');
-        if(t) t.classList.remove('hidden');
+        if (t) t.classList.remove('hidden');
         this.disabled = true;
         this.textContent = "Submitted";
         setTimeout(() => {
           this.disabled = false;
           this.textContent = "Submit request";
-          if(t) t.classList.add('hidden');
+          if (t) t.classList.add('hidden');
           toggleEnquiryModal();
         }, 1600);
       });
@@ -1249,14 +1491,14 @@
           const expanded = btn.getAttribute('aria-expanded') === 'true';
           // close all
           btns.forEach(b => {
-            b.setAttribute('aria-expanded','false');
+            b.setAttribute('aria-expanded', 'false');
             b.querySelector('.faq-ico') && (b.querySelector('.faq-ico').textContent = '+');
             const panel = b.nextElementSibling;
             panel?.classList.add('hidden');
           });
           // open current if not expanded
-          if(!expanded){
-            btn.setAttribute('aria-expanded','true');
+          if (!expanded) {
+            btn.setAttribute('aria-expanded', 'true');
             btn.querySelector('.faq-ico') && (btn.querySelector('.faq-ico').textContent = '–');
             btn.nextElementSibling?.classList.remove('hidden');
           }
@@ -1265,16 +1507,17 @@
 
       // Reveal
       const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
       }, { threshold: 0.1 });
 
       window.addEventListener('DOMContentLoaded', () => {
         setNavState();
         $$('.reveal').forEach(el => io.observe(el));
-        const y = $('#year'); if(y) y.textContent = new Date().getFullYear();
+        const y = $('#year'); if (y) y.textContent = new Date().getFullYear();
       });
     })();
   </script>
 
 </body>
+
 </html>

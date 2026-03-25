@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Successes | Konwaba Training Institute</title>
-  <meta name="description" content="Learner outcomes, programme impact and success stories from Konwaba Training Institute (KTI)." />
+  <meta name="description"
+    content="Learner outcomes, programme impact and success stories from Konwaba Training Institute (KTI)." />
   <meta name="theme-color" content="#7B1E3A" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;650;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;650;700;800&display=swap"
+    rel="stylesheet">
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -19,352 +22,468 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 
   <style>
-    :root{
-      --kti-maroon:#7B1E3A;
-      --kti-maroon-dark:#5E142C;
-      --kti-ink:#101827;
-      --kti-silver:#D2D8E0;
-      --kti-bg:#F7F8FA;
-      --kti-ease:cubic-bezier(.2,.85,.2,1);
+    :root {
+      --kti-maroon: #7B1E3A;
+      --kti-maroon-dark: #5E142C;
+      --kti-ink: #101827;
+      --kti-silver: #D2D8E0;
+      --kti-bg: #F7F8FA;
+      --kti-ease: cubic-bezier(.2, .85, .2, 1);
     }
 
-    html{ scroll-behavior:smooth; }
-    body{
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
       background: var(--kti-bg);
-      color: rgba(16,24,40,.88);
+      color: rgba(16, 24, 40, .88);
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
     /* Wide layout */
-    .wrap{ width:100%; padding-left:28px; padding-right:28px; }
-    @media (min-width:1024px){ .wrap{ padding-left:44px; padding-right:44px; } }
-    @media (min-width:1536px){ .wrap{ padding-left:64px; padding-right:64px; } }
-    .rail{ max-width:1720px; margin-left:auto; margin-right:auto; }
+    .wrap {
+      width: 100%;
+      padding-left: 28px;
+      padding-right: 28px;
+    }
+
+    @media (min-width:1024px) {
+      .wrap {
+        padding-left: 44px;
+        padding-right: 44px;
+      }
+    }
+
+    @media (min-width:1536px) {
+      .wrap {
+        padding-left: 64px;
+        padding-right: 64px;
+      }
+    }
+
+    .rail {
+      max-width: 1720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
     /* Surfaces */
-    .surface{
-      background: rgba(255,255,255,.92);
+    .surface {
+      background: rgba(255, 255, 255, .92);
       backdrop-filter: blur(16px);
-      border: 1px solid rgba(16,24,40,.08);
-      box-shadow: 0 16px 52px rgba(16,24,40,.08);
+      border: 1px solid rgba(16, 24, 40, .08);
+      box-shadow: 0 16px 52px rgba(16, 24, 40, .08);
       border-radius: 18px;
     }
-    .card{
-      background:#fff;
-      border: 1px solid rgba(16,24,40,.08);
+
+    .card {
+      background: #fff;
+      border: 1px solid rgba(16, 24, 40, .08);
       border-radius: 18px;
-      box-shadow: 0 10px 28px rgba(16,24,40,.06);
+      box-shadow: 0 10px 28px rgba(16, 24, 40, .06);
       transition: transform .22s var(--kti-ease), box-shadow .22s var(--kti-ease), border-color .22s var(--kti-ease);
       will-change: transform;
     }
-    .card:hover{
+
+    .card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 22px 64px rgba(16,24,40,.12);
-      border-color: rgba(123,30,58,.16);
+      box-shadow: 0 22px 64px rgba(16, 24, 40, .12);
+      border-color: rgba(123, 30, 58, .16);
     }
 
     /* Buttons */
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
       padding: .9rem 1.2rem;
       border-radius: 12px;
       font-weight: 750;
       transition: all .2s var(--kti-ease);
-      user-select:none; white-space:nowrap;
+      user-select: none;
+      white-space: nowrap;
     }
-    .btn:active{ transform: scale(0.99); }
-    .btn-primary{
-      color:#fff;
+
+    .btn:active {
+      transform: scale(0.99);
+    }
+
+    .btn-primary {
+      color: #fff;
       background: linear-gradient(135deg, var(--kti-maroon), var(--kti-maroon-dark));
-      box-shadow: 0 12px 32px rgba(123,30,58,.22);
+      box-shadow: 0 12px 32px rgba(123, 30, 58, .22);
     }
-    .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 18px 48px rgba(123,30,58,.32); }
-    .btn-silver{
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 48px rgba(123, 30, 58, .32);
+    }
+
+    .btn-silver {
       color: var(--kti-ink);
       background: #fff;
-      border: 1px solid rgba(16,24,40,.12);
-      box-shadow: 0 8px 24px rgba(16,24,40,.06);
+      border: 1px solid rgba(16, 24, 40, .12);
+      box-shadow: 0 8px 24px rgba(16, 24, 40, .06);
     }
-    .btn-silver:hover{ background:#fff; border-color: rgba(16,24,40,.18); transform: translateY(-1px); }
+
+    .btn-silver:hover {
+      background: #fff;
+      border-color: rgba(16, 24, 40, .18);
+      transform: translateY(-1px);
+    }
 
     /* Typography */
-    .kicker{
+    .kicker {
       font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: .32em;
-      color: rgba(16,24,40,.45);
+      color: rgba(16, 24, 40, .45);
     }
-    .lead{
-      color: rgba(16,24,40,.60);
+
+    .lead {
+      color: rgba(16, 24, 40, .60);
       line-height: 1.75;
       font-weight: 500;
     }
-    .h-ink{ color: var(--kti-ink); letter-spacing:-0.03em; }
-    .h-lite{ font-weight: 650; letter-spacing:-0.03em; line-height: 1.06; }
 
-    header.nav{
-      position: sticky; 
-      top:0;
-      z-index:1000;
-      background: rgba(255,255,255,.84);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(16,24,40,.06);
-      transition: all .3s var(--kti-ease);
+    .h-ink {
+      color: var(--kti-ink);
+      letter-spacing: -0.03em;
     }
-    header.nav.scrolled{
-      background: rgba(255,255,255,1);
-      box-shadow: 0 12px 48px rgba(16,24,40,.10);
+
+    .h-lite {
+      font-weight: 650;
+      letter-spacing: -0.03em;
+      line-height: 1.06;
     }
+
+
+    header.nav.scrolled {
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0 12px 48px rgba(16, 24, 40, .10);
+    }
+
     /* NAV ITEM WRAPPER */
-  .navitem{
-    position: relative;
-  }
+    .navitem {
+      position: relative;
+    }
 
-  /* TRIGGER BUTTON */
-  .navlink{
-    display:inline-flex;
-    align-items:center;
-    padding: 10px 16px;
-    border-radius: 10px;
-    font-weight: 700;
-    color: rgba(16,24,40,.82);
-    transition: all .2s var(--kti-ease);
-  }
-  .navlink:hover{
-    color: var(--kti-maroon);
-    background: rgba(123,30,58,.05);
-  }
+    /* TRIGGER BUTTON */
+    .navlink {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 700;
+      color: rgba(16, 24, 40, .82);
+      transition: all .2s var(--kti-ease);
+    }
 
-  /* DROPDOWN PANEL */
-  .dd{
-    position:absolute;
-    top: calc(100% + 8px);
-    left:0;
-    min-width: 320px;
-    background: #fff;
-    border: 1px solid rgba(16,24,40,.10);
-    box-shadow: 0 32px 80px rgba(16,24,40,.15);
-    border-radius: 12px;
-    padding: 12px;
+    .navlink:hover {
+      color: var(--kti-maroon);
+      background: rgba(123, 30, 58, .05);
+    }
 
-    /* hidden state */
-    opacity:0;
-    visibility:hidden;
-    transform: translateY(12px);
-    pointer-events:none;
+    /* DROPDOWN PANEL */
+    .dd {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      min-width: 320px;
+      background: #fff;
+      border: 1px solid rgba(16, 24, 40, .10);
+      box-shadow: 0 32px 80px rgba(16, 24, 40, .15);
+      border-radius: 12px;
+      padding: 12px;
 
-    /* THIS FIXES THE GHOST BLOCKER */
-    max-height: 0;
-    overflow: hidden;
+      /* hidden state */
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      pointer-events: none;
 
-    z-index: 9999;
-    transition: all .25s var(--kti-ease);
-  }
+      /* THIS FIXES THE GHOST BLOCKER */
+      max-height: 0;
+      overflow: hidden;
 
-  /* OPEN STATE */
-  .navitem.open > .dd{
-    opacity:1;
-    visibility:visible;
-    transform: translateY(0);
-    pointer-events:auto;
+      z-index: 9999;
+      transition: all .25s var(--kti-ease);
+    }
 
-    /* allow full height */
-    max-height: 1000px;
-  }
+    /* OPEN STATE */
+    .navitem.open>.dd {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
 
-  /* INVISIBLE GAP ABOVE DROPDOWN (for hover stability) */
-  .dd::before{
-    content:"";
-    position:absolute;
-    left:0;
-    right:0;
-    top:-16px;
-    height:16px;
-    background: transparent;
-    pointer-events:none;
-  }
+      /* allow full height */
+      max-height: 1000px;
+    }
 
-    .mega-dd{
+    /* INVISIBLE GAP ABOVE DROPDOWN (for hover stability) */
+    .dd::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -16px;
+      height: 16px;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .mega-dd {
       left: 50%;
       width: min(1200px, calc(100vw - 40px));
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
       transform: translate(-50%, 12px);
     }
-    .navitem.open > .mega-dd{ transform: translate(-50%, 0); }
+
+    .navitem.open>.mega-dd {
+      transform: translate(-50%, 0);
+    }
 
 
     /* Chips */
-    .chip{
-      display:inline-flex; align-items:center; gap:.5rem;
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
       padding: .55rem .85rem;
       border-radius: 999px;
-      border: 1px solid rgba(16,24,40,.10);
-      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(16, 24, 40, .10);
+      background: rgba(255, 255, 255, .82);
       backdrop-filter: blur(12px);
       font-size: 11px;
       font-weight: 800;
       letter-spacing: .16em;
       text-transform: uppercase;
-      color: rgba(16,24,40,.58);
+      color: rgba(16, 24, 40, .58);
       transition: all .18s var(--kti-ease);
     }
-    .chip:hover{ border-color: rgba(123,30,58,.20); color: rgba(123,30,58,.92); }
-    .chip.active{
-      border-color: rgba(123,30,58,.28);
-      background: rgba(123,30,58,.06);
-      color: rgba(123,30,58,.92);
+
+    .chip:hover {
+      border-color: rgba(123, 30, 58, .20);
+      color: rgba(123, 30, 58, .92);
     }
 
-    
+    .chip.active {
+      border-color: rgba(123, 30, 58, .28);
+      background: rgba(123, 30, 58, .06);
+      color: rgba(123, 30, 58, .92);
+    }
+
+
     /* Image placeholder */
-    .img-ph{
-      background: linear-gradient(180deg, rgba(16,24,40,.04), rgba(16,24,40,.02));
-      border: 1px solid rgba(16,24,40,.06);
+    .img-ph {
+      background: linear-gradient(180deg, rgba(16, 24, 40, .04), rgba(16, 24, 40, .02));
+      border: 1px solid rgba(16, 24, 40, .06);
       border-radius: 18px;
       overflow: hidden;
     }
-    .img-ph img{ width:100%; height:100%; object-fit:cover; display:block; filter: saturate(.95) contrast(1.02); }
+
+    .img-ph img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(.95) contrast(1.02);
+    }
 
     /* Reveal (reduced motion safe) */
-    .reveal{ opacity:0; transform: translateY(14px); transition: all .65s var(--kti-ease); }
-    .reveal.in{ opacity:1; transform: translateY(0); }
-    @media (prefers-reduced-motion: reduce){
-      .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
-      .card, .btn{ transition:none !important; }
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: all .65s var(--kti-ease);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+
+      .card,
+      .btn {
+        transition: none !important;
+      }
     }
 
     /* Toast */
-    .toast{
-      border: 1px solid rgba(16,24,40,.10);
-      background: rgba(255,255,255,.90);
+    .toast {
+      border: 1px solid rgba(16, 24, 40, .10);
+      background: rgba(255, 255, 255, .90);
       border-radius: 14px;
-      box-shadow: 0 18px 70px rgba(16,24,40,.12);
+      box-shadow: 0 18px 70px rgba(16, 24, 40, .12);
     }
 
     /* Modal */
-    .modal-panel{ transform: scale(.99); opacity:0; transition: all .24s var(--kti-ease); }
-    .modal-panel.open{ transform: scale(1); opacity:1; }
+    .modal-panel {
+      transform: scale(.99);
+      opacity: 0;
+      transition: all .24s var(--kti-ease);
+    }
+
+    .modal-panel.open {
+      transform: scale(1);
+      opacity: 1;
+    }
 
     /* Micro detail */
-    .divider-soft{ border-top: 1px solid rgba(0,0,0,.06); }
-    .muted{ color: rgba(16,24,40,.55); }
+    .divider-soft {
+      border-top: 1px solid rgba(0, 0, 0, .06);
+    }
+
+    .muted {
+      color: rgba(16, 24, 40, .55);
+    }
 
     /* Efficient: utility bar tags */
-    .tag{
-      display:inline-flex; align-items:center; gap:.5rem;
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
       padding: .35rem .6rem;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color: rgba(255,255,255,.88);
+      border: 1px solid rgba(255, 255, 255, .14);
+      background: rgba(255, 255, 255, .06);
+      color: rgba(255, 255, 255, .88);
       font-size: 10px;
       font-weight: 800;
       letter-spacing: .18em;
       text-transform: uppercase;
     }
-    .dot{ width:6px; height:6px; border-radius:999px; background: #22c55e; }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
 
     /* Compact KPI cards */
-    .kpi{
+    .kpi {
       border-radius: 18px;
-      border: 1px solid rgba(16,24,40,.06);
-      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(16, 24, 40, .06);
+      background: rgba(255, 255, 255, .78);
       backdrop-filter: blur(16px);
-      box-shadow: 0 12px 44px rgba(16,24,40,.08);
+      box-shadow: 0 12px 44px rgba(16, 24, 40, .08);
     }
-    .kpi-num{ font-weight: 650; letter-spacing:-0.02em; color: var(--kti-ink); }
-      /* =========================================================================
+
+    .kpi-num {
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      color: var(--kti-ink);
+    }
+
+    /* =========================================================================
        HERO (mobile friendly refinements – no JS changes)
        ========================================================================= */
 
-    .kti-hero{
+    .kti-hero {
       position: relative;
       width: 100%;
       overflow: hidden;
       background: #fff;
-      border-bottom: 1px solid rgba(16,24,40,.06);
+      border-bottom: 1px solid rgba(16, 24, 40, .06);
     }
 
-    .kti-hero::before{
-      content:"";
-      position:absolute; inset:0;
-      pointer-events:none;
+    .kti-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
       background:
-        radial-gradient(1000px 540px at 14% 18%, rgba(123,30,58,.12), transparent 60%),
-        radial-gradient(900px 620px at 86% 24%, rgba(16,24,40,.10), transparent 62%),
+        radial-gradient(1000px 540px at 14% 18%, rgba(123, 30, 58, .12), transparent 60%),
+        radial-gradient(900px 620px at 86% 24%, rgba(16, 24, 40, .10), transparent 62%),
         linear-gradient(180deg, #ffffff 0%, #F7F8FA 92%);
     }
 
     /* Fix: stable sizing on mobile (previous max-height clamp with 150vh could behave oddly) */
-    .kti-hero__slide{
+    .kti-hero__slide {
       position: relative;
       max-height: clamp(450px, 150vh, 600px);
       padding: 10px 0 12px;
-      display:flex;
+      display: flex;
       align-items: stretch;
     }
-    @media (min-width:1024px){
-      .kti-hero__slide{
+
+    @media (min-width:1024px) {
+      .kti-hero__slide {
         min-height: clamp(360px, 44vh, 475px);
         padding: 12px 0 14px;
       }
     }
 
-    .kti-hero__grid{
+    .kti-hero__grid {
       position: relative;
       width: 100%;
-      display:grid;
+      display: grid;
       grid-template-columns: 1fr;
       gap: 12px;
       align-items: stretch;
     }
-    @media (min-width:1024px){
-      .kti-hero__grid{
+
+    @media (min-width:1024px) {
+      .kti-hero__grid {
         grid-template-columns: 1.06fr .94fr;
         gap: 0;
       }
     }
 
     /* LEFT PANEL */
-    .kti-hero__left{
+    .kti-hero__left {
       position: relative;
       overflow: hidden;
       background: #1a1a1c;
       clip-path: polygon(0% 0%, 100% 0%, 87% 100%, 0% 100%);
       width: calc(100% + 3%);
       z-index: 10;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .kti-hero__left::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
+    .kti-hero__left::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
       background-color: rgba(30, 30, 32, 0.94);
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600' viewBox='0 0 1200 600'%3E%3Cg fill='none'%3E%3Cpath d='M80 80 L180 260 L0 260 Z' stroke='%235E142C' stroke-width='2.2' opacity='0.50'/%3E%3Cpath d='M1020 60 L1120 240 L920 240 Z' stroke='%237B1E3A' stroke-width='2.2' opacity='0.46'/%3E%3Ccircle cx='120' cy='500' r='54' stroke='%23C9CED6' stroke-width='2.2' opacity='0.22'/%3E%3Ccircle cx='1080' cy='480' r='84' stroke='%237B1E3A' stroke-width='2.2' opacity='0.34'/%3E%3Ccircle cx='1050' cy='160' r='44' stroke='%235E142C' stroke-width='2.2' opacity='0.38'/%3E%3C/g%3E%3C/svg%3E");
-      background-repeat:no-repeat;
+      background-repeat: no-repeat;
       background-size: 100% 100%;
       background-position: center;
     }
 
-    @media (min-width:1024px){
-      .kti-hero__left{ border-left: 1px solid rgba(255,255,255,0.05); }
+    @media (min-width:1024px) {
+      .kti-hero__left {
+        border-left: 1px solid rgba(255, 255, 255, 0.05);
+      }
     }
 
     /* Mobile: no clip-path + less padding */
-     @media (max-width:1023.98px){
-      .kti-hero__left{
+    @media (max-width:1023.98px) {
+      .kti-hero__left {
         clip-path: none;
         width: 100%;
       }
     }
 
 
-    .kti-hero__inner{
+    .kti-hero__inner {
       position: relative;
       z-index: 2;
       display: flex;
@@ -374,11 +493,15 @@
       padding: 14px 14px;
       text-align: center;
     }
-    @media (min-width:640px){
-      .kti-hero__inner{ padding: 16px 18px; }
+
+    @media (min-width:640px) {
+      .kti-hero__inner {
+        padding: 16px 18px;
+      }
     }
-    @media (min-width:1024px){
-      .kti-hero__inner{
+
+    @media (min-width:1024px) {
+      .kti-hero__inner {
         padding: 18px 28px;
         max-width: 820px;
         margin-left: clamp(18px, 3vw, 44px);
@@ -386,7 +509,7 @@
       }
     }
 
-    .kti-hero__plate{
+    .kti-hero__plate {
       background: none;
       border: none;
       box-shadow: none;
@@ -396,25 +519,30 @@
       margin: 0 auto;
     }
 
-    .kti-hero__chip{
-      display:inline-flex; align-items:center; gap:.55rem;
-      padding:.42rem .74rem;
-      border-radius:999px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.18);
+    .kti-hero__chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .42rem .74rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       color: #fff;
       font-size: 11px;
       font-weight: 750;
       letter-spacing: .18em;
       text-transform: uppercase;
     }
-    .kti-hero__chip .dot{
-      width:8px; height:8px; border-radius:999px;
-      background:#22c55e;
-      box-shadow:0 0 0 4px rgba(34,197,94,0.18);
+
+    .kti-hero__chip .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
     }
 
-    .kti-hero__h{
+    .kti-hero__h {
       margin-top: 10px;
       font-weight: 650;
       letter-spacing: -0.035em;
@@ -422,14 +550,14 @@
       color: #fff;
     }
 
-    .kti-hero__p{
+    .kti-hero__p {
       margin-top: 10px;
-      color: rgba(255,255,255,0.70);
+      color: rgba(255, 255, 255, 0.70);
       font-weight: 500;
       line-height: 1.7;
     }
 
-    .kti-hero__actions{
+    .kti-hero__actions {
       margin-top: 14px;
       display: flex;
       flex-direction: column;
@@ -437,8 +565,9 @@
       align-items: center;
       justify-content: center;
     }
-    @media (min-width:640px){
-      .kti-hero__actions{
+
+    @media (min-width:640px) {
+      .kti-hero__actions {
         flex-direction: row;
         align-items: center;
         justify-content: center;
@@ -446,42 +575,46 @@
     }
 
     /* RIGHT MEDIA */
-    .kti-hero__media{
+    .kti-hero__media {
       position: relative;
       overflow: hidden;
-      background:#0b1322;
-      box-shadow: 0 26px 84px rgba(16,24,40,.18);
+      background: #0b1322;
+      box-shadow: 0 26px 84px rgba(16, 24, 40, .18);
       z-index: 5;
     }
 
     /* Desktop diagonal */
-    @media (min-width:1024px){
-      .kti-hero__media{
+    @media (min-width:1024px) {
+      .kti-hero__media {
         clip-path: polygon(13% 0%, 100% 0%, 100% 100%, 0% 100%);
         margin-left: -13%;
       }
     }
 
     /* Mobile: media becomes top panel, no negative z-index (critical) */
- @media (max-width:1023.98px){
-      .kti-hero__grid{ gap: 10px; }
-      .kti-hero__media{
+    @media (max-width:1023.98px) {
+      .kti-hero__grid {
+        gap: 10px;
+      }
+
+      .kti-hero__media {
         order: -1;
         height: clamp(210px, 30vh, 320px);
         margin-left: 0;
         clip-path: none;
       }
-      .kti-hero__media::after{
+
+      .kti-hero__media::after {
         /* slightly stronger so arrows + pagination stay readable on mobile */
-        background: linear-gradient(180deg, rgba(16,24,40,.12) 0%, rgba(16,24,40,.28) 100%);
+        background: linear-gradient(180deg, rgba(16, 24, 40, .12) 0%, rgba(16, 24, 40, .28) 100%);
       }
     }
 
-    .kti-hero__media img{
-      width:100%;
-      height:100%;
+    .kti-hero__media img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      display:block;
+      display: block;
       transform: scale(1.03);
       filter: saturate(.98) contrast(1.02);
       border: none;
@@ -492,64 +625,90 @@
       mask-image: linear-gradient(to right, transparent, black 10%);
     }
 
-    .kti-hero__media::after{
-      content:"";
-      position:absolute; inset:0;
-      pointer-events:none;
+    .kti-hero__media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
       background:
-        linear-gradient(90deg, rgba(16,24,40,.24) 0%, rgba(16,24,40,.10) 40%, rgba(16,24,40,.08) 100%);
+        linear-gradient(90deg, rgba(16, 24, 40, .24) 0%, rgba(16, 24, 40, .10) 40%, rgba(16, 24, 40, .08) 100%);
     }
 
     /* Splide arrows + pagination (kept same behaviour, just ensure visible on mobile media panel) */
-    .kti-hero .splide__arrows{
-      position:absolute;
-      inset:0;
+    .kti-hero .splide__arrows {
+      position: absolute;
+      inset: 0;
       z-index: 20;
-      pointer-events:none;
+      pointer-events: none;
     }
-    .kti-hero .splide__arrow{
-      pointer-events:auto;
-      width: 44px; height: 44px;
+
+    .kti-hero .splide__arrow {
+      pointer-events: auto;
+      width: 44px;
+      height: 44px;
       border-radius: 999px;
-      background: rgba(255,255,255,.86);
-      border: 1px solid rgba(16,24,40,.10);
-      box-shadow: 0 14px 40px rgba(16,24,40,.14);
+      background: rgba(255, 255, 255, .86);
+      border: 1px solid rgba(16, 24, 40, .10);
+      box-shadow: 0 14px 40px rgba(16, 24, 40, .14);
       transition: transform .18s var(--kti-ease), background .18s var(--kti-ease);
     }
-    .kti-hero .splide__arrow:hover{ transform: translateY(-1px); background: rgba(255,255,255,.96); }
-    .kti-hero .splide__arrow svg{ fill: rgba(16,24,40,.78); }
 
-    @media (min-width:1024px){
-      .kti-hero .splide__arrow--prev{
-        left:auto !important;
+    .kti-hero .splide__arrow:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, .96);
+    }
+
+    .kti-hero .splide__arrow svg {
+      fill: rgba(16, 24, 40, .78);
+    }
+
+    @media (min-width:1024px) {
+      .kti-hero .splide__arrow--prev {
+        left: auto !important;
         right: 90px !important;
         top: 50% !important;
         transform: translateY(-50%);
       }
-      .kti-hero .splide__arrow--next{
+
+      .kti-hero .splide__arrow--next {
         right: 26px !important;
         top: 50% !important;
         transform: translateY(-50%);
       }
+
       .kti-hero .splide__arrow--prev:hover,
-      .kti-hero .splide__arrow--next:hover{
+      .kti-hero .splide__arrow--next:hover {
         transform: translateY(calc(-50% - 1px));
       }
     }
 
-    @media (max-width:1023.98px){
-      .kti-hero .splide__arrow--prev{ left:12px !important; bottom:12px !important; top:auto !important; }
-      .kti-hero .splide__arrow--next{ right:12px !important; bottom:12px !important; top:auto !important; }
-      .kti-hero .splide__pagination{ bottom: 12px; }
+    @media (max-width:1023.98px) {
+      .kti-hero .splide__arrow--prev {
+        left: 12px !important;
+        bottom: 12px !important;
+        top: auto !important;
+      }
+
+      .kti-hero .splide__arrow--next {
+        right: 12px !important;
+        bottom: 12px !important;
+        top: auto !important;
+      }
+
+      .kti-hero .splide__pagination {
+        bottom: 12px;
+      }
     }
 
-    .kti-hero .splide__pagination__page{
-      width: 9px; height: 9px;
+    .kti-hero .splide__pagination__page {
+      width: 9px;
+      height: 9px;
       opacity: .32;
-      background: rgba(16,24,40,.55);
+      background: rgba(16, 24, 40, .55);
       transition: all .18s var(--kti-ease);
     }
-    .kti-hero .splide__pagination__page.is-active{
+
+    .kti-hero .splide__pagination__page.is-active {
       opacity: 1;
       background: var(--kti-maroon);
       transform: scale(1.12);
@@ -562,26 +721,42 @@
       mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
       -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
     }
-    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .animate-marquee { display: flex; animation: marquee 35s linear infinite; }
-    .animate-marquee:hover { animation-play-state: paused; }
 
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .animate-marquee {
+      display: flex;
+      animation: marquee 35s linear infinite;
+    }
+
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
   </style>
 </head>
 
 <body>
 
-<!-- Utility Bar -->
+  <!-- Utility Bar -->
   <div class="bg-slate-900 text-white py-2 text-[10px] font-bold tracking-[0.2em] uppercase">
-    <div class="max-w-[1536px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0">
+    <div
+      class="max-w-[1536px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0">
       <div class="flex items-center gap-4 sm:gap-6 flex-wrap">
         <span class="flex items-center gap-2">
           <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-             Admissions support
+          Admissions support
         </span>
         <span class="opacity-30 hidden sm:block">|</span>
         <span>• Sponsors & employers</span>
-          <span>• Verification requests</span>
+        <span>• Verification requests</span>
       </div>
       <div class="flex items-center gap-3 sm:gap-4">
         <span class="opacity-60">Nxuba Campus:</span>
@@ -596,18 +771,19 @@
       <div class="rail flex items-center justify-between py-4">
         <!-- Logo Branding -->
         <a href="index.html" class="flex items-center gap-3 group min-w-0">
-          <img
-            src="assets/img/khs_neutral.png"
-            alt="Konwaba Training Institute"
+          <img src="assets/img/khs_neutral.png" alt="Konwaba Training Institute"
             class="h-11 w-auto rounded-lg border border-black/10 bg-white shadow-sm"
-            onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
-          />
-          <div class="hidden bg-[var(--kti-maroon)] text-white w-11 h-11 rounded-lg flex items-center justify-center font-black text-xl shadow-lg shadow-red-900/20 group-hover:scale-105 transition-transform">K</div>
+            onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');" />
+          <div
+            class="hidden bg-[var(--kti-maroon)] text-white w-11 h-11 rounded-lg flex items-center justify-center font-black text-xl shadow-lg shadow-red-900/20 group-hover:scale-105 transition-transform">
+            K</div>
           <div class="leading-none min-w-0">
-            <div class="text-[15px] font-black text-[var(--kti-ink)] tracking-tight truncate">Konwaba Training Institute</div>
+            <div class="text-[15px] font-black text-[var(--kti-ink)] tracking-tight truncate">Konwaba Training Institute
+            </div>
             <div class="hidden lg:block text-[10px] font-black uppercase tracking-[0.28em] text-black/40 mt-1">
-  Skills Development • Career Pathways
-</div>          </div>
+              Skills Development • Career Pathways
+            </div>
+          </div>
         </a>
 
         <!-- Desktop Nav -->
@@ -615,17 +791,21 @@
           <div class="navitem" data-dropdown="programmes">
             <button class="navlink" aria-haspopup="true" aria-expanded="false" data-trigger>
               Programmes
-              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"/></svg>
+              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7" stroke-width="3" />
+              </svg>
             </button>
             <div class="dd mega-dd">
               <div class="p-4 bg-slate-50/60 rounded-lg border border-black/5">
                 <div class="section-kicker mb-4">By Type</div>
                 <div class="grid gap-2">
-                  <a href="programmes.html" data-filter="type:full" class="flex flex-col p-3 hover:bg-white hover:shadow-sm rounded-lg transition-all">
+                  <a href="programmes.html" data-filter="type:full"
+                    class="flex flex-col p-3 hover:bg-white hover:shadow-sm rounded-lg transition-all">
                     <span class="font-black text-sm text-[var(--kti-ink)]">Full Qualifications</span>
                     <span class="text-xs text-black/55">Diplomas and certificates aligned to NQF</span>
                   </a>
-                  <a href="programmes.html" data-filter="type:occupational" class="flex flex-col p-3 hover:bg-white hover:shadow-sm rounded-lg transition-all">
+                  <a href="programmes.html" data-filter="type:occupational"
+                    class="flex flex-col p-3 hover:bg-white hover:shadow-sm rounded-lg transition-all">
                     <span class="font-black text-sm text-[var(--kti-ink)]">Occupational Certificates</span>
                     <span class="text-xs text-black/55">Workplace-oriented outcomes (QCTO-aligned)</span>
                   </a>
@@ -634,18 +814,28 @@
               <div class="p-4">
                 <div class="section-kicker mb-4">By Sector</div>
                 <div class="grid gap-1">
-                  <a href="programmes.html" data-filter="sector:administration" class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Office & Administration</a>
-                  <a href="programmes.html" data-filter="sector:public_service" class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Public Service Administration</a>
-                  <a href="programmes.html" data-filter="sector:ohs" class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Safety, Health & Quality (OHS)</a>
-                  <a href="programmes.html" data-filter="sector:finance" class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Municipal Finance & Administration</a>
-                  <a href="programmes.html" data-filter="sector:agriculture" class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Agriculture</a>
+                  <a href="index.html#explorer" data-filter="sector:administration"
+                    class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Office &
+                    Administration</a>
+                  <a href="index.html#explorer" data-filter="sector:public_service"
+                    class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Public Service
+                    Administration</a>
+                  <a href="index.html#explorer" data-filter="sector:ohs"
+                    class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Safety, Health &
+                    Quality (OHS)</a>
+                  <a href="index.html#explorer" data-filter="sector:finance"
+                    class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Municipal Finance
+                    & Administration</a>
+                  <a href="index.html#explorer" data-filter="sector:agriculture"
+                    class="p-2 text-sm font-semibold hover:text-[var(--kti-maroon)] transition-colors">Agriculture</a>
                 </div>
               </div>
               <div class="p-4 bg-slate-50/60 rounded-lg border border-black/5">
                 <div class="section-kicker mb-4">Actions</div>
                 <div class="grid gap-3">
                   <a href="programmes.html" class="btn btn-primary text-xs w-full py-2">View Catalogue</a>
-                  <button class="btn btn-silver text-xs w-full py-2" onclick="toggleEnquiryModal()">Request Information</button>
+                  <button class="btn btn-silver text-xs w-full py-2" onclick="toggleEnquiryModal()">Request
+                    Information</button>
                   <div class="text-[11px] text-black/50 leading-relaxed">
                     Need guidance? We can advise on entry requirements and best-fit options.
                   </div>
@@ -657,39 +847,46 @@
           <div class="navitem" data-dropdown="institute">
             <button class="navlink" aria-haspopup="true" aria-expanded="false" data-trigger>
               Institute
-              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"/></svg>
+              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7" stroke-width="3" />
+              </svg>
             </button>
             <div class="dd">
-              <a href="about.html" class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg">
+              <a href="about.html"
+                class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg">
                 <span class="font-black text-sm">About KTI</span>
                 <span class="text-xs text-black/55">Institution overview and approach</span>
               </a>
 
-                        <a href="successes.html" class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg">
+              <a href="successes.html"
+                class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg">
                 <span class="font-black text-sm">Learner Outcomes</span>
                 <span class="text-xs text-black/55">Success stories and impact</span>
               </a>
-              
-              <a href="accreditation.html" class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg mt-1">
+
+              <a href="accreditation.html"
+                class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg mt-1">
                 <span class="font-black text-sm">Accreditation & Compliance</span>
                 <span class="text-xs text-black/55">Quality assurance and registrations</span>
               </a>
-           
-    
+
+
             </div>
           </div>
 
           <div class="navitem" data-dropdown="umbrella">
             <button class="navlink" aria-haspopup="true" aria-expanded="false" data-trigger>
               Konwaba Group
-              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"/></svg>
+              <svg class="w-3 h-3 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7" stroke-width="3" />
+              </svg>
             </button>
             <div class="dd">
-              <a href="#" class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg">
+              <a href="https://www.konwabaschools.co.za/primaryschool/home.html" class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg">
                 <span class="font-black text-sm">Primary School</span>
                 <span class="text-xs text-black/55">Foundation phase</span>
               </a>
-              <a href="#" class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg mt-1">
+              <a href="https://www.konwabaschools.co.za/index.html" class="flex flex-col p-3 hover:bg-slate-50 hover:text-[var(--kti-maroon)] rounded-lg mt-1">
                 <span class="font-black text-sm">High School</span>
                 <span class="text-xs text-black/55">Secondary education</span>
               </a>
@@ -709,7 +906,9 @@
         <div class="lg:hidden flex items-center gap-2">
           <button class="btn btn-primary text-xs py-2 px-4" onclick="toggleEnquiryModal()">Enquire</button>
           <button id="mobileMenuBtn" class="p-2 rounded-lg bg-slate-100 text-slate-800" aria-label="Menu">
-            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
           </button>
         </div>
       </div>
@@ -717,29 +916,35 @@
   </header>
 
   <!-- Mobile Drawer Overlay -->
-  <div id="drawerOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[200] opacity-0 pointer-events-none transition-opacity duration-300"></div>
-  <aside id="mobileDrawer" class="fixed top-0 right-0 h-full w-[360px] max-w-[85vw] bg-white z-[1100] shadow-2xl translate-x-full transition-transform duration-500 ease-in-out p-6 flex flex-col">
+  <div id="drawerOverlay"
+    class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[200] opacity-0 pointer-events-none transition-opacity duration-300">
+  </div>
+  <aside id="mobileDrawer"
+    class="fixed top-0 right-0 h-full w-[360px] max-w-[85vw] bg-white z-[1100] shadow-2xl translate-x-full transition-transform duration-500 ease-in-out p-6 flex flex-col">
     <div class="flex items-center justify-between mb-8">
       <div class="font-black text-xl text-[var(--kti-maroon)]">Menu</div>
       <button id="drawerClose" class="p-2 bg-slate-100 rounded-full" aria-label="Close menu">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+          <path d="M6 18L18 6M6 6l12 12" />
+        </svg>
       </button>
     </div>
     <div class="flex flex-col gap-2 overflow-y-auto">
       <a href="index.html" class="p-3 font-black text-base border-b border-black/5">Home</a>
-      <a href="#explorer" class="p-3 font-black text-base border-b border-black/5" onclick="toggleDrawer()">Programme Explorer</a>
+      <a href="index.html#explorer" class="p-3 font-black text-base border-b border-black/5" onclick="toggleDrawer()">Programme
+        Explorer</a>
       <a href="about.html" class="p-3 font-black text-base border-b border-black/5">About KTI</a>
       <a href="accreditation.html" class="p-3 font-black text-base border-b border-black/5">Accreditation</a>
       <a href="contact.html" class="p-3 font-black text-base border-b border-black/5">Contact</a>
     </div>
     <div class="mt-auto pt-6 border-t border-black/5 flex flex-col gap-3">
       <button class="btn btn-primary w-full" onclick="toggleEnquiryModal()">Apply / Enquire</button>
-      <div class="text-center text-[10px] text-black/40 font-black tracking-widest uppercase">Konwaba Training Institute</div>
+      <div class="text-center text-[10px] text-black/40 font-black tracking-widest uppercase">Konwaba Training Institute
+      </div>
     </div>
   </aside>
 
 
-  
   <!-- HERO (Full Width + Mobile Friendly Stack) -->
   <section class="kti-hero">
     <div id="heroSplide" class="splide hero-splide" aria-label="KTI Hero Carousel">
@@ -756,7 +961,8 @@
                     <div class="kti-hero__plate">
                       <div class="flex items-center justify-center gap-4">
                         <div class="kti-hero__chip">
-                          <span class="dot" style="background:#60a5fa; box-shadow:0 0 0 4px rgba(96,165,250,.16)"></span>
+                          <span class="dot"
+                            style="background:#60a5fa; box-shadow:0 0 0 4px rgba(96,165,250,.16)"></span>
                           <span>Programme Explorer</span>
                         </div>
                       </div>
@@ -770,10 +976,12 @@
                       </p>
 
                       <div class="kti-hero__actions">
-                        <a href="#stories" class="btn btn-primary w-full sm:w-auto px-8 py-3 text-[11px] uppercase tracking-widest">
+                        <a href="#stories"
+                          class="btn btn-primary w-full sm:w-auto px-8 py-3 text-[11px] uppercase tracking-widest">
                           View stories
                         </a>
-                        <a href="#impact" class="btn btn-silver w-full sm:w-auto px-8 py-3 text-[11px] uppercase tracking-widest" ">
+                        <a href="#impact"
+                          class="btn btn-silver w-full sm:w-auto px-8 py-3 text-[11px] uppercase tracking-widest" ">
                           Impact overview
                         </a>
                       </div>
@@ -781,88 +989,104 @@
                   </div>
                 </div>
 
-                <div class="kti-hero__media" aria-hidden="true">
-                  <img
-                    src="assets/img/college_1.jpg"
-                    alt=""
-                    loading="lazy"
-                    onerror="this.src='assets/img/grad2_.jpg';"
-                  />
-                </div>
+                <div class=" kti-hero__media" aria-hidden="true">
+                          <img src="assets/img/college_1.jpg" alt="" loading="lazy"
+                            onerror="this.src='assets/img/grad2_.jpg';" />
+                      </div>
 
-              </div>
-            </div>
+                    </div>
+                  </div>
           </li>
-
-
         </ul>
       </div>
     </div>
   </section>
 
   <!-- Our Stats -->
-<section id="impact-section" class="relative bg-white overflow-hidden ">
-  <div class="wrap mb-10 mt-10">
+  <section id="impact-section" class="relative bg-white overflow-hidden ">
+    <div class="wrap mb-10 mt-10">
       <div class="rail">
-    
-
-         <div class="max-w-3xl reveal mb-10">
+        <div class="max-w-3xl reveal mb-10">
           <div class="kicker">Performance Metrics</div>
         </div>
 
-    <div id="impact" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 reveal">
-      
-      <div class="bg-[var(--kti-bg)] p-7 rounded-2xl border-t-4 border-[var(--kti-maroon)] shadow-sm hover:shadow-md transition-all group">
-        <div class="flex items-center justify-between mb-6">
-          <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-[var(--kti-maroon)] shadow-sm">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2m12-10a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        <div id="impact" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 reveal">
+          <div
+            class="bg-[var(--kti-bg)] p-7 rounded-2xl border-t-4 border-[var(--kti-maroon)] shadow-sm hover:shadow-md transition-all group">
+            <div class="flex items-center justify-between mb-6">
+              <div
+                class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-[var(--kti-maroon)] shadow-sm">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2m12-10a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              </div>
+              <span class="text-[var(--kti-maroon)] font-bold text-lg">+</span>
+            </div>
+            <div class="text-[32px] font-heading font-bold text-[var(--kti-ink)] leading-none" data-counter="650">0
+            </div>
+            <div class="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mt-2 mb-4">Learners Trained
+            </div>
+            <p class="text-[11px] text-black/50 font-medium leading-relaxed border-t border-black/5 pt-4">Cumulative
+              across all vocational and academic programmes.</p>
           </div>
-          <span class="text-[var(--kti-maroon)] font-bold text-lg">+</span>
-        </div>
-        <div class="text-[32px] font-heading font-bold text-[var(--kti-ink)] leading-none" data-counter="650">0</div>
-        <div class="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mt-2 mb-4">Learners Trained</div>
-        <p class="text-[11px] text-black/50 font-medium leading-relaxed border-t border-black/5 pt-4">Cumulative across all vocational and academic programmes.</p>
-      </div>
 
-      <div class="bg-[var(--kti-bg)] p-7 rounded-2xl border-t-4 border-[var(--kti-maroon)] shadow-sm hover:shadow-md transition-all group">
-        <div class="flex items-center justify-between mb-6">
-          <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-[var(--kti-maroon)] shadow-sm">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <div
+            class="bg-[var(--kti-bg)] p-7 rounded-2xl border-t-4 border-[var(--kti-maroon)] shadow-sm hover:shadow-md transition-all group">
+            <div class="flex items-center justify-between mb-6">
+              <div
+                class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-[var(--kti-maroon)] shadow-sm">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <span class="text-[var(--kti-maroon)] font-bold text-lg">%</span>
+            </div>
+            <div class="text-[32px] font-heading font-bold text-[var(--kti-ink)] leading-none" data-counter="86">0</div>
+            <div class="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mt-2 mb-4">Completion Rate</div>
+            <p class="text-[11px] text-black/50 font-medium leading-relaxed border-t border-black/5 pt-4">Ensuring
+              high-engagement through rigorous facilitation.</p>
           </div>
-          <span class="text-[var(--kti-maroon)] font-bold text-lg">%</span>
-        </div>
-        <div class="text-[32px] font-heading font-bold text-[var(--kti-ink)] leading-none" data-counter="86">0</div>
-        <div class="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mt-2 mb-4">Completion Rate</div>
-        <p class="text-[11px] text-black/50 font-medium leading-relaxed border-t border-black/5 pt-4">Ensuring high-engagement through rigorous facilitation.</p>
-      </div>
 
-      <div class="bg-[var(--kti-bg)] p-7 rounded-2xl border-t-4 border-[var(--kti-maroon)] shadow-sm hover:shadow-md transition-all group">
-        <div class="flex items-center justify-between mb-6">
-          <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-[var(--kti-maroon)] shadow-sm">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <div
+            class="bg-[var(--kti-bg)] p-7 rounded-2xl border-t-4 border-[var(--kti-maroon)] shadow-sm hover:shadow-md transition-all group">
+            <div class="flex items-center justify-between mb-6">
+              <div
+                class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-[var(--kti-maroon)] shadow-sm">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path
+                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <span class="text-[var(--kti-maroon)] font-bold text-lg">%</span>
+            </div>
+            <div class="text-[32px] font-heading font-bold text-[var(--kti-ink)] leading-none" data-counter="92">0</div>
+            <div class="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mt-2 mb-4">Work Readiness</div>
+            <p class="text-[11px] text-black/50 font-medium leading-relaxed border-t border-black/5 pt-4">Graduates
+              assessed as "Immediate Industry Fit".</p>
           </div>
-          <span class="text-[var(--kti-maroon)] font-bold text-lg">%</span>
-        </div>
-        <div class="text-[32px] font-heading font-bold text-[var(--kti-ink)] leading-none" data-counter="92">0</div>
-        <div class="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mt-2 mb-4">Work Readiness</div>
-        <p class="text-[11px] text-black/50 font-medium leading-relaxed border-t border-black/5 pt-4">Graduates assessed as "Immediate Industry Fit".</p>
-      </div>
 
-      <div class="bg-[var(--kti-bg)] p-7 rounded-2xl border-t-4 border-[var(--kti-maroon)] shadow-sm hover:shadow-md transition-all group">
-        <div class="flex items-center justify-between mb-6">
-          <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-[var(--kti-maroon)] shadow-sm">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.382-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+          <div
+            class="bg-[var(--kti-bg)] p-7 rounded-2xl border-t-4 border-[var(--kti-maroon)] shadow-sm hover:shadow-md transition-all group">
+            <div class="flex items-center justify-between mb-6">
+              <div
+                class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-[var(--kti-maroon)] shadow-sm">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path
+                    d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.382-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                </svg>
+              </div>
+              <span class="text-[var(--kti-maroon)] font-bold text-lg">/5</span>
+            </div>
+            <div class="text-[32px] font-heading font-bold text-[var(--kti-ink)] leading-none" data-counter="4.6"
+              data-decimals="1">0</div>
+            <div class="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mt-2 mb-4">Employer Rating</div>
+            <p class="text-[11px] text-black/50 font-medium leading-relaxed border-t border-black/5 pt-4">Based on
+              post-programme quality assurance.</p>
           </div>
-          <span class="text-[var(--kti-maroon)] font-bold text-lg">/5</span>
-        </div>
-        <div class="text-[32px] font-heading font-bold text-[var(--kti-ink)] leading-none" data-counter="4.6" data-decimals="1">0</div>
-        <div class="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mt-2 mb-4">Employer Rating</div>
-        <p class="text-[11px] text-black/50 font-medium leading-relaxed border-t border-black/5 pt-4">Based on post-programme quality assurance.</p>
-      </div>
 
-    </div>
-  </div>
-</section>
+        </div>
+      </div>
+  </section>
   <!-- FILTER + STORIES -->
   <section id="stories" class="py-16 lg:py-24 bg-white border-y border-black/5">
     <div class="wrap">
@@ -871,7 +1095,8 @@
         <div class="max-w-3xl reveal">
           <div class="kicker">Success Stories</div>
           <h2 class="h-title text-3xl sm:text-4xl lg:text-5xl font-black mt-3">Outcome evidence across key sectors.</h2>
-          <p class="lead mt-5">Use the sector filters to review stories relevant to your interests. These are placeholders — replace with real profiles as you collect them.</p>
+          <p class="lead mt-5">Use the sector filters to review stories relevant to your interests. These are
+            placeholders — replace with real profiles as you collect them.</p>
         </div>
 
         <div class="mt-8 flex flex-wrap gap-2 reveal" role="tablist" aria-label="Story filters">
@@ -889,20 +1114,27 @@
             <div class="flex items-start justify-between gap-3">
               <div>
                 <div class="text-[10px] font-black uppercase tracking-[0.30em] text-black/40">Office & Admin</div>
-                <h3 class="mt-2 text-lg font-black text-[var(--kti-ink)]">Workplace readiness for entry-level administration.</h3>
+                <h3 class="mt-2 text-lg font-black text-[var(--kti-ink)]">Workplace readiness for entry-level
+                  administration.</h3>
               </div>
               <span class="text-[10px] font-black uppercase tracking-widest text-[var(--kti-maroon)]">NQF aligned</span>
             </div>
             <p class="mt-4 text-sm text-black/60 leading-relaxed font-medium">
-              Learner progressed from foundational computing to structured office operations, communication and records management.
+              Learner progressed from foundational computing to structured office operations, communication and records
+              management.
             </p>
             <div class="mt-5 grid gap-2">
-              <div class="flex items-center justify-between text-xs text-black/55"><span>Core competency</span><span class="font-semibold text-black/70">Office operations</span></div>
-              <div class="h-1.5 rounded-full bg-black/5 overflow-hidden"><div class="h-full w-[78%] bg-[var(--kti-maroon)]/80 rounded-full"></div></div>
+              <div class="flex items-center justify-between text-xs text-black/55"><span>Core competency</span><span
+                  class="font-semibold text-black/70">Office operations</span></div>
+              <div class="h-1.5 rounded-full bg-black/5 overflow-hidden">
+                <div class="h-full w-[78%] bg-[var(--kti-maroon)]/80 rounded-full"></div>
+              </div>
             </div>
             <div class="mt-6 pt-5 border-t border-black/5 flex items-center justify-between">
               <span class="text-[10px] font-black uppercase tracking-[0.30em] text-black/35">Case profile</span>
-              <button class="text-[10px] font-black uppercase tracking-[0.28em] text-[var(--kti-maroon)] hover:opacity-80" type="button" data-open-enquiry>
+              <button
+                class="text-[10px] font-black uppercase tracking-[0.28em] text-[var(--kti-maroon)] hover:opacity-80"
+                type="button" data-open-enquiry>
                 Request details →
               </button>
             </div>
@@ -912,20 +1144,28 @@
             <div class="flex items-start justify-between gap-3">
               <div>
                 <div class="text-[10px] font-black uppercase tracking-[0.30em] text-black/40">Public Service</div>
-                <h3 class="mt-2 text-lg font-black text-[var(--kti-ink)]">Improved administrative accuracy and compliance awareness.</h3>
+                <h3 class="mt-2 text-lg font-black text-[var(--kti-ink)]">Improved administrative accuracy and
+                  compliance awareness.</h3>
               </div>
-              <span class="text-[10px] font-black uppercase tracking-widest text-[var(--kti-maroon)]">QCTO pathway</span>
+              <span class="text-[10px] font-black uppercase tracking-widest text-[var(--kti-maroon)]">QCTO
+                pathway</span>
             </div>
             <p class="mt-4 text-sm text-black/60 leading-relaxed font-medium">
-              Training emphasised public sector standards, ethical administration and structured workplace communication.
+              Training emphasised public sector standards, ethical administration and structured workplace
+              communication.
             </p>
             <div class="mt-5 grid gap-2">
-              <div class="flex items-center justify-between text-xs text-black/55"><span>Core competency</span><span class="font-semibold text-black/70">Governance</span></div>
-              <div class="h-1.5 rounded-full bg-black/5 overflow-hidden"><div class="h-full w-[72%] bg-[var(--kti-maroon)]/80 rounded-full"></div></div>
+              <div class="flex items-center justify-between text-xs text-black/55"><span>Core competency</span><span
+                  class="font-semibold text-black/70">Governance</span></div>
+              <div class="h-1.5 rounded-full bg-black/5 overflow-hidden">
+                <div class="h-full w-[72%] bg-[var(--kti-maroon)]/80 rounded-full"></div>
+              </div>
             </div>
             <div class="mt-6 pt-5 border-t border-black/5 flex items-center justify-between">
               <span class="text-[10px] font-black uppercase tracking-[0.30em] text-black/35">Case profile</span>
-              <button class="text-[10px] font-black uppercase tracking-[0.28em] text-[var(--kti-maroon)] hover:opacity-80" type="button" data-open-enquiry>
+              <button
+                class="text-[10px] font-black uppercase tracking-[0.28em] text-[var(--kti-maroon)] hover:opacity-80"
+                type="button" data-open-enquiry>
                 Request details →
               </button>
             </div>
@@ -935,20 +1175,28 @@
             <div class="flex items-start justify-between gap-3">
               <div>
                 <div class="text-[10px] font-black uppercase tracking-[0.30em] text-black/40">OHS</div>
-                <h3 class="mt-2 text-lg font-black text-[var(--kti-ink)]">Safety capability: hazard identification and reporting discipline.</h3>
+                <h3 class="mt-2 text-lg font-black text-[var(--kti-ink)]">Safety capability: hazard identification and
+                  reporting discipline.</h3>
               </div>
-              <span class="text-[10px] font-black uppercase tracking-widest text-[var(--kti-maroon)]">Workplace focus</span>
+              <span class="text-[10px] font-black uppercase tracking-widest text-[var(--kti-maroon)]">Workplace
+                focus</span>
             </div>
             <p class="mt-4 text-sm text-black/60 leading-relaxed font-medium">
-              Learner demonstrated practical readiness: inspections, risk profiling and documentation aligned to policy controls.
+              Learner demonstrated practical readiness: inspections, risk profiling and documentation aligned to policy
+              controls.
             </p>
             <div class="mt-5 grid gap-2">
-              <div class="flex items-center justify-between text-xs text-black/55"><span>Core competency</span><span class="font-semibold text-black/70">Risk controls</span></div>
-              <div class="h-1.5 rounded-full bg-black/5 overflow-hidden"><div class="h-full w-[81%] bg-[var(--kti-maroon)]/80 rounded-full"></div></div>
+              <div class="flex items-center justify-between text-xs text-black/55"><span>Core competency</span><span
+                  class="font-semibold text-black/70">Risk controls</span></div>
+              <div class="h-1.5 rounded-full bg-black/5 overflow-hidden">
+                <div class="h-full w-[81%] bg-[var(--kti-maroon)]/80 rounded-full"></div>
+              </div>
             </div>
             <div class="mt-6 pt-5 border-t border-black/5 flex items-center justify-between">
               <span class="text-[10px] font-black uppercase tracking-[0.30em] text-black/35">Case profile</span>
-              <button class="text-[10px] font-black uppercase tracking-[0.28em] text-[var(--kti-maroon)] hover:opacity-80" type="button" data-open-enquiry>
+              <button
+                class="text-[10px] font-black uppercase tracking-[0.28em] text-[var(--kti-maroon)] hover:opacity-80"
+                type="button" data-open-enquiry>
                 Request details →
               </button>
             </div>
@@ -958,20 +1206,28 @@
             <div class="flex items-start justify-between gap-3">
               <div>
                 <div class="text-[10px] font-black uppercase tracking-[0.30em] text-black/40">Municipal Finance</div>
-                <h3 class="mt-2 text-lg font-black text-[var(--kti-ink)]">Financial process confidence for municipal administration roles.</h3>
+                <h3 class="mt-2 text-lg font-black text-[var(--kti-ink)]">Financial process confidence for municipal
+                  administration roles.</h3>
               </div>
-              <span class="text-[10px] font-black uppercase tracking-widest text-[var(--kti-maroon)]">MFMA aligned</span>
+              <span class="text-[10px] font-black uppercase tracking-widest text-[var(--kti-maroon)]">MFMA
+                aligned</span>
             </div>
             <p class="mt-4 text-sm text-black/60 leading-relaxed font-medium">
-              Competency improvements in financial documentation, job evaluation principles and resource control awareness.
+              Competency improvements in financial documentation, job evaluation principles and resource control
+              awareness.
             </p>
             <div class="mt-5 grid gap-2">
-              <div class="flex items-center justify-between text-xs text-black/55"><span>Core competency</span><span class="font-semibold text-black/70">Finance admin</span></div>
-              <div class="h-1.5 rounded-full bg-black/5 overflow-hidden"><div class="h-full w-[69%] bg-[var(--kti-maroon)]/80 rounded-full"></div></div>
+              <div class="flex items-center justify-between text-xs text-black/55"><span>Core competency</span><span
+                  class="font-semibold text-black/70">Finance admin</span></div>
+              <div class="h-1.5 rounded-full bg-black/5 overflow-hidden">
+                <div class="h-full w-[69%] bg-[var(--kti-maroon)]/80 rounded-full"></div>
+              </div>
             </div>
             <div class="mt-6 pt-5 border-t border-black/5 flex items-center justify-between">
               <span class="text-[10px] font-black uppercase tracking-[0.30em] text-black/35">Case profile</span>
-              <button class="text-[10px] font-black uppercase tracking-[0.28em] text-[var(--kti-maroon)] hover:opacity-80" type="button" data-open-enquiry>
+              <button
+                class="text-[10px] font-black uppercase tracking-[0.28em] text-[var(--kti-maroon)] hover:opacity-80"
+                type="button" data-open-enquiry>
                 Request details →
               </button>
             </div>
@@ -981,7 +1237,8 @@
             <div class="flex items-start justify-between gap-3">
               <div>
                 <div class="text-[10px] font-black uppercase tracking-[0.30em] text-black/40">Agriculture</div>
-                <h3 class="mt-2 text-lg font-black text-[var(--kti-ink)]">Practical farming fundamentals with structured field outcomes.</h3>
+                <h3 class="mt-2 text-lg font-black text-[var(--kti-ink)]">Practical farming fundamentals with structured
+                  field outcomes.</h3>
               </div>
               <span class="text-[10px] font-black uppercase tracking-widest text-[var(--kti-maroon)]">Hands-on</span>
             </div>
@@ -989,12 +1246,17 @@
               Learner gained confidence in production basics, safety standards and consistent operational routines.
             </p>
             <div class="mt-5 grid gap-2">
-              <div class="flex items-center justify-between text-xs text-black/55"><span>Core competency</span><span class="font-semibold text-black/70">Operations</span></div>
-              <div class="h-1.5 rounded-full bg-black/5 overflow-hidden"><div class="h-full w-[76%] bg-[var(--kti-maroon)]/80 rounded-full"></div></div>
+              <div class="flex items-center justify-between text-xs text-black/55"><span>Core competency</span><span
+                  class="font-semibold text-black/70">Operations</span></div>
+              <div class="h-1.5 rounded-full bg-black/5 overflow-hidden">
+                <div class="h-full w-[76%] bg-[var(--kti-maroon)]/80 rounded-full"></div>
+              </div>
             </div>
             <div class="mt-6 pt-5 border-t border-black/5 flex items-center justify-between">
               <span class="text-[10px] font-black uppercase tracking-[0.30em] text-black/35">Case profile</span>
-              <button class="text-[10px] font-black uppercase tracking-[0.28em] text-[var(--kti-maroon)] hover:opacity-80" type="button" data-open-enquiry>
+              <button
+                class="text-[10px] font-black uppercase tracking-[0.28em] text-[var(--kti-maroon)] hover:opacity-80"
+                type="button" data-open-enquiry>
                 Request details →
               </button>
             </div>
@@ -1004,20 +1266,27 @@
             <div class="flex items-start justify-between gap-3">
               <div>
                 <div class="text-[10px] font-black uppercase tracking-[0.30em] text-black/40">Office & Admin</div>
-                <h3 class="mt-2 text-lg font-black text-[var(--kti-ink)]">Professional communication and customer service improvement.</h3>
+                <h3 class="mt-2 text-lg font-black text-[var(--kti-ink)]">Professional communication and customer
+                  service improvement.</h3>
               </div>
               <span class="text-[10px] font-black uppercase tracking-widest text-[var(--kti-maroon)]">Service</span>
             </div>
             <p class="mt-4 text-sm text-black/60 leading-relaxed font-medium">
-              Practical communication standards, record keeping discipline and workflow clarity for day-to-day operations.
+              Practical communication standards, record keeping discipline and workflow clarity for day-to-day
+              operations.
             </p>
             <div class="mt-5 grid gap-2">
-              <div class="flex items-center justify-between text-xs text-black/55"><span>Core competency</span><span class="font-semibold text-black/70">Communication</span></div>
-              <div class="h-1.5 rounded-full bg-black/5 overflow-hidden"><div class="h-full w-[74%] bg-[var(--kti-maroon)]/80 rounded-full"></div></div>
+              <div class="flex items-center justify-between text-xs text-black/55"><span>Core competency</span><span
+                  class="font-semibold text-black/70">Communication</span></div>
+              <div class="h-1.5 rounded-full bg-black/5 overflow-hidden">
+                <div class="h-full w-[74%] bg-[var(--kti-maroon)]/80 rounded-full"></div>
+              </div>
             </div>
             <div class="mt-6 pt-5 border-t border-black/5 flex items-center justify-between">
               <span class="text-[10px] font-black uppercase tracking-[0.30em] text-black/35">Case profile</span>
-              <button class="text-[10px] font-black uppercase tracking-[0.28em] text-[var(--kti-maroon)] hover:opacity-80" type="button" data-open-enquiry>
+              <button
+                class="text-[10px] font-black uppercase tracking-[0.28em] text-[var(--kti-maroon)] hover:opacity-80"
+                type="button" data-open-enquiry>
                 Request details →
               </button>
             </div>
@@ -1028,7 +1297,7 @@
     </div>
   </section>
 
-    <!-- EMPLOYER / PARTNER TESTIMONIALS -->
+  <!-- EMPLOYER / PARTNER TESTIMONIALS -->
   <section class="py-16 lg:py-24 bg-[var(--kti-bg)]">
     <div class="wrap">
       <div class="rail">
@@ -1036,13 +1305,16 @@
         <div class="grid lg:grid-cols-12 gap-10 items-start">
           <div class="lg:col-span-5 reveal">
             <div class="kicker">Stakeholder Feedback</div>
-            <h2 class="h-title text-3xl sm:text-4xl font-black mt-3">Employer-aligned delivery and practical capability.</h2>
+            <h2 class="h-title text-3xl sm:text-4xl font-black mt-3">Employer-aligned delivery and practical capability.
+            </h2>
             <p class="lead mt-5">
-              These are professional placeholders. Replace with verified quotes, organisation names and dates once published.
+              These are professional placeholders. Replace with verified quotes, organisation names and dates once
+              published.
             </p>
 
             <div class="mt-8 surface p-7">
-              <div class="text-[10px] font-black uppercase tracking-[0.30em] text-black/40">How we structure outcomes</div>
+              <div class="text-[10px] font-black uppercase tracking-[0.30em] text-black/40">How we structure outcomes
+              </div>
               <div class="mt-4 grid gap-3 text-sm font-semibold text-slate-800">
                 <div class="flex gap-3">
                   <span class="text-[var(--kti-maroon)] font-black">01</span>
@@ -1067,7 +1339,8 @@
             <figure class="card p-7 reveal">
               <div class="text-[10px] font-black uppercase tracking-[0.30em] text-black/40">Employer feedback</div>
               <blockquote class="mt-4 text-[15px] leading-relaxed font-semibold text-black/70">
-                “Learners demonstrated stronger documentation discipline and improved communication standards within the first month.”
+                “Learners demonstrated stronger documentation discipline and improved communication standards within the
+                first month.”
               </blockquote>
               <figcaption class="mt-6 pt-5 border-t border-black/5">
                 <div class="font-black text-[var(--kti-ink)]">Operations Manager</div>
@@ -1120,8 +1393,10 @@
       <div class="rail">
         <div class="max-w-3xl reveal">
           <div class="kicker">Delivery Approach</div>
-          <h2 class="h-title text-3xl sm:text-4xl lg:text-5xl font-black mt-3">A structured path from entry to outcome.</h2>
-          <p class="lead mt-5">Clear process reduces friction and increases completion probability. This section is intentionally concise.</p>
+          <h2 class="h-title text-3xl sm:text-4xl lg:text-5xl font-black mt-3">A structured path from entry to outcome.
+          </h2>
+          <p class="lead mt-5">Clear process reduces friction and increases completion probability. This section is
+            intentionally concise.</p>
         </div>
 
         <div class="mt-10 grid lg:grid-cols-12 gap-8">
@@ -1129,31 +1404,42 @@
             <div class="surface p-8">
               <div class="grid gap-6">
                 <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-[var(--kti-maroon)] text-white flex items-center justify-center font-black">1</div>
+                  <div
+                    class="w-10 h-10 rounded-xl bg-[var(--kti-maroon)] text-white flex items-center justify-center font-black">
+                    1</div>
                   <div>
                     <div class="font-black text-[var(--kti-ink)]">Programme selection</div>
-                    <div class="text-sm text-black/60 mt-1 font-medium">Fit assessment and entry requirements alignment.</div>
+                    <div class="text-sm text-black/60 mt-1 font-medium">Fit assessment and entry requirements alignment.
+                    </div>
                   </div>
                 </div>
                 <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-[var(--kti-maroon)] text-white flex items-center justify-center font-black">2</div>
+                  <div
+                    class="w-10 h-10 rounded-xl bg-[var(--kti-maroon)] text-white flex items-center justify-center font-black">
+                    2</div>
                   <div>
                     <div class="font-black text-[var(--kti-ink)]">Structured learning</div>
                     <div class="text-sm text-black/60 mt-1 font-medium">Modules, resources and assessment points.</div>
                   </div>
                 </div>
                 <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-[var(--kti-maroon)] text-white flex items-center justify-center font-black">3</div>
+                  <div
+                    class="w-10 h-10 rounded-xl bg-[var(--kti-maroon)] text-white flex items-center justify-center font-black">
+                    3</div>
                   <div>
                     <div class="font-black text-[var(--kti-ink)]">Practical readiness</div>
-                    <div class="text-sm text-black/60 mt-1 font-medium">Workplace capability indicators and coaching.</div>
+                    <div class="text-sm text-black/60 mt-1 font-medium">Workplace capability indicators and coaching.
+                    </div>
                   </div>
                 </div>
                 <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-[var(--kti-maroon)] text-white flex items-center justify-center font-black">4</div>
+                  <div
+                    class="w-10 h-10 rounded-xl bg-[var(--kti-maroon)] text-white flex items-center justify-center font-black">
+                    4</div>
                   <div>
                     <div class="font-black text-[var(--kti-ink)]">Outcome tracking</div>
-                    <div class="text-sm text-black/60 mt-1 font-medium">Completion evidence and documentation discipline.</div>
+                    <div class="text-sm text-black/60 mt-1 font-medium">Completion evidence and documentation
+                      discipline.</div>
                   </div>
                 </div>
               </div>
@@ -1185,8 +1471,10 @@
           <div class="grid lg:grid-cols-12 gap-8 items-center">
             <div class="lg:col-span-8">
               <div class="kicker">Next step</div>
-              <h3 class="h-title text-2xl sm:text-3xl lg:text-4xl font-black mt-3">Request programme evidence or schedule an admissions call.</h3>
-              <p class="lead mt-4 max-w-[78ch]">We can provide entry requirements, curriculum summaries, and guidance on the most suitable pathway.</p>
+              <h3 class="h-title text-2xl sm:text-3xl lg:text-4xl font-black mt-3">Request programme evidence or
+                schedule an admissions call.</h3>
+              <p class="lead mt-4 max-w-[78ch]">We can provide entry requirements, curriculum summaries, and guidance on
+                the most suitable pathway.</p>
             </div>
             <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-stretch">
               <button class="btn btn-primary w-full" onclick="toggleEnquiryModal()">Apply / Enquire</button>
@@ -1204,7 +1492,8 @@
         <div class="grid lg:grid-cols-4 gap-12 mb-12">
           <div class="lg:col-span-1">
             <div class="flex items-center gap-3 mb-6">
-              <img src="assets/img/khs_neutral.png" alt="KTI" class="h-9 w-auto rounded border border-black/10 bg-white" onerror="this.style.display='none'">
+              <img src="assets/img/khs_neutral.png" alt="KTI" class="h-9 w-auto rounded border border-black/10 bg-white"
+                onerror="this.style.display='none'">
               <div class="text-sm font-black text-[var(--kti-ink)]">Konwaba Training Institute</div>
             </div>
             <p class="text-sm text-black/55 leading-relaxed font-medium">
@@ -1242,7 +1531,8 @@
           </div>
         </div>
 
-        <div class="pt-8 divider-soft flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-black uppercase tracking-widest text-black/35">
+        <div
+          class="pt-8 divider-soft flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-black uppercase tracking-widest text-black/35">
           <div>© <span id="year"></span> Konwaba Training Institute.</div>
           <div class="flex gap-6">
             <a href="privacy.html" class="hover:text-black">Privacy</a>
@@ -1254,14 +1544,20 @@
   </footer>
 
   <!-- Enquiry Modal -->
- <div id="enquiryModalOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-md z-[1005] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="enquiryModalOverlay"
+    class="fixed inset-0 bg-black/50 backdrop-blur-md z-[1005] opacity-0 pointer-events-none transition-opacity duration-300">
+  </div>
   <div id="enquiryModal" class="fixed inset-0 z-[1010] flex items-center justify-center p-4 pointer-events-none">
-    <div class="bg-white w-full max-w-[580px] rounded-[26px] shadow-[0_32px_128px_rgba(0,0,0,0.30)] pointer-events-auto modal-panel overflow-hidden">
+    <div
+      class="bg-white w-full max-w-[580px] rounded-[26px] shadow-[0_32px_128px_rgba(0,0,0,0.30)] pointer-events-auto modal-panel overflow-hidden">
       <div class="bg-[var(--kti-maroon)] p-8 text-white relative">
         <h3 class="text-2xl font-black">Enquiry</h3>
         <p class="text-[11px] font-semibold uppercase tracking-widest opacity-75 mt-1">Admissions support</p>
-        <button data-open-enquiry-close class="absolute top-7 right-7 text-white/60 hover:text-white" aria-label="Close enquiry" type="button">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        <button data-open-enquiry-close class="absolute top-7 right-7 text-white/60 hover:text-white"
+          aria-label="Close enquiry" type="button">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </button>
       </div>
 
@@ -1269,29 +1565,37 @@
         <div class="grid sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Name</label>
-            <input type="text" class="w-full rounded-xl border-2 border-black/5 px-4 py-3 font-semibold focus:outline-none focus:border-[var(--kti-maroon)]" placeholder="Full name">
+            <input type="text"
+              class="w-full rounded-xl border-2 border-black/5 px-4 py-3 font-semibold focus:outline-none focus:border-[var(--kti-maroon)]"
+              placeholder="Full name">
           </div>
           <div>
             <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Phone</label>
-            <input type="tel" class="w-full rounded-xl border-2 border-black/5 px-4 py-3 font-semibold focus:outline-none focus:border-[var(--kti-maroon)]" placeholder="0xx xxx xxxx">
+            <input type="tel"
+              class="w-full rounded-xl border-2 border-black/5 px-4 py-3 font-semibold focus:outline-none focus:border-[var(--kti-maroon)]"
+              placeholder="0xx xxx xxxx">
           </div>
         </div>
 
         <div>
-          <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Message (optional)</label>
-          <textarea class="w-full rounded-xl border-2 border-black/5 px-4 py-3 font-semibold focus:outline-none focus:border-[var(--kti-maroon)] h-24 resize-none" placeholder="Tell us what you want to achieve (optional)"></textarea>
+          <label class="block text-[10px] font-black uppercase tracking-widest text-black/40 mb-2">Message
+            (optional)</label>
+          <textarea
+            class="w-full rounded-xl border-2 border-black/5 px-4 py-3 font-semibold focus:outline-none focus:border-[var(--kti-maroon)] h-24 resize-none"
+            placeholder="Tell us what you want to achieve (optional)"></textarea>
         </div>
 
         <button class="btn btn-primary w-full py-4 mt-2" id="submitEnquiry" type="button">Submit enquiry</button>
-        <div id="enquiryToast" class="hidden text-center text-xs font-bold text-emerald-700 toast py-3 px-4">Thank you. We will contact you shortly.</div>
+        <div id="enquiryToast" class="hidden text-center text-xs font-bold text-emerald-700 toast py-3 px-4">Thank you.
+          We will contact you shortly.</div>
       </form>
     </div>
   </div>
 
   <script>
     (() => {
-      const $ = (s, r=document) => r.querySelector(s);
-      const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+      const $ = (s, r = document) => r.querySelector(s);
+      const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
       // Footer year
       $('#year') && ($('#year').textContent = new Date().getFullYear());
@@ -1309,14 +1613,14 @@
       const close = (item) => {
         item.classList.remove('open');
         item.removeAttribute('data-locked');
-        item.querySelector('button')?.setAttribute('aria-expanded','false');
+        item.querySelector('button')?.setAttribute('aria-expanded', 'false');
       };
-      const open = (item, lock=false) => {
+      const open = (item, lock = false) => {
         clearTimeout(hoverT);
         items.forEach(i => i !== item && close(i));
         item.classList.add('open');
-        item.querySelector('button')?.setAttribute('aria-expanded','true');
-        lock ? item.setAttribute('data-locked','true') : item.removeAttribute('data-locked');
+        item.querySelector('button')?.setAttribute('aria-expanded', 'true');
+        lock ? item.setAttribute('data-locked', 'true') : item.removeAttribute('data-locked');
       };
 
       items.forEach(item => {
@@ -1325,7 +1629,7 @@
 
         item.addEventListener('mouseenter', () => desktop() && open(item, false));
         item.addEventListener('mouseleave', () => {
-          if(desktop() && !item.hasAttribute('data-locked')){
+          if (desktop() && !item.hasAttribute('data-locked')) {
             hoverT = setTimeout(() => close(item), 140);
           }
         });
@@ -1334,13 +1638,13 @@
           e.preventDefault();
           const isOpen = item.classList.contains('open');
           const isLocked = item.hasAttribute('data-locked');
-          if(isOpen && isLocked) close(item);
+          if (isOpen && isLocked) close(item);
           else open(item, true);
         });
       });
 
       document.addEventListener('click', (e) => {
-        if(!e.target.closest('.navitem')) items.forEach(close);
+        if (!e.target.closest('.navitem')) items.forEach(close);
       });
 
       // Mobile drawer
@@ -1375,25 +1679,25 @@
       document.addEventListener('click', (e) => {
         const openBtn = e.target.closest('[data-open-enquiry]');
         const closeBtn = e.target.closest('[data-open-enquiry-close]');
-        if(openBtn) setModal(true);
-        if(closeBtn) setModal(false);
+        if (openBtn) setModal(true);
+        if (closeBtn) setModal(false);
       });
       modalOverlay?.addEventListener('click', () => setModal(false));
 
       // Submit toast
-      $('#submitEnquiry')?.addEventListener('click', function(){
-        const t = $('#enquiryToast'); if(t) t.classList.remove('hidden');
+      $('#submitEnquiry')?.addEventListener('click', function () {
+        const t = $('#enquiryToast'); if (t) t.classList.remove('hidden');
         this.disabled = true; this.textContent = "Submitted";
         setTimeout(() => {
           this.disabled = false; this.textContent = "Submit enquiry";
-          if(t) t.classList.add('hidden');
+          if (t) t.classList.add('hidden');
           setModal(false);
         }, 1400);
       });
 
       // Reveal on scroll
       const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if(!prefersReduce){
+      if (!prefersReduce) {
         const io = new IntersectionObserver((entries) => {
           entries.forEach(e => e.isIntersecting && e.target.classList.add('in'));
         }, { threshold: 0.12 });
@@ -1415,16 +1719,16 @@
           const eased = 1 - Math.pow(1 - p, 3);
           const v = (target * eased);
           el.textContent = v.toFixed(decimals) + suffix;
-          if(p < 1) requestAnimationFrame(tick);
+          if (p < 1) requestAnimationFrame(tick);
         };
         requestAnimationFrame(tick);
       };
 
       const cIO = new IntersectionObserver((entries) => {
         entries.forEach(e => {
-          if(e.isIntersecting){
+          if (e.isIntersecting) {
             const el = e.target;
-            if(el.dataset.done) return;
+            if (el.dataset.done) return;
             el.dataset.done = "1";
             animateNumber(el);
           }
@@ -1435,16 +1739,16 @@
 
       // Stories: render from data (efficient + consistent)
       const stories = [
-        { sector:'administration', tag:'Office & Admin', title:'Workplace readiness for entry-level administration.', body:'Progression from foundational computing to structured office operations, communication and records management.', metric:'Office operations', pct:78 },
-        { sector:'public_service', tag:'Public Service', title:'Administrative accuracy and compliance awareness improvement.', body:'Public sector standards, ethical administration and structured workplace communication.', metric:'Governance', pct:72 },
-        { sector:'ohs', tag:'OHS', title:'Safety capability: hazard identification and reporting discipline.', body:'Inspections, risk profiling and documentation aligned to workplace control standards.', metric:'Risk controls', pct:81 },
-        { sector:'finance', tag:'Municipal Finance', title:'Confidence in finance administration process discipline.', body:'Documentation routines, resource control awareness and baseline finance process standards.', metric:'Finance admin', pct:69 },
-        { sector:'agriculture', tag:'Agriculture', title:'Practical fundamentals with structured field outcomes.', body:'Production basics, safety standards and consistent operational routines.', metric:'Operations', pct:76 },
-        { sector:'administration', tag:'Office & Admin', title:'Professional communication and customer service improvement.', body:'Communication standards, record keeping discipline and workflow clarity for day-to-day operations.', metric:'Communication', pct:74 },
+        { sector: 'administration', tag: 'Office & Admin', title: 'Workplace readiness for entry-level administration.', body: 'Progression from foundational computing to structured office operations, communication and records management.', metric: 'Office operations', pct: 78 },
+        { sector: 'public_service', tag: 'Public Service', title: 'Administrative accuracy and compliance awareness improvement.', body: 'Public sector standards, ethical administration and structured workplace communication.', metric: 'Governance', pct: 72 },
+        { sector: 'ohs', tag: 'OHS', title: 'Safety capability: hazard identification and reporting discipline.', body: 'Inspections, risk profiling and documentation aligned to workplace control standards.', metric: 'Risk controls', pct: 81 },
+        { sector: 'finance', tag: 'Municipal Finance', title: 'Confidence in finance administration process discipline.', body: 'Documentation routines, resource control awareness and baseline finance process standards.', metric: 'Finance admin', pct: 69 },
+        { sector: 'agriculture', tag: 'Agriculture', title: 'Practical fundamentals with structured field outcomes.', body: 'Production basics, safety standards and consistent operational routines.', metric: 'Operations', pct: 76 },
+        { sector: 'administration', tag: 'Office & Admin', title: 'Professional communication and customer service improvement.', body: 'Communication standards, record keeping discipline and workflow clarity for day-to-day operations.', metric: 'Communication', pct: 74 },
       ];
 
       const grid = $('#storyGrid');
-      const esc = (s) => String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+      const esc = (s) => String(s).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
       const cardHTML = (s) => `
         <article class="card p-6 reveal" data-story="${esc(s.sector)}">
           <div class="flex items-start justify-between gap-3">
@@ -1468,10 +1772,10 @@
         </article>
       `;
 
-      if(grid){
+      if (grid) {
         grid.innerHTML = stories.map(cardHTML).join('');
         // Ensure new reveal nodes are observed
-        if(!prefersReduce){
+        if (!prefersReduce) {
           const io2 = new IntersectionObserver((entries) => {
             entries.forEach(e => e.isIntersecting && e.target.classList.add('in'));
           }, { threshold: 0.12 });
@@ -1498,4 +1802,5 @@
     })();
   </script>
 </body>
+
 </html>
